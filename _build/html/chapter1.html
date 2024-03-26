@@ -393,7 +393,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">1.6 Lab</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">1.7 Homework</a></li>
 </ul>
             </nav>
@@ -1142,8 +1141,8 @@ Number of observations (_N) was <span class="m">0</span>, now <span class="m">1<
 <section id="counterfeiting">
 <h2>1.5 Counterfeiting<a class="headerlink" href="#counterfeiting" title="Permalink to this heading">#</a></h2>
 <p>In anticipation of collecting or securing data that might be central to a project, a sophisticated analyst may experiment with creating Data that mimic these real databases to refine your Stata scripts.</p>
-<p>We’ll walk through a simple simulation to whet your appetite and lay a foundation for many of our other goals.</p>
-<p>Let’s take an example from the following Stata script:</p>
+<p>We’ll walk through a simple simulation to whet your appetite, and lay a foundation for our more distant goals.</p>
+<p>Let’s take an example from the following Stata script that was inspired by <a class="reference external" href="https://www.nejm.org/doi/full/10.1056/nejmoa2034577">Clinical Trial Data</a> from the BNT162b2 mRNA Covid-19 Vaccine</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
 <span class="k">	clear</span> 
 	cls
@@ -1301,13 +1300,13 @@ Number of observations (_N) was <span class="m">0</span>, now <span class="m">1<
 	
 </pre></div>
 </div>
-<p><img alt="" src="_images/simulate.png" /></p>
 <section id="detailed-breakdown-of-clinical-trial-data-simulation-bnt162b2-mrna-covid-19-vaccine">
 <h3>Detailed Breakdown of Clinical Trial Data Simulation: <a class="reference external" href="https://www.nejm.org/doi/full/10.1056/nejmoa2034577">BNT162b2 mRNA Covid-19 Vaccine</a><a class="headerlink" href="#detailed-breakdown-of-clinical-trial-data-simulation-bnt162b2-mrna-covid-19-vaccine" title="Permalink to this heading">#</a></h3>
 </section>
 <section id="introduction">
 <h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h3>
-<p>In this module, we explore the nuances of simulating a dataset for a randomized clinical trial, specifically modeled after the BNT162b2 mRNA COVID-19 vaccine trial. Our objective is to create a simulated dataset that mirrors the complexity and diversity of the actual trial, covering aspects such as participant demographics, vaccine efficacy, and follow-up times.</p>
+<p><img alt="" src="_images/simulate.png" /></p>
+<p>In this module, we explore the nuances of simulating a dataset for a randomized clinical trial, specifically modeled after the BNT162b2 mRNA COVID-19 vaccine trial. Our objective is to create a simulated dataset that mirrors <u>only some aspects</u> of the complexity and diversity of the actual trial, such as participant demographics, vaccine efficacy, and follow-up times.</p>
 <section id="simulation-process">
 <h4>1.5.1 Simulation Process<a class="headerlink" href="#simulation-process" title="Permalink to this heading">#</a></h4>
 </section>
@@ -1396,18 +1395,16 @@ Number of observations (_N) was <span class="m">0</span>, now <span class="m">1<
 <li><p><strong>Simulate Demographic Data</strong>: Extend the simulation to include detailed demographic &amp; clinical characteristics of your choice (see the script above for tips). Analyze how different demographics might influence trial outcomes. Can you produce a Table 1 after simulating your study population? Does it meet your expectations?</p></li>
 <li><p><strong>Outcome Analysis</strong>: Utilize the simulated outcome data to perform a Kaplan-Meier analysis. Discuss how the vaccine’s efficacy may vary among subgroups. How would you take this into consideration when simulating these data?</p></li>
 </ol>
-</section>
-<section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
-<p>Through this simulation, you’ll gain some insights into how these methods can be used to plan for data collection, sample size calculation, or, as we’ll soon see, <code class="docutils literal notranslate"><span class="pre">overcome</span> <span class="pre">barriers</span> <span class="pre">when</span> <span class="pre">data</span> <span class="pre">access</span> <span class="pre">is</span> <span class="pre">highly</span> <span class="pre">restricted</span></code>. This exercise not only reinforces statistical and programming skills but also emphasizes the critical thinking needed to interpret data.</p>
+<p><strong>Conclusion</strong>
+Through this simulation, you’ll gain some insights into how these methods can be used to plan for data collection, sample size calculation, or, as we’ll soon see, <code class="docutils literal notranslate"><span class="pre">overcome</span> <span class="pre">barriers</span> <span class="pre">when</span> <span class="pre">data</span> <span class="pre">access</span> <span class="pre">is</span> <span class="pre">highly</span> <span class="pre">restricted</span></code>. This exercise not only reinforces statistical and programming skills but also emphasizes the critical thinking needed to interpret data.</p>
 </section>
 <section id="homework">
 <h2>1.7 Homework<a class="headerlink" href="#homework" title="Permalink to this heading">#</a></h2>
 <p>Your week 1 homework is very simple:</p>
 <ol class="arabic simple">
-<li><p>Create a GitHub account and a specific “public” repository within it called hw1.</p></li>
-<li><p>Upload a .do file to this repo with code that reproduce thes simulation and results above. Be sure to annotate your code.</p></li>
-<li><p>Run your simulation on your computer using the URL of your “raw” .do file (instructions will be provided in class).</p></li>
+<li><p>Create a GitHub account and a “public” repository within it called hw1.</p></li>
+<li><p>Upload a .do file to this repo with code that reproduce the simulation and results above. Be sure to annotate your code.</p></li>
+<li><p>Run your simulation on your computer using the <code class="docutils literal notranslate"><span class="pre">URL</span></code> of your “raw” .do file (instructions will be provided in class).</p></li>
 </ol>
 <p>Question:</p>
 <p>What syntax did you use to run this “remote” .do file? Copy and paste that syntax into a .do file named <code class="docutils literal notranslate"><span class="pre">hw1.lastname.firstname.do</span></code>. And that’s it!</p>
@@ -1513,7 +1510,6 @@ Number of observations (_N) was <span class="m">0</span>, now <span class="m">1<
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">1.6 Lab</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">1.7 Homework</a></li>
 </ul>
   </nav></div>
