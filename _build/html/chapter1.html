@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1. Philosophy, overview, commands, syntax &#8212; Stata Programming</title>
+    <title>1. Philosophy, overview, directory, simulation &#8212; Stata Programming</title>
   
   
   
@@ -159,14 +159,14 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Philosophy, overview, commands, syntax</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Philosophy, overview, directory, simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter2.html">2. Return values, macros, programs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter3.html">3. Loops, Program Syntax, and Miscellany</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter3.html">3. Loops, program syntax, and miscellany</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter4.html">4. Advanced file management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter5.html">5. Graphs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter6.html">6. Review of Weeks 1-5</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter7.html">7. Survival Analysis: Non-parametric, Semi-parametric, Parametric</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter8.html">8. Multilevel, Hierarchical Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter6.html">6. Review of weeks 1-5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter7.html">7. Survival analysis: non-parametric, semi-parametric, parametric</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter8.html">8. Multilevel, hierarchical Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickrefs.html">Quick References</a></li>
 </ul>
 
@@ -351,7 +351,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>1. Philosophy, overview, commands, syntax</h1>
+    <h1>1. Philosophy, overview, directory, simulation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -405,8 +405,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="philosophy-overview-commands-syntax">
-<h1>1. Philosophy, overview, commands, syntax<a class="headerlink" href="#philosophy-overview-commands-syntax" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="philosophy-overview-directory-simulation">
+<h1>1. Philosophy, overview, directory, simulation<a class="headerlink" href="#philosophy-overview-directory-simulation" title="Permalink to this heading">#</a></h1>
 <p>Please respond to the brief <code class="docutils literal notranslate"><span class="pre">entry</span> <span class="pre">survey</span></code> that helps us better understand what your needs might be in week one. I’ll launch it on <a class="reference external" href="https://jhjhm.zoom.us/j/93892874220">zoom</a> for both the in-person and virtual attendees. The questions are listed here for your convenience. An identical <code class="docutils literal notranslate"><span class="pre">exit</span> <span class="pre">survey</span></code> will be launched in week-five to get a sense of what we’ve achieved over a five-week period. Our goal is to “titrate” the challenges we present to you each week against your skill-level, to ensure a smooth process of <a class="reference external" href="https://jhufena.github.io/home/preface.html">growth</a> (a.k.a, <a class="reference external" href="https://en.wikipedia.org/wiki/Relaxation_(psychology)">flow)</a> over the next eight weeks.</p>
 <ol class="arabic simple">
 <li><p>How will you use Stata from 04/01/2024-05/17/2024?</p>
@@ -819,7 +819,7 @@ document.write(`
 <li><p>The very first <code class="docutils literal notranslate"><span class="pre">valid</span></code> word you type into the command window or on a line of code in a do file</p>
 <ul>
 <li><p>Some <a class="reference external" href="https://www.stata.com/manuals13/u27.pdf">basic</a> commands that the folks at Stata think you ought to know by the end of this class. Please keep checking</p></li>
-<li><p>In your week 1 homework you’ll learn the <code class="docutils literal notranslate"><span class="pre">set</span></code> command, which is key to simulation and reproducibility</p></li>
+<li><p>In your week 1 lab you’ll learn the <code class="docutils literal notranslate"><span class="pre">set</span></code> command, which is key to simulation and reproducibility</p></li>
 </ul>
 </li>
 <li><p>Rendered blue in color if its a <u>native</u> Stata command (on my machine)</p></li>
@@ -982,7 +982,7 @@ document.write(`
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">sysuse</span> lifeexp<span class="m">.</span>dta
 </pre></div>
 </div>
-<p>It’s a portamento for “system” &amp; “use lifeexp.dta”</p>
+<p>It’s a portmanteau for “system” &amp; “use lifeexp.dta” (look out for other portmanteau’s in Stata)</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>.<span class="k"> sysuse</span> lifeexp<span class="m">.</span>dta
 (Life expectancy, <span class="m">1998</span>)
 </pre></div>
@@ -1002,18 +1002,24 @@ document.write(`
 . 
 </pre></div>
 </div>
-<p>I’m unhappy with Stata 18! Thats a systems folder!! So I used a <code class="docutils literal notranslate"><span class="pre">Unix</span></code> command to move this file to a safer place:</p>
+<p>I’m unhappy with Stata 18! Thats a systems folder!! So I used a <code class="docutils literal notranslate"><span class="pre">Unix</span></code> command to move this file to a safer place (Stata accepts <a class="reference external" href="https://mally.stanford.edu/~sr/computing/basic-unix.html">some</a> Unix commands, not this one):</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>. mv <span class="o">/</span>Applications<span class="o">/</span>Stata<span class="o">/</span>ado<span class="o">/</span>base<span class="o">/</span>l<span class="o">/</span>lifeexp<span class="m">.</span>dta  <span class="o">/</span>users<span class="o">/</span>d<span class="o">/</span>desktop<span class="o">/</span>lifeexp<span class="m">.</span>dta
 command mv is unrecognized
 <span class="nf">r</span>(<span class="m">199</span>);
-
-. 
+<span class="nv">`</span>
+<span class="nv">. </span>
 </pre></div>
 </div>
 <p>After copying &amp; pasting the above output into GPT-4, here what I got:</p>
-<p>It looks like you’re trying to move a file using Stata’s command line, which isn’t directly possible since Stata does not recognize system commands like <code class="docutils literal notranslate"><span class="pre">mv</span></code>. Stata’s command interface is designed for statistical analysis and data management within its environment, not for managing files on your operating system.</p>
-<p>To move a file like <code class="docutils literal notranslate"><span class="pre">lifeexp.dta</span></code> from one directory to another on your system, you’ll need to use the command line or terminal outside of Stata. If you’re using macOS or Linux, you were on the right track with the <code class="docutils literal notranslate"><span class="pre">mv</span></code> command, just not within Stata. If you’re on Windows, you’d use <code class="docutils literal notranslate"><span class="pre">move</span></code> instead.</p>
-<p>Here’s how you can do it:</p>
+<blockquote>
+<div><p>It looks like you’re trying to move a file using Stata’s command line, which isn’t directly possible since Stata does not recognize system commands like <code class="docutils literal notranslate"><span class="pre">mv</span></code>. Stata’s command interface is designed for statistical analysis and data management within its environment, not for managing files on your operating system.</p>
+</div></blockquote>
+<blockquote>
+<div><p>To move a file like <code class="docutils literal notranslate"><span class="pre">lifeexp.dta</span></code> from one directory to another on your system, you’ll need to use the command line or terminal outside of Stata. If you’re using macOS or Linux, you were on the right track with the <code class="docutils literal notranslate"><span class="pre">mv</span></code> command, just not within Stata. If you’re on Windows, you’d use <code class="docutils literal notranslate"><span class="pre">move</span></code> instead.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Here’s how you can do it:</p>
+</div></blockquote>
 <section id="on-macos-or-linux">
 <h3>On macOS or Linux:<a class="headerlink" href="#on-macos-or-linux" title="Permalink to this heading">#</a></h3>
 <ol class="arabic">
