@@ -6,7 +6,7 @@ Welcome to [340.700 Stata Programming II (Intermediate)](https://publichealth.jh
 
 Should you have inquiries about [340.600 Programming I (Basic)](https://publichealth.jhu.edu/course/38901), please do not hesitate to reach out to your [Analytic Mentor](https://jhustata.github.io/basic/quickrefs.html#course-team-contacts). For those curious about Stata Programming III (Advanced), we regret to inform you that no offering will be available this year. Nevertheless, you can explore content pertinent to advanced Stata Programming [here](https://jhufena.github.io/home/intro.html).
 
-The `Intermediate` class adopts a hybrid format to accommodate both in-person attendees at the Bloomberg School's Wolfe **E2014** (Sheldon Hall) and virtual participants via Zoom ([link](https://jhjhm.zoom.us/j/93892874220)). We encourage in-person participants to also connect to Zoom, facilitating code sharing and collective debugging, a highlight of the learning experience as described by last year’s students.
+The `Intermediate` class adopts a hybrid format to accommodate both in-person attendees at the Bloomberg School's Wolfe **E2014** (Sommer Hall) and virtual participants via Zoom ([link](https://jhjhm.zoom.us/j/93892874220)). We encourage in-person participants to also connect to Zoom, facilitating code sharing and collective debugging, a highlight of the learning experience as described by last year’s students.
 
 In contrast, solely in-person formats without a Zoom option hinder students' ability to express their challenges, complicating collective problem-solving.
 
