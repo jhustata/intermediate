@@ -367,7 +367,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">1.2 Overview 🦀</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#directory">1.3 Directory</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#directories-file-system-navigation-path-management">1.3 Directories, file system navigation, path management</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-macos-or-linux">On macOS or Linux:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-windows">On Windows:</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#heeding-gpts-advice-on-my-mac">Heeding GPTs advice on my Mac</a></li>
@@ -976,33 +976,28 @@ document.write(`
 <li><p>etc.</p></li>
 </ul>
 </section>
-<section id="directory">
-<h2>1.3 Directory<a class="headerlink" href="#directory" title="Permalink to this heading">#</a></h2>
+<section id="directories-file-system-navigation-path-management">
+<h2>1.3 Directories, file system navigation, path management<a class="headerlink" href="#directories-file-system-navigation-path-management" title="Permalink to this heading">#</a></h2>
 <p>Consider the following syntax:</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">sysuse</span> lifeexp<span class="m">.</span>dta
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">sysuse</span> lifeexp<span class="m">.</span>dta 
 </pre></div>
 </div>
-<p>It’s a portmanteau for “system” &amp; “use lifeexp.dta” (look out for other portmanteau’s in Stata)</p>
+<p>It’s a portmanteau of “system” &amp; “use lifeexp.dta” (look out for other portmanteau’s in Stata)</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>.<span class="k"> sysuse</span> lifeexp<span class="m">.</span>dta
 (Life expectancy, <span class="m">1998</span>)
 </pre></div>
 </div>
 <p>Now lets save this dataset locally:</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">save</span>,<span class="k"> replace</span> 
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">save</span>,<span class="k"> replace</span>
 </pre></div>
 </div>
-<p>Stata 18 defaults to the last directory you “visited”. In other words, the last directory with a .do file and .dta that you clicked on. Mine?</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">pwd</span>
-</pre></div>
-</div>
-<p>You should become familiar with that command</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>.<span class="k"> save</span>,<span class="k"> replace</span> 
 <span class="k">file</span> <span class="o">/</span>Applications<span class="o">/</span>Stata<span class="o">/</span>ado<span class="o">/</span>base<span class="o">/</span>l<span class="o">/</span>lifeexp<span class="m">.</span>dta saved
 
 . 
 </pre></div>
 </div>
-<p>I’m unhappy with Stata 18! Thats a systems folder!! So I used a <code class="docutils literal notranslate"><span class="pre">Unix</span></code> command to move this file to a safer place (Stata accepts <a class="reference external" href="https://mally.stanford.edu/~sr/computing/basic-unix.html">some</a> Unix commands, not this one):</p>
+<p>I’m unhappy with Stata 18 - it saves to the last directory you visited! Thats a systems folder!! So I’ll use a <a class="reference external" href="https://jhufena.github.io/home/act5/act_5_0/act_5_0_3.html">Unix</a> command to move this file to a safer place (Stata accepts <a class="reference external" href="https://mally.stanford.edu/~sr/computing/basic-unix.html">some</a> Unix commands, not this one):</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>. mv <span class="o">/</span>Applications<span class="o">/</span>Stata<span class="o">/</span>ado<span class="o">/</span>base<span class="o">/</span>l<span class="o">/</span>lifeexp<span class="m">.</span>dta  <span class="o">/</span>users<span class="o">/</span>d<span class="o">/</span>desktop<span class="o">/</span>lifeexp<span class="m">.</span>dta
 command mv is unrecognized
 <span class="nf">r</span>(<span class="m">199</span>);
@@ -1043,7 +1038,7 @@ command mv is unrecognized
 <p>Again, replace the paths with the correct ones for your system.</p>
 </li>
 </ol>
-<p>Remember, these commands are executed outside of Stata, in your system’s native command line interface. If you’re often moving files around for Stata analysis, consider creating a script to automate this, or better yet, organize your projects in a way that minimizes the need to move files around frequently.</p>
+<p>Remember, these commands are executed outside of Stata, in your system’s native command line interface. If you’re often moving files around for Stata analysis, consider creating a <a class="reference external" href="https://jhufena.github.io/home/act5/act_5_0/act_5_0_2.html">script</a> to <a class="reference external" href="https://jhufena.github.io/home/act5/act_5_0/act_5_0_1.html">automate</a> this, or better yet, organize your projects in a way that minimizes the need to move files around frequently.</p>
 <p>Lastly, a gentle opinion: diving into command line operations can be incredibly empowering. It opens up a world of efficiency and control over your computing environment that GUIs can’t match. Plus, it’s a skill that, once developed, is universally applicable across many tasks beyond just data management. Embrace the command line, and it will serve you well!</p>
 <section id="heeding-gpts-advice-on-my-mac">
 <h4>Heeding GPTs advice on my Mac<a class="headerlink" href="#heeding-gpts-advice-on-my-mac" title="Permalink to this heading">#</a></h4>
@@ -1490,7 +1485,7 @@ Through this simulation, you’ll gain some insights into how these methods can 
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">1.2 Overview 🦀</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#directory">1.3 Directory</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#directories-file-system-navigation-path-management">1.3 Directories, file system navigation, path management</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-macos-or-linux">On macOS or Linux:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-windows">On Windows:</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#heeding-gpts-advice-on-my-mac">Heeding GPTs advice on my Mac</a></li>
