@@ -162,7 +162,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Philosophy, overview, directory, simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter2.html">2. Return values, macros, programs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter3.html">3. Loops, program syntax, and miscellany</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter4.html">4. Advanced file management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter4.html">4. Advanced file management, with Examples from Large National Registries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter5.html">5. Graphs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter6.html">6. Review of weeks 1-5</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter7.html">7. Survival analysis: non-parametric, semi-parametric, parametric</a></li>
@@ -1085,20 +1085,37 @@ d@Poseidon<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </s
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Warning!!!</span></code> We just corrupted a system file. well, we moved it away from its native location.</p>
-<p>Use of Terminal (MacOS, Linux) or Command Prompt (Windows) is very empowering. However, its potentially also a weapon of mass destruction. We’ll leave the command prompt to the 340.800 Stata Programming III (Advanced)</p>
+<p>Use of Terminal (MacOS, Linux) or Command Prompt (Windows) is very empowering. However, its potentially a weapon of mass destruction. We’ll leave the command prompt to the 340.800 Stata Programming III (Advanced) class.</p>
 <ol class="arabic simple" start="4">
 <li><p>Import from online</p></li>
 </ol>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">webuse</span> lifeexp<span class="m">.</span>dta
 </pre></div>
 </div>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>.<span class="k"> webuse</span> lifeexp
+(Life expectancy, <span class="m">1998</span>)
+</pre></div>
+</div>
 <ol class="arabic simple" start="5">
+<li><p>See what happens when Wi-Fi disconnected</p></li>
+</ol>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">webuse</span> lifeexp<span class="m">.</span>dta
+</pre></div>
+</div>
+<p>. webuse lifeexp
+host not found
+r(631);</p>
+<ol class="arabic simple" start="6">
 <li><p>Explicitly use a URL</p></li>
 </ol>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>https:<span class="o">//</span>www<span class="m">.</span>stata<span class="o">-</span>press<span class="m">.</span>com<span class="o">/</span>data<span class="o">/</span>r8<span class="o">/</span>lifeexp<span class="m">.</span>dta
 </pre></div>
 </div>
-<p>For your homework, you’re going to do something akin to approach <code class="docutils literal notranslate"><span class="pre">#5</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span> <span class="n">webuse</span> <span class="n">lifeexp</span>
+<span class="p">(</span><span class="n">Life</span> <span class="n">expectancy</span><span class="p">,</span> <span class="mi">1998</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For your homework, you’re going to do something akin to approach <code class="docutils literal notranslate"><span class="pre">#6</span></code></p>
 </section>
 </section>
 </section>
@@ -1306,7 +1323,6 @@ Number of observations (_N) was <span class="m">0</span>, now <span class="m">1<
 </section>
 <section id="introduction">
 <h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h3>
-<p><img alt="" src="_images/simulate.png" /></p>
 <p>In this module, we explore the nuances of simulating a dataset for a randomized clinical trial, specifically modeled after the BNT162b2 mRNA COVID-19 vaccine trial. Our objective is to create a simulated dataset that mirrors <u>only some aspects</u> of the complexity and diversity of the actual trial, such as participant demographics, vaccine efficacy, and follow-up times.</p>
 <section id="simulation-process">
 <h4>1.5.1 Simulation Process<a class="headerlink" href="#simulation-process" title="Permalink to this heading">#</a></h4>
@@ -1380,6 +1396,7 @@ Number of observations (_N) was <span class="m">0</span>, now <span class="m">1<
 <span class="k">stcox</span> bnt
 </pre></div>
 </div>
+<p><img alt="" src="_images/simulate.png" /></p>
 </section>
 <section id="data-labeling-and-export">
 <h4>1.5.9 Data Labeling and Export<a class="headerlink" href="#data-labeling-and-export" title="Permalink to this heading">#</a></h4>
@@ -1404,7 +1421,7 @@ Through this simulation, you’ll gain some insights into how these methods can 
 <p>Your week 1 homework is very simple:</p>
 <ol class="arabic simple">
 <li><p>Create a GitHub account and a “public” repository within it called hw1.</p></li>
-<li><p>Upload a .do file to this repo with code that reproduce the simulation and results above. Be sure to annotate your code.</p></li>
+<li><p>Upload a .do file to this repo with code that reproduces the simulation and results above. Be sure to annotate your code.</p></li>
 <li><p>Run your simulation on your computer using the <code class="docutils literal notranslate"><span class="pre">URL</span></code> of your “raw” .do file (instructions will be provided in class).</p></li>
 </ol>
 <p>Question:</p>
