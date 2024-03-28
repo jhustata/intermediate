@@ -21,7 +21,7 @@ We will evaluate your progress weekly:
 - A graded homework every week for more immediate feedback
    - Week 1-3 content equals HW 1 from prior years
    - Week 4-5 content equals HW 2 from prior years
-   - Week 6-7 content equals HW 3 from prior years
+   - Week 6-7 content equals HW 3 from prior year ds
 - An optional assignment at the class's end
 - Complete and timely homework submission guarantees at least a B grade
 
@@ -37,7 +37,7 @@ Regarding academic integrity, we encourage the use of small code snippets from b
 tokenize `c(ALPHA)'  // Adapted from https://www.statalist.org/forums/forum/general-stata-discussion/general/1380433-creating-a-counter-with-alphabets
 ```
 
-Leveraging AI, including ChatGPT, as a co-pilot, guide, or assistant, is <u>strongly encouraged</u> both during and after this course. [Learn more](labs.md).
+Leveraging AI, including ChatGPT, as a co-pilot, guide, or assistant, is <u>strongly encouraged</u> both during and after this course. **Learn More**
 
 ## Table of Contents
 
