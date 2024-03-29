@@ -504,7 +504,17 @@ document.write(`
 <li><p>HW1 link has been corrected</p></li>
 <li><p>Labs have been moved to Wednesdays from 2pm to 3pm</p></li>
 <li><p>Video <a class="reference external" href="https://jhustata.github.io/intermediate/chapter1.html#homework">demo</a> for hw1</p></li>
+<li><p>Typo in .do file for simulation was leading to errors for some (see below)</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">global</span></code> was <code class="docutils literal notranslate"><span class="pre">lobal</span></code></p></li>
 </ul>
+</div>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">	if</span> <span class="nf">c</span>(os)<span class="o">==</span><span class="s">&quot;Windows&quot;</span> { <span class="c1">//methods</span>
+<span class="k">	    global</span> workdir <span class="s">&quot;</span><span class="nv">`c(pwd)&#39;</span><span class="se">\&quot;</span>
+	}
+<span class="k">	else</span> {
+	    lobal workdir <span class="s">&quot;</span><span class="nv">`c(pwd)&#39;</span><span class="s">/&quot;</span>
+	}
+</pre></div>
 </div>
 </section>
 </section>
