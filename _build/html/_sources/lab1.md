@@ -1,48 +1,99 @@
-﻿# lab1
+﻿Below we'll intersperse the Stata code you used for [hw1](https://jhustata.github.io/intermediate/chapter1.html#homework) with explanatory notes in a concise manner suitable for intermediate learners.
 
-data: [transplants.dta](https://jhustata.github.io/basic/_downloads/34a8255f06036b44354b3c36c5583d7e/transplants.dta)
+```stata
+clear 
+cls
+```
+**Note:** Clears the current dataset from memory and the Stata command window to start with a clean slate.
 
+```stata
+if c(N) { 
+    // Inspired by Polack et al., NEJM 2020
+    // Let's reverse engineer and simulate data based on their results
+}
+```
+**Note:** The comment introduces the purpose of the simulation, inspired by a study on the efficacy of a COVID-19 vaccine.
 
-Please use this lab as an opportunity to review the course material and prepare yourself for the homework questions. An answer key will be on Friday April 5, 2024.
+```stata
+if c(os)=="Windows" {
+    global workdir "`c(pwd)'\"
+}
+else {
+    global workdir "`c(pwd)'/"
+}
+```
+**Note:** Sets a global variable `workdir` to the current working directory, accommodating both Windows and Unix-based systems by adjusting the path's slashes.
 
-1. Start Stata and open your do-file editor. 
+```stata
+capture log close
+log using ${workdir}simulation.log, replace //this code may need debugging for those with spaces in their filepaths
+```
+**Note:** Closes any open log and starts a new log file to record the session's output, ensuring all commands and results are saved for review.
 
-2. You will now write your first do-file following the guidelines given in [lecture1.do](https://raw.githubusercontent.com/jhustata/basic/main/lecture1.do). 
+```stata
+set seed 340600
+set obs 37706
+```
+**Note:** Initializes the random number generator to ensure reproducibility and sets the number of observations (participants) in the dataset to 37,706, matching the study's scale.
 
-3. We want to load `transplants.dta`. You may do so directly from the class website using a URL. Alternatively, you may download this file onto your local machine. In the latter case, let’s check your working directory. See the bottom left side of the console (the main Stata window). You may also type `pwd` on the console. Is it where your `transplants.dta` is located? If not, use one of these two methods:
+```stata
+g bnt=rbinomial(1,.5);
+```
+**Note:** Generates a binary variable `bnt` to simulate random assignment to the vaccine or placebo group with equal probability.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a) Next time, launch Stata by double-clicking on `transplants.dta`.
+```stata
+lab define Bnt 0 "Placebo" 1 "BNT162b2";
+label values bnt Bnt;
+```
+**Note:** Labels the `bnt` variable for clarity: `0` as "Placebo" and `1` as "BNT162b2" (the vaccine).
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b) Type `cd c:\your\actual\path` (windows OS) on the console (NOT in your do file). In class and on my Mac OS my directory was `/Users/d/desktop`
-    
-4. Now let’s get back to your do file. Load `transplants.dta` (double-click on the file or type `use transplants.dta, clear`)
+```stata
+gen female=rbinomial(1, .494);
+```
+**Note:** Simulates gender distribution among participants, with approximately 49.4% being female.
 
-5. How many observations does the dataset have? 
+```stata
+tempvar dem;
+gen `dem'=round(runiform(0,100),.1); 
+```
+**Note:** Creates a temporary variable `dem` to assist in generating a race distribution among participants based on specified probabilities.
 
-6. How many adults (age>18) does the dataset have?
+```stata
+gen age=(rt(_N)*9.25)+52; 
+replace age=runiform(16,91) if !inrange(age,16,91); 
+```
+**Note:** Generates participant ages using a transformation of the t-distribution and ensures all ages fall within the 16-91 range by replacing outliers with uniformly distributed ages within the range.
 
-7. How many observations have missing bmi?
+```stata
+g days=rweibull(.7,17,0) if bnt==0;
+g covid=rbinomial(1, 162/21728) if bnt==0; 
+replace days=rweibull(.4,.8,0) if bnt==1;
+replace covid=rbinomial(1, 14/21772) if bnt=1; 
+```
+**Note:** Simulates the days until potential COVID-19 infection and whether an infection occurred, with different parameters for the vaccine and placebo groups to reflect the vaccine's efficacy.
 
+```stata
+stset days, fail(covid) ;
+```
+**Note:** Prepares the dataset for survival analysis, specifying `days` as the time variable and `covid` as the failure event indicator.
 
-8.  Generate a new variable called agecat. The value of agecat is 1 for patients younger than 18, 2 for those from 18 to 65, and 3 for those older than 65.
+```stata
+sts graph, by(bnt);
+```
+**Note:** Generates a Kaplan-Meier survival curve by treatment group to visualize the difference in COVID-19 incidence over time.
 
-9. What are the means of age and bmi?
+```stata
+stcox bnt;
+```
+**Note:** Fits a Cox proportional hazards model to assess the vaccine's effect on the hazard of contracting COVID-19.
 
+```stata
+lab var bnt_id "Participant Identifier";
+```
+**Note:** Labels the variables with descriptive names for clarity in the dataset's context.
 
-10. Now preserve your dataset (type `help preserve` to learn more).
-
-11. Drop all patients who are younger than 18 or older than 65, or have missing value for age.
-
-12. Again, what are the means of age and bmi? restore the dataset. Yet again, what are the means of age and bmi?
-
-13. What happened? Leave a comment on your do-file explaining what you just did. Remember, your homework (and all other) .do file scripts should have 1-3 comments per block of code. Do not use your comments/annotation to define the Stata commands you've used. Thats what the `help` command is for. Instead, give yourself or a reader some context.
-
-14. Lab 1 is almost over. Let Stata say "that was easy!"
-
-15. The last bit. Close your log file. Never forget to close log files! If you hadn't created a log file, this is a reminder to do so.  
-
-16. You have all your commands so far in your do file, right? Run your entire do file and make sure your do file does exactly the same thing.
-
-
-
+```stata
+save BNT162b2, replace 
+```
+**Note:** Saves the simulated dataset for future use or analysis.
 
