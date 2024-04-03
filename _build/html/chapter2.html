@@ -389,6 +389,13 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">2.6 Lab</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">2.7 Homework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-notes">2.8 Extra notes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-table1-fena-program">Understanding the <code class="docutils literal notranslate"><span class="pre">table1_fena</span></code> Program</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-var-type-missing-detect-and-ind-translator-programs-this-is-very-advanced-and-you-may-ignore-it">Using the <code class="docutils literal notranslate"><span class="pre">var_type</span></code>, <code class="docutils literal notranslate"><span class="pre">missing_detect</span></code>, and <code class="docutils literal notranslate"><span class="pre">ind_translator</span></code> Programs (this is VERY advanced and you may ignore it)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excel-file-generation-and-formatting-with-table1-creation">Excel File Generation and Formatting with <code class="docutils literal notranslate"><span class="pre">table1_creation</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways-for-students">Key Takeaways for Students</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -1080,7 +1087,7 @@ cls
 <ul class="simple">
 <li><p>After you’ve done this, you may run the following syntax:</p></li>
 </ul>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>   table1_fena ,<span class="k"> var</span>(<span class="s">&quot;female race ethnicity country BMI&quot;</span>)<span class="k"> by</span>(bnt) title(<span class="s">&quot;Table 1. Patient and demographic characteristics&quot;</span>) excel(<span class="s">&quot;Table1&quot;</span>) catt(<span class="m">15</span>) missingness
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>   table1_fena ,<span class="k"> var</span>(<span class="s">&quot;female race ethnicity country bmi&quot;</span>)<span class="k"> by</span>(bnt) title(<span class="s">&quot;Table 1. Patient and demographic characteristics&quot;</span>) excel(<span class="s">&quot;Table1&quot;</span>) catt(<span class="m">15</span>) missingness
 </pre></div>
 </div>
 <ul class="simple">
@@ -1093,6 +1100,65 @@ cls
 <ol class="arabic simple" start="6">
 <li><p>Submit <strong>only</strong> your .do file. We’ll run your script on our machines to see if it works. Think of us as your remoate collaborators in Australia with THE real data, as contrasted with your simulated data.</p></li>
 </ol>
+</section>
+<section id="extra-notes">
+<h2>2.8 Extra notes<a class="headerlink" href="#extra-notes" title="Permalink to this heading">#</a></h2>
+<p>These notes aim to guide you through the specific syntax and functionalities you’ll need to effectively utilize the provided .ado file (<code class="docutils literal notranslate"><span class="pre">URL/table1_fena.ado</span></code>). This file is designed for creating descriptive statistics tables (<em>classically</em> referred to as “Table 1” in medical research) in Stata, with support for handling variables by types, managing missing data, and exporting results to Excel. The syntax and features encapsulated within this .ado file cover several custom commands designed for data manipulation, variable type detection, and table generation.</p>
+<section id="understanding-the-table1-fena-program">
+<h3>Understanding the <code class="docutils literal notranslate"><span class="pre">table1_fena</span></code> Program<a class="headerlink" href="#understanding-the-table1-fena-program" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Command Structure and Options</strong></p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">table1_fena</span></code> program is initiated with <code class="docutils literal notranslate"><span class="pre">qui</span> <span class="pre">{</span></code> to run quietly without displaying intermediate results.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">syntax</span></code> command specifies the expected input format, including optional and required arguments:</p>
+<ul>
+<li><p>Optional arguments are enclosed in square brackets <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code>.</p></li>
+<li><p>Required arguments are not enclosed and include options for specifying variables (<code class="docutils literal notranslate"><span class="pre">var</span></code>), stratification (<code class="docutils literal notranslate"><span class="pre">by</span></code>), and other functionalities like title naming (<code class="docutils literal notranslate"><span class="pre">title</span></code>), Excel file naming (<code class="docutils literal notranslate"><span class="pre">excel</span></code>), category thresholds (<code class="docutils literal notranslate"><span class="pre">catt</span></code>), and handling missingness.</p></li>
+</ul>
+</li>
+<li><p>Variable type detection and user prompts are integral for ensuring correct data analysis and interpretation.</p></li>
+</ul>
+</li>
+<li><p><strong>Variable Type Detection and Modification</strong></p>
+<ul class="simple">
+<li><p>Detects variable types automatically and allows manual adjustments via user input, addressing binary, categorical, and continuous variables.</p></li>
+<li><p>Utilizes global macros (<code class="docutils literal notranslate"><span class="pre">bin</span></code>, <code class="docutils literal notranslate"><span class="pre">cat</span></code>, <code class="docutils literal notranslate"><span class="pre">con</span></code>) for variable classification, which are crucial for the correct statistical analysis and table presentation.</p></li>
+</ul>
+</li>
+<li><p><strong>Generation of Descriptive Statistics Tables</strong></p>
+<ul class="simple">
+<li><p>Facilitates table generation based on the specified criteria, including stratification (<code class="docutils literal notranslate"><span class="pre">by</span></code> variable), and the handling of binary, categorical, and continuous variables differently to reflect common practices in descriptive statistics reporting.</p></li>
+<li><p>Offers support for Excel export, making it easier to share and present results.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="using-the-var-type-missing-detect-and-ind-translator-programs-this-is-very-advanced-and-you-may-ignore-it">
+<h3>Using the <code class="docutils literal notranslate"><span class="pre">var_type</span></code>, <code class="docutils literal notranslate"><span class="pre">missing_detect</span></code>, and <code class="docutils literal notranslate"><span class="pre">ind_translator</span></code> Programs (this is VERY advanced and you may ignore it)<a class="headerlink" href="#using-the-var-type-missing-detect-and-ind-translator-programs-this-is-very-advanced-and-you-may-ignore-it" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">var_type</span></code> Program</strong>: Automates the classification of variables into binary, categorical, and continuous types, essential for accurate data representation and analysis.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">missing_detect</span></code> Program</strong>: Checks for and reports missing variables in the dataset, a crucial step for data cleaning and integrity checks before analysis.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">ind_translator</span></code> Program</strong>: A utility program for translating Excel column and row indices into Excel references, facilitating dynamic Excel output generation.</p></li>
+</ol>
+</section>
+<section id="excel-file-generation-and-formatting-with-table1-creation">
+<h3>Excel File Generation and Formatting with <code class="docutils literal notranslate"><span class="pre">table1_creation</span></code><a class="headerlink" href="#excel-file-generation-and-formatting-with-table1-creation" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Command Options and Flow Control</strong>: Demonstrates comprehensive options for table customization, including titles, variable inclusion, and Excel formatting.</p></li>
+<li><p><strong>Dynamic Content Generation</strong>: Includes advanced scripting for dynamic generation of table contents based on the dataset’s characteristics and user specifications.</p></li>
+<li><p><strong>Output Customization</strong>: Offers extensive customization options for the output, including Excel file naming, variable type adjustments, and the inclusion of missingness information.</p></li>
+</ol>
+</section>
+<section id="key-takeaways-for-students">
+<h3>Key Takeaways for Students<a class="headerlink" href="#key-takeaways-for-students" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Syntax Familiarization</strong>: Understand the command structure and syntax required to use the .ado file effectively. Pay attention to optional and required parameters and their significance.</p></li>
+<li><p><strong>Data Preparation</strong>: Recognize the importance of variable type detection and the ability to manually adjust these settings for accurate data analysis.</p></li>
+<li><p><strong>Output Generation</strong>: Learn how to generate descriptive statistics tables tailored to specific research needs, including handling different variable types and exporting to Excel for presentation.</p></li>
+<li><p><strong>Coding Best Practices</strong>: Note the use of local and global macros, conditional logic, and loops for efficient data manipulation and analysis in Stata.</p></li>
+</ul>
+<p>You are encouraged to experiment with the commands within the context of different datasets, emphasizing the importance of accurate data classification (string, numeric, and if numeric: binary, categorical, and continous) and the practicality of generating descriptive statistics tables for their research projects.</p>
+</section>
 </section>
 </section>
 
@@ -1191,6 +1257,13 @@ cls
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">2.6 Lab</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">2.7 Homework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-notes">2.8 Extra notes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-table1-fena-program">Understanding the <code class="docutils literal notranslate"><span class="pre">table1_fena</span></code> Program</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-var-type-missing-detect-and-ind-translator-programs-this-is-very-advanced-and-you-may-ignore-it">Using the <code class="docutils literal notranslate"><span class="pre">var_type</span></code>, <code class="docutils literal notranslate"><span class="pre">missing_detect</span></code>, and <code class="docutils literal notranslate"><span class="pre">ind_translator</span></code> Programs (this is VERY advanced and you may ignore it)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excel-file-generation-and-formatting-with-table1-creation">Excel File Generation and Formatting with <code class="docutils literal notranslate"><span class="pre">table1_creation</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways-for-students">Key Takeaways for Students</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
