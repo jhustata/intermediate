@@ -969,45 +969,127 @@ in .xlsx, .log, .dta, .docx, etc.</p>
 </section>
 <section id="lab">
 <h2>2.6 Lab<a class="headerlink" href="#lab" title="Permalink to this heading">#</a></h2>
-<p>data: <a class="reference external" href="https://jhustata.github.io/basic/_downloads/34a8255f06036b44354b3c36c5583d7e/transplants.dta">transplants.dta</a></p>
-<p>Please use this lab as an opportunity to review the course material and prepare yourself for the homework questions. An answer key will be on Friday April 5, 2024.</p>
-<ol class="arabic simple">
-<li><p>Start Stata and open your do-file editor.</p></li>
-<li><p>You will now write your first do-file following the guidelines given in <a class="reference external" href="https://raw.githubusercontent.com/jhustata/basic/main/lecture1.do">lecture1.do</a>.</p></li>
-<li><p>We want to load <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code>. You may do so directly from the class website using a URL. Alternatively, you may download this file onto your local machine. In the latter case, let’s check your working directory. See the bottom left side of the console (the main Stata window). You may also type <code class="docutils literal notranslate"><span class="pre">pwd</span></code> on the console. Is it where your <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code> is located? If not, use one of these two methods:</p></li>
-</ol>
-<p>       a) Next time, launch Stata by double-clicking on <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code>.</p>
-<p>       b) Type <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">c:\your\actual\path</span></code> (windows OS) on the console (NOT in your do file). In class and on my Mac OS my directory was <code class="docutils literal notranslate"><span class="pre">/Users/d/desktop</span></code></p>
-<ol class="arabic simple" start="4">
-<li><p>Now let’s get back to your do file. Load <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code> (double-click on the file or type <code class="docutils literal notranslate"><span class="pre">use</span> <span class="pre">transplants.dta,</span> <span class="pre">clear</span></code>)</p></li>
-<li><p>How many observations does the dataset have?</p></li>
-<li><p>How many adults (age&gt;18) does the dataset have?</p></li>
-<li><p>How many observations have missing bmi?</p></li>
-<li><p>Generate a new variable called agecat. The value of agecat is 1 for patients younger than 18, 2 for those from 18 to 65, and 3 for those older than 65.</p></li>
-<li><p>What are the means of age and bmi?</p></li>
-<li><p>Now preserve your dataset (type <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">preserve</span></code> to learn more).</p></li>
-<li><p>Drop all patients who are younger than 18 or older than 65, or have missing value for age.</p></li>
-<li><p>Again, what are the means of age and bmi? restore the dataset. Yet again, what are the means of age and bmi?</p></li>
-<li><p>What happened? Leave a comment on your do-file explaining what you just did. Remember, your homework (and all other) .do file scripts should have 1-3 comments per block of code. Do not use your comments/annotation to define the Stata commands you’ve used. Thats what the <code class="docutils literal notranslate"><span class="pre">help</span></code> command is for. Instead, give yourself or a reader some context.</p></li>
-<li><p>Lab 1 is almost over. Let Stata say “that was easy!”</p></li>
-<li><p>The last bit. Close your log file. Never forget to close log files! If you hadn’t created a log file, this is a reminder to do so.</p></li>
-<li><p>You have all your commands so far in your do file, right? Run your entire do file and make sure your do file does exactly the same thing.</p></li>
-</ol>
+<p>Below we’ll intersperse the Stata code you used for <a class="reference external" href="https://jhustata.github.io/intermediate/chapter1.html#homework">hw1</a> with explanatory notes in a concise manner suitable for intermediate learners.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">clear</span> 
+cls
+</pre></div>
+</div>
+<p><strong>Note:</strong> Clears the current dataset from memory and the Stata command window to start with a clean slate.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nf">c</span>(N) { 
+    <span class="c1">// Inspired by Polack et al., NEJM 2020</span>
+    <span class="c1">// Let&#39;s reverse engineer and simulate data based on their results</span>
+}
+</pre></div>
+</div>
+<p><strong>Note:</strong> The comment introduces the purpose of the simulation, inspired by a study on the efficacy of a COVID-19 vaccine.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nf">c</span>(os)<span class="o">==</span><span class="s">&quot;Windows&quot;</span> {
+<span class="k">    global</span> workdir <span class="s">&quot;</span><span class="nv">`c(pwd)&#39;</span><span class="se">\&quot;</span>
+}
+<span class="k">else</span> {
+<span class="k">    global</span> workdir <span class="s">&quot;</span><span class="nv">`c(pwd)&#39;</span><span class="s">/&quot;</span>
+}
+</pre></div>
+</div>
+<p><strong>Note:</strong> Sets a global variable <code class="docutils literal notranslate"><span class="pre">workdir</span></code> to the current working directory, accommodating both Windows and Unix-based systems by adjusting the path’s slashes.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">capture log close</span>
+<span class="k">log</span> using <span class="vg">${workdir}</span>simulation<span class="m">.</span>log,<span class="k"> replace</span> <span class="c1">//this code may need debugging for those with spaces in their filepaths</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> Closes any open log and starts a new log file to record the session’s output, ensuring all commands and results are saved for review.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">set</span> seed <span class="m">340600</span>
+<span class="k">set</span> obs <span class="m">37706</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> Initializes the random number generator to ensure reproducibility and sets the number of observations (participants) in the dataset to 37,706, matching the study’s scale.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">g</span> bnt=<span class="nf">rbinomial</span>(<span class="m">1</span>,.<span class="m">5</span>);
+</pre></div>
+</div>
+<p><strong>Note:</strong> Generates a binary variable <code class="docutils literal notranslate"><span class="pre">bnt</span></code> to simulate random assignment to the vaccine or placebo group with equal probability.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">lab</span> define Bnt <span class="m">0</span> <span class="s">&quot;Placebo&quot;</span> <span class="m">1</span> <span class="s">&quot;BNT162b2&quot;</span>;
+<span class="k">label</span> values bnt Bnt;
+</pre></div>
+</div>
+<p><strong>Note:</strong> Labels the <code class="docutils literal notranslate"><span class="pre">bnt</span></code> variable for clarity: <code class="docutils literal notranslate"><span class="pre">0</span></code> as “Placebo” and <code class="docutils literal notranslate"><span class="pre">1</span></code> as “BNT162b2” (the vaccine).</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">gen</span> female=<span class="nf">rbinomial</span>(<span class="m">1</span>, .<span class="m">494</span>);
+</pre></div>
+</div>
+<p><strong>Note:</strong> Simulates gender distribution among participants, with approximately 49.4% being female.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">tempvar</span> dem;
+<span class="k">gen</span> <span class="nv">`dem&#39;</span>=<span class="nf">round</span>(<span class="nf">runiform</span>(<span class="m">0</span>,<span class="m">100</span>),.<span class="m">1</span>); 
+</pre></div>
+</div>
+<p><strong>Note:</strong> Creates a temporary variable <code class="docutils literal notranslate"><span class="pre">dem</span></code> to assist in generating a race distribution among participants based on specified probabilities.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">gen</span> age=(<span class="nf">rt</span>(_N)<span class="o">*</span><span class="m">9.25</span>)<span class="o">+</span><span class="m">52</span>; 
+<span class="k">replace</span> age=<span class="nf">runiform</span>(<span class="m">16</span>,<span class="m">91</span>)<span class="k"> if</span> <span class="o">!</span><span class="nf">inrange</span>(age,<span class="m">16</span>,<span class="m">91</span>); 
+</pre></div>
+</div>
+<p><strong>Note:</strong> Generates participant ages using a transformation of the t-distribution and ensures all ages fall within the 16-91 range by replacing outliers with uniformly distributed ages within the range.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">g</span> days=rweibull(.<span class="m">7</span>,<span class="m">17</span>,<span class="m">0</span>)<span class="k"> if</span> bnt<span class="o">==</span><span class="m">0</span>;
+<span class="k">g</span> covid=<span class="nf">rbinomial</span>(<span class="m">1</span>, <span class="m">162</span><span class="o">/</span><span class="m">21728</span>)<span class="k"> if</span> bnt<span class="o">==</span><span class="m">0</span>; 
+<span class="k">replace</span> days=rweibull(.<span class="m">4</span>,.<span class="m">8</span>,<span class="m">0</span>)<span class="k"> if</span> bnt<span class="o">==</span><span class="m">1</span>;
+<span class="k">replace</span> covid=<span class="nf">rbinomial</span>(<span class="m">1</span>, <span class="m">14</span><span class="o">/</span><span class="m">21772</span>)<span class="k"> if</span> bnt=<span class="m">1</span>; 
+</pre></div>
+</div>
+<p><strong>Note:</strong> Simulates the days until potential COVID-19 infection and whether an infection occurred, with different parameters for the vaccine and placebo groups to reflect the vaccine’s efficacy.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">stset</span> days, fail(covid) ;
+</pre></div>
+</div>
+<p><strong>Note:</strong> Prepares the dataset for survival analysis, specifying <code class="docutils literal notranslate"><span class="pre">days</span></code> as the time variable and <code class="docutils literal notranslate"><span class="pre">covid</span></code> as the failure event indicator.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">sts graph</span>,<span class="k"> by</span>(bnt);
+</pre></div>
+</div>
+<p><strong>Note:</strong> Generates a Kaplan-Meier survival curve by treatment group to visualize the difference in COVID-19 incidence over time.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">stcox</span> bnt;
+</pre></div>
+</div>
+<p><strong>Note:</strong> Fits a Cox proportional hazards model to assess the vaccine’s effect on the hazard of contracting COVID-19.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">lab var</span> bnt_id <span class="s">&quot;Participant Identifier&quot;</span>;
+</pre></div>
+</div>
+<p><strong>Note:</strong> Labels the variables with descriptive names for clarity in the dataset’s context.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">save</span> BNT162b2,<span class="k"> replace</span> 
+</pre></div>
+</div>
+<p><strong>Note:</strong> Saves the simulated dataset for future use or analysis.</p>
 </section>
 <section id="homework">
 <h2>2.7 Homework<a class="headerlink" href="#homework" title="Permalink to this heading">#</a></h2>
-<p>Your week 2 homework is nearly as simple as that from week 1:</p>
+<p>A few instructions (this is due 04/11/24, but we’ll accept late submissions for hw2):</p>
 <ol class="arabic simple">
-<li><p>Write a .do file which imports data from <a class="reference external" href="https://jhustata.github.io/book/_downloads/884b9e06eb29f89b1b87da4eab39775d/hw1.txt">hw1.txt</a></p></li>
-<li><p>Name it <code class="docutils literal notranslate"><span class="pre">hw2.lastname.firstname.do</span></code></p></li>
-<li><p>It should create a .log file called <code class="docutils literal notranslate"><span class="pre">hw2.lastname.firstname.log</span></code></p></li>
-<li><p>Make sure your log file displays only the output of interest</p></li>
-<li><p>But do not submit your log file as part of the assignment</p></li>
-<li><p>Evaluation will be based on the .log file produced when we run your script on our machines</p></li>
+<li><p>Open a new .do file editor</p></li>
+<li><p>Write syntax to create a .log file</p></li>
+<li><p>Additional syntax to create a simulated dataset</p>
+<ul class="simple">
+<li><p>Just use the syntax from hw1; i.e., <code class="docutils literal notranslate"><span class="pre">do</span> <span class="pre">&quot;github</span> <span class="pre">URL/hw1/yourname.do&quot;</span></code></p></li>
+</ul>
+</li>
+<li><p>Confirm that you have a simulated dataset</p>
+<ul class="simple">
+<li><p>e.g. <code class="docutils literal notranslate"><span class="pre">di</span> <span class="pre">c(N)</span></code></p></li>
+</ul>
+</li>
+<li><p>Create Table 1 to describe the study population you created in your simulation last week (<a class="reference external" href="https://jhjhm.zoom.us/rec/play/TKqHNVt22BozauBa1bWFrNo4xAV8W9XmZXbyuV3MLzREIftfI8JjKBPsCu3EDvktOyGSrxbEWQZTZSX_.aB5ScQBSkl8OdexX?canPlayFromShare=true&amp;from=my_recording&amp;continueMode=true&amp;componentName=rec-play&amp;originRequestUrl=https%3A%2F%2Fjhjhm.zoom.us%2Frec%2Fshare%2Fv0Hwo06HC6Mby2Fp6dJKdlLXB8P3TYwcscib1nj-ljh8whJadZckD8OyKAF4jtn9.Pt8j7PHoRvKawamq">watch video</a> from session 2).</p>
+<ul class="simple">
+<li><p>To install <code class="docutils literal notranslate"><span class="pre">table1_fena.ado</span></code> for your current session, use this syntax:</p></li>
+</ul>
+</li>
 </ol>
-<p>Questions</p>
-<p><strong>Question 1</strong>. Print the following sentence: <code class="docutils literal notranslate"><span class="pre">Question</span> <span class="pre">1:</span> <span class="pre">The</span> <span class="pre">median</span> <span class="pre">[IQR]</span> <span class="pre">age</span> <span class="pre">is</span> <span class="pre">XX</span> <span class="pre">[XX-XX]</span> <span class="pre">among</span> <span class="pre">males</span> <span class="pre">and</span> <span class="pre">XX</span> <span class="pre">[XX-XX]</span> <span class="pre">among</span> <span class="pre">females.</span></code> IQR stands for interquartile range. The <code class="docutils literal notranslate"><span class="pre">XX</span></code> values should be replaced with correct values, rounded to the nearest whole number (for example, <code class="docutils literal notranslate"><span class="pre">47</span></code>). Ignore missing values; that is, calculate median [IQR] only using the non-missing values.</p>
-<p><strong>Question 2</strong>. Print the following sentence: <code class="docutils literal notranslate"><span class="pre">Question</span> <span class="pre">2:</span> <span class="pre">XX.X%</span> <span class="pre">among</span> <span class="pre">males</span> <span class="pre">and</span> <span class="pre">XX.X%</span> <span class="pre">among</span> <span class="pre">females</span> <span class="pre">have</span> <span class="pre">history</span> <span class="pre">of</span> <span class="pre">previous</span> <span class="pre">transplant.</span></code> The <code class="docutils literal notranslate"><span class="pre">XX.X%</span></code> values should be replaced with correct percentage values, with <u>one decimal value</u> to the right of the decimal place (for example, <code class="docutils literal notranslate"><span class="pre">10.5%</span></code>).</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">   do</span> <span class="s">&quot;https://raw.githubusercontent.com/jhustata/basic/main/table1_fena.ado&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>After you’ve done this, you may run the following syntax:</p></li>
+</ul>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>   table1_fena ,<span class="k"> var</span>(<span class="s">&quot;female race ethnicity country BMI&quot;</span>)<span class="k"> by</span>(bnt) title(<span class="s">&quot;Table 1. Patient and demographic characteristics&quot;</span>) excel(<span class="s">&quot;Table1&quot;</span>) catt(<span class="m">15</span>) missingness
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>How may you find the .xlsx file with Table 1?</p></li>
+</ul>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">pwd</span>
+<span class="k">ls</span> <span class="o">-</span>l 
+</pre></div>
+</div>
 </section>
 </section>
 
