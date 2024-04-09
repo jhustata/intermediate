@@ -359,16 +359,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-friendly-composition-of-table-1">User-friendly Composition of Table 1</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-program-syntax-setting-up-your-environment">Step 1 (Program syntax): Setting Up Your Environment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-request-engaging-the-user">Step 2 (<code class="docutils literal notranslate"><span class="pre">_request()</span></code>): Engaging the User</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-preparing-the-data">Step 3: Preparing the Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-crafting-the-output">Step 4: Crafting the Output</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-data-analysis-and-representation">Step 5: Data Analysis and Representation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-finalizing-the-table">Step 6: Finalizing the Table</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-syntax">3.1 Program syntax</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#engaging-the-user-with-request">3.2 Engaging the User with <code class="docutils literal notranslate"><span class="pre">_request()</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-data">Preparing the Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crafting-the-output">Crafting the Output</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis-and-representation">Data Analysis and Representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finalizing-the-table">Finalizing the Table</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pompt-based-programming">Pompt-based programming</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pompt-based-programming">3.3 Pompt-based programming</a></li>
 </ul>
             </nav>
         </div>
@@ -437,44 +436,43 @@ document.write(`
 <img alt="_images/68b0bc74161d7710f53566e5ee9be406db910130ddbc8f918781f1977ed8e80e.png" src="_images/68b0bc74161d7710f53566e5ee9be406db910130ddbc8f918781f1977ed8e80e.png" />
 </div>
 </div>
-<section id="user-friendly-composition-of-table-1">
-<h2>User-friendly Composition of Table 1<a class="headerlink" href="#user-friendly-composition-of-table-1" title="Permalink to this heading">#</a></h2>
 <p>In this section, we explore a hands-on example to illustrate the intersection of program syntax and user input, emphasizing the power of Stata’s <code class="docutils literal notranslate"><span class="pre">_request()</span></code> function for creating customized data tables.</p>
-<section id="step-1-program-syntax-setting-up-your-environment">
-<h3>Step 1 (Program syntax): Setting Up Your Environment<a class="headerlink" href="#step-1-program-syntax-setting-up-your-environment" title="Permalink to this heading">#</a></h3>
+<section id="program-syntax">
+<h2>3.1 Program syntax<a class="headerlink" href="#program-syntax" title="Permalink to this heading">#</a></h2>
 <p>Firstly, ensure that the Stata environment is primed to accept the new program. This involves clearing any existing programs from your workspace to avoid conflicts:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">capture program drop</span> _all
 <span class="k">program</span> define mytable1
 </pre></div>
 </div>
 </section>
-<section id="step-2-request-engaging-the-user">
-<h3>Step 2 (<code class="docutils literal notranslate"><span class="pre">_request()</span></code>): Engaging the User<a class="headerlink" href="#step-2-request-engaging-the-user" title="Permalink to this heading">#</a></h3>
+<section id="engaging-the-user-with-request">
+<h2>3.2 Engaging the User with <code class="docutils literal notranslate"><span class="pre">_request()</span></code><a class="headerlink" href="#engaging-the-user-with-request" title="Permalink to this heading">#</a></h2>
 <p>Immediately, we solicit user input for their working directory— a novel approach to data scripting:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>cls
 <span class="k">noi di</span> <span class="s">&quot;What is your working directory? (No double-quotes necessary)&quot;</span> _request(path)
 </pre></div>
 </div>
-<p>This step is critical. It not only makes the script flexible but also user-centric, allowing for a seamless integration of local data sources.</p>
-</section>
-<section id="step-3-preparing-the-data">
-<h3>Step 3: Preparing the Data<a class="headerlink" href="#step-3-preparing-the-data" title="Permalink to this heading">#</a></h3>
-<p>Next, we navigate to the user-specified directory and initiate the creation of a simulated dataset. This step underlines the dynamic nature of the script, adapting to user input:</p>
+<p>This step is critical. It makes the script flexible and user-centric, allowing for a seamless integration of local data sources.</p>
+<p><strong>Question</strong>: What kind of macro does the <code class="docutils literal notranslate"><span class="pre">_request()</span></code> generate?</p>
+<section id="preparing-the-data">
+<h3>Preparing the Data<a class="headerlink" href="#preparing-the-data" title="Permalink to this heading">#</a></h3>
+<p>Next, we navigate to the user-specified directory and initiate the creation of a simulated dataset.</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">cd</span> <span class="vg">$path</span> 
 <span class="k">qui do</span> https:<span class="o">//</span>raw<span class="m">.</span>githubusercontent<span class="m">.</span>com<span class="o">/</span>jhustata<span class="o">/</span>hw1<span class="o">/</span>main<span class="o">/</span>simulation<span class="m">.</span>do
 </pre></div>
 </div>
+<p><strong>Question</strong>: Can you further customize this program to allow the user to select the dataset of their interest?</p>
 </section>
-<section id="step-4-crafting-the-output">
-<h3>Step 4: Crafting the Output<a class="headerlink" href="#step-4-crafting-the-output" title="Permalink to this heading">#</a></h3>
+<section id="crafting-the-output">
+<h3>Crafting the Output<a class="headerlink" href="#crafting-the-output" title="Permalink to this heading">#</a></h3>
 <p>The script then transitions to creating Table 1, beginning with the setup in Excel and populating it with preliminary data:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>putexcel<span class="k"> set</span> Table1
 putexcel A1=<span class="s">&quot;Table 1. Demographic Characteristics of the Participants in the Main Safety Population&quot;</span>
 </pre></div>
 </div>
 </section>
-<section id="step-5-data-analysis-and-representation">
-<h3>Step 5: Data Analysis and Representation<a class="headerlink" href="#step-5-data-analysis-and-representation" title="Permalink to this heading">#</a></h3>
+<section id="data-analysis-and-representation">
+<h3>Data Analysis and Representation<a class="headerlink" href="#data-analysis-and-representation" title="Permalink to this heading">#</a></h3>
 <p>A closer look at the dataset allows us to filter and compute statistics relevant to our table, showcasing the script’s analytical capabilities:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui ds</span>
 <span class="k">di</span> <span class="s">&quot;</span><span class="nv">`r(varlist)&#39;</span><span class="s">&quot;</span>
@@ -482,10 +480,11 @@ putexcel A1=<span class="s">&quot;Table 1. Demographic Characteristics of the Pa
 <span class="k">local</span> bnt_1:<span class="k"> di</span> <span class="nf">r</span>(N)
 </pre></div>
 </div>
-<p>This snippet is pivotal—it demonstrates the script’s capacity to dynamically interact with the dataset based on the conditions provided by the user. Perhaps we can ask the user to specific the variable of interest (e.g. <code class="docutils literal notranslate"><span class="pre">bnt</span></code>?). Explore this using `_request()’</p>
+<p>This snippet is pivotal—it demonstrates the script’s capacity to dynamically interact with the dataset based on the conditions provided by the user.</p>
+<p><strong>Question</strong>: Is it possible to ask the user to specific the variable of interest, say, <code class="docutils literal notranslate"><span class="pre">bnt</span></code>? Or whatever variables are available in the user-selected dataset?</p>
 </section>
-<section id="step-6-finalizing-the-table">
-<h3>Step 6: Finalizing the Table<a class="headerlink" href="#step-6-finalizing-the-table" title="Permalink to this heading">#</a></h3>
+<section id="finalizing-the-table">
+<h3>Finalizing the Table<a class="headerlink" href="#finalizing-the-table" title="Permalink to this heading">#</a></h3>
 <p>The final steps involve calculating percentages, formatting them, and inserting the results into the Excel table:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">local</span> bnt_1_fper=<span class="nv">`bnt_1_fN&#39;</span><span class="o">*</span><span class="m">100</span><span class="o">/</span><span class="nv">`bnt_1&#39;</span>
 <span class="k">local</span> bnt_1_fper:<span class="k"> di</span> <span class="nx">%3.1f</span> <span class="nv">`bnt_1_fper&#39;</span>
@@ -496,7 +495,7 @@ putexcel B2=(<span class="s">&quot;BNT162&quot;</span>) B3=(<span class="s">&quo
 </section>
 </section>
 <section id="pompt-based-programming">
-<h2>Pompt-based programming<a class="headerlink" href="#pompt-based-programming" title="Permalink to this heading">#</a></h2>
+<h2>3.3 Pompt-based programming<a class="headerlink" href="#pompt-based-programming" title="Permalink to this heading">#</a></h2>
 <p>This approach, particularly the use of <code class="docutils literal notranslate"><span class="pre">_request()</span></code>, is a paradigm shift towards more interactive and responsive statistical programming. It empowers users to tailor the analysis to their specific context, enhancing both the relevance and accuracy of the output.</p>
 <p><strong>Why Use This Approach?</strong></p>
 <ul class="simple">
@@ -579,16 +578,15 @@ putexcel B2=(<span class="s">&quot;BNT162&quot;</span>) B3=(<span class="s">&quo
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-friendly-composition-of-table-1">User-friendly Composition of Table 1</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-program-syntax-setting-up-your-environment">Step 1 (Program syntax): Setting Up Your Environment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-request-engaging-the-user">Step 2 (<code class="docutils literal notranslate"><span class="pre">_request()</span></code>): Engaging the User</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-preparing-the-data">Step 3: Preparing the Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-crafting-the-output">Step 4: Crafting the Output</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-data-analysis-and-representation">Step 5: Data Analysis and Representation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-finalizing-the-table">Step 6: Finalizing the Table</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-syntax">3.1 Program syntax</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#engaging-the-user-with-request">3.2 Engaging the User with <code class="docutils literal notranslate"><span class="pre">_request()</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-data">Preparing the Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crafting-the-output">Crafting the Output</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis-and-representation">Data Analysis and Representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finalizing-the-table">Finalizing the Table</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pompt-based-programming">Pompt-based programming</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pompt-based-programming">3.3 Pompt-based programming</a></li>
 </ul>
   </nav></div>
 
