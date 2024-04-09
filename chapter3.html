@@ -632,7 +632,7 @@ Learn more about Markdown [<span class="nt">here</span>](<span class="na">https:
 </li>
 <li><p><strong>Variable Generation</strong>:</p>
 <ul class="simple">
-<li><p>Create an <code class="docutils literal notranslate"><span class="pre">age</span></code> variable with a mean of 57 years and a standard deviation of 15. Use the command (to simulate a normal distribution): <code class="docutils literal notranslate"><span class="pre">gen</span> <span class="pre">age</span> <span class="pre">=</span> <span class="pre">(rnorm()</span> <span class="pre">*</span> <span class="pre">15)</span> <span class="pre">+</span> <span class="pre">57</span></code>.</p></li>
+<li><p>Create an <code class="docutils literal notranslate"><span class="pre">age</span></code> variable with a mean of 57 years and a standard deviation of 15. Use the command (to simulate a normal distribution): <code class="docutils literal notranslate"><span class="pre">gen</span> <span class="pre">age</span> <span class="pre">=</span> <span class="pre">(rnormal()</span> <span class="pre">*</span> <span class="pre">15)</span> <span class="pre">+</span> <span class="pre">57</span></code>.</p></li>
 <li><p><strong>Note</strong>: Alternatively, use <code class="docutils literal notranslate"><span class="pre">gen</span> <span class="pre">age_t=(rt(_N)*15)+57</span></code> to simulate a t-distribution. Type: <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">rt</span></code> into the command window to read more. Or use other resources to appreciate why <code class="docutils literal notranslate"><span class="pre">_N</span> <span class="pre">(degrees</span> <span class="pre">of</span> <span class="pre">freedom)</span></code> might affect a t-distribution. It’s beyond the scope of this class to decide which of these is appropriate.</p></li>
 </ul>
 </li>
@@ -644,8 +644,8 @@ Learn more about Markdown [<span class="nt">here</span>](<span class="na">https:
 </li>
 </ol>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">hist</span> age, <span class="cs">///</span>
-   fcolor(orange%<span class="m">40</span>) <span class="cs">/// simulated t-distribution </span>
-   addplot(hist age_t, fcolor(midblue%<span class="m">50</span>)) <span class="cs">/// simulated normal</span>
+   fcolor(orange%<span class="m">40</span>) <span class="cs">/// simulated normal </span>
+   addplot(hist age_t, fcolor(midblue%<span class="m">50</span>)) <span class="cs">/// simulated t-distribution </span>
    normal <span class="cs">/// theoretical normal</span>
    legend(on <span class="cs">///</span>
 <span class="k">      lab</span>(<span class="m">1</span> <span class="s">&quot;Sampled from Normal&quot;</span>) <span class="cs">///</span>
