@@ -368,6 +368,14 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pompt-based-programming">3.3 Pompt-based programming</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">3.4 Lab</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-markdown-for-documentation">3.4.1 Basic Markdown for Documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-latex-for-mathematical-notation">3.4.2 Integrating LaTeX for Mathematical Notation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-html-in-github">3.4.3 Basic HTML in GitHub</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linking-sections-and-external-resources">3.4.4 Linking Sections and External Resources</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">3.5 Homework</a></li>
 </ul>
             </nav>
         </div>
@@ -509,6 +517,104 @@ putexcel B2=(<span class="s">&quot;BNT162&quot;</span>) B3=(<span class="s">&quo
 </ul>
 <p>In sum, while the use of <code class="docutils literal notranslate"><span class="pre">_request()</span></code> and similar interactive commands opens up new avenues for customized data analysis, it’s essential to consider the context of their use carefully. They offer a powerful tool for engagement and flexibility but come with considerations for workflow integration and user expertise.</p>
 </section>
+<section id="lab">
+<h2>3.4 Lab<a class="headerlink" href="#lab" title="Permalink to this heading">#</a></h2>
+<section id="basic-markdown-for-documentation">
+<h3>3.4.1 Basic Markdown for Documentation<a class="headerlink" href="#basic-markdown-for-documentation" title="Permalink to this heading">#</a></h3>
+<p><strong>Objective:</strong> Familiarize yourself with Markdown syntax to create well-documented sections in your Markdown files.</p>
+<ol class="arabic">
+<li><p><strong>Task:</strong> Add a new section in your hw3 repo titled “Introduction to Markdown.”</p>
+<ul>
+<li><p><strong>Action:</strong> Create a new Markdown file (<code class="docutils literal notranslate"><span class="pre">hw3.md</span></code>) and write a brief introduction to Markdown.</p></li>
+<li><p><strong>Code:</strong> Use the following Markdown elements: headers, lists, emphasis (bold and italic), and links.</p></li>
+<li><p><strong>Example:</strong></p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># Introduction to Markdown</span>
+
+Markdown is a lightweight markup language with plain-text formatting syntax. Here&#39;s why it&#39;s useful:
+
+<span class="k">-</span><span class="w"> </span><span class="gs">**Easy to write and read:**</span> Ideal for documentation and notes.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Widely supported:**</span> Used on platforms like GitHub and Jupyter.
+
+Learn more about Markdown [<span class="nt">here</span>](<span class="na">https://www.markdownguide.org</span>).
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="integrating-latex-for-mathematical-notation">
+<h3>3.4.2 Integrating LaTeX for Mathematical Notation<a class="headerlink" href="#integrating-latex-for-mathematical-notation" title="Permalink to this heading">#</a></h3>
+<p><strong>Objective:</strong> Learn to incorporate LaTeX within Markdown files for displaying mathematical equations and symbols.</p>
+<ol class="arabic">
+<li><p><strong>Task:</strong> Add a subsection in your “Introduction to Markdown” titled “Using LaTeX in Markdown.”</p>
+<ul>
+<li><p><strong>Action:</strong> Demonstrate how to embed LaTeX for inline equations and standalone equations.</p></li>
+<li><p><strong>Code:</strong></p>
+<ul>
+<li><p><strong>Inline Equation:</strong> Wrap your LaTeX code with single dollar signs <code class="docutils literal notranslate"><span class="pre">$...$</span></code>.</p>
+<ul class="simple">
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">Here's</span> <span class="pre">an</span> <span class="pre">inline</span> <span class="pre">equation:</span> <span class="pre">$E=mc^2$</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Standalone Equation:</strong> Use double dollar signs <code class="docutils literal notranslate"><span class="pre">$$...$$</span></code> for equations that should appear on their own line.</p>
+<ul>
+<li><p>Example:</p>
+<div class="highlight-latex notranslate"><div class="highlight"><pre><span></span><span class="sb">$$</span><span class="nv">\int</span><span class="nb">_a^b f</span><span class="o">(</span><span class="nb">x</span><span class="o">)</span><span class="nv">\,</span><span class="nb">dx </span><span class="o">=</span><span class="nb"> F</span><span class="o">(</span><span class="nb">b</span><span class="o">)</span><span class="nb"> </span><span class="o">-</span><span class="nb"> F</span><span class="o">(</span><span class="nb">a</span><span class="o">)</span><span class="s">$$</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="basic-html-in-github">
+<h3>3.4.3 Basic HTML in GitHub<a class="headerlink" href="#basic-html-in-github" title="Permalink to this heading">#</a></h3>
+<p><strong>Objective:</strong> Introduce the use of HTML tags for content that Markdown doesn’t cover, like detailed styling or specific element attributes.</p>
+<ol class="arabic">
+<li><p><strong>Task:</strong> Create a new subsection titled “HTML in Markdown” in your book.</p>
+<ul>
+<li><p><strong>Action:</strong> Show examples of how to use HTML for underline, colored text, and inserting images with custom attributes (e.g., alignment).</p></li>
+<li><p><strong>Code:</strong> Include snippets demonstrating basic HTML usage.</p>
+<ul>
+<li><p><strong>Example:</strong></p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This is a paragraph with <span class="p">&lt;</span><span class="nt">u</span><span class="p">&gt;</span>underlined<span class="p">&lt;/</span><span class="nt">u</span><span class="p">&gt;</span> text, <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>bold<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> text, and <span class="p">&lt;</span><span class="nt">span</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;color:blue;&quot;</span><span class="p">&gt;</span>colored<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> text.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://brand.jhu.edu/assets/uploads/sites/5/2014/06/university_logo_small_vertical_blue.png&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Descriptive Image Text&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width:50%&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="linking-sections-and-external-resources">
+<h3>3.4.4 Linking Sections and External Resources<a class="headerlink" href="#linking-sections-and-external-resources" title="Permalink to this heading">#</a></h3>
+<p><strong>Objective:</strong> Design navigable documents with internal and external links.</p>
+<ol class="arabic simple">
+<li><p><strong>Task:</strong> In your <code class="docutils literal notranslate"><span class="pre">hw3</span></code> GitHub repo, add internal links to other sections and external links to resources (e.g. your <code class="docutils literal notranslate"><span class="pre">hw1.do</span></code> <strong>raw</strong> URL).</p>
+<ul class="simple">
+<li><p><strong>Action:</strong> Use Markdown to link to another section within your book and to an external website.</p></li>
+<li><p><strong>Code:</strong></p>
+<ul>
+<li><p><strong>Internal Link Example:</strong> <code class="docutils literal notranslate"><span class="pre">[Go</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">Introduction](./README.md)</span></code></p></li>
+<li><p><strong>External Link Example:</strong> <code class="docutils literal notranslate"><span class="pre">[Visit</span> <span class="pre">Markdown</span> <span class="pre">Guide](https://www.markdownguide.org)</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>After completing these exercises, you should have a foundational understanding of how Markdown, LaTeX, and HTML can be used together to create rich, well-documented, and interactive content. You’re encouraged to experiment with these tools, exploring beyond the basics to discover how they might enhance your academic, collaborative, and research projects.</p>
+</section>
+</section>
+<section id="homework">
+<h2>3.5 Homework<a class="headerlink" href="#homework" title="Permalink to this heading">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -587,6 +693,14 @@ putexcel B2=(<span class="s">&quot;BNT162&quot;</span>) B3=(<span class="s">&quo
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pompt-based-programming">3.3 Pompt-based programming</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">3.4 Lab</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-markdown-for-documentation">3.4.1 Basic Markdown for Documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-latex-for-mathematical-notation">3.4.2 Integrating LaTeX for Mathematical Notation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-html-in-github">3.4.3 Basic HTML in GitHub</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linking-sections-and-external-resources">3.4.4 Linking Sections and External Resources</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">3.5 Homework</a></li>
 </ul>
   </nav></div>
 

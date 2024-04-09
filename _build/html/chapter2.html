@@ -361,10 +361,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results-output">Results/Output</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#display-files">Display/Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video">2.0 Video</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-html-latex">Case-study: HTML &amp; LaTeX</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xlsx">2.1 xlsx</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revised-instructions-with-global-macro-integration">Revised Instructions with Global Macro Integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-macro-integration">Global Macro Integration</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation">Preparation</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis-and-report-generation">Data Analysis and Report Generation</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#composition-of-table-1">Composition of Table 1</a></li>
@@ -510,18 +512,17 @@ Today we’ll build on these ideas:</p></li>
 <img alt="_images/68b0bc74161d7710f53566e5ee9be406db910130ddbc8f918781f1977ed8e80e.png" src="_images/68b0bc74161d7710f53566e5ee9be406db910130ddbc8f918781f1977ed8e80e.png" />
 </div>
 </div>
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/t0JELmkvRIs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><section id="results-output">
-<h2>Results/Output<a class="headerlink" href="#results-output" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
+<section id="video">
+<h2>2.0 Video<a class="headerlink" href="#video" title="Permalink to this heading">#</a></h2>
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/t0JELmkvRIs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><ul class="simple">
 <li><p>A sequence or queue of instructions <code class="docutils literal notranslate"><span class="pre">commands</span> <span class="pre">+</span> <span class="pre">syntax</span> <span class="pre">=</span> <span class="pre">code</span></code> given to Stata via a do-file will generate results</p></li>
 <li><p><u>Never</u> include results in your do-file when you share your work in this class and with future collaborators</p></li>
 <li><p>Due diligence in the <code class="docutils literal notranslate"><span class="pre">open-science</span></code> enterprise demands that others <code class="docutils literal notranslate"><span class="pre">reproduce</span></code> your results and findings</p></li>
 <li><p>Your duty is to share <u>only</u> the <code class="docutils literal notranslate"><span class="pre">input</span></code>, and ours is to reproduce your <code class="docutils literal notranslate"><span class="pre">output</span></code> so as to fullfil our shared Credo</p></li>
 <li><p>Please share your do-files and any third-party ado-files, if at all your script or do-file relies on third-party programs</p></li>
 </ul>
-</section>
-<section id="display-files">
-<h2>Display/Files<a class="headerlink" href="#display-files" title="Permalink to this heading">#</a></h2>
+<section id="case-study-html-latex">
+<h3>Case-study: HTML &amp; LaTeX<a class="headerlink" href="#case-study-html-latex" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>.xlsx</p></li>
 <li><p>.log</p></li>
@@ -530,36 +531,36 @@ Today we’ll build on these ideas:</p></li>
 <li><p><a class="reference external" href="https://jhustata.github.io/hw3/">.html</a></p>
 <ul>
 <li><p>Self-publication</p></li>
-<li><p>HTML, LaTeX</p></li>
+<li><p><a class="reference external" href="https://jhustata.github.io/intermediate/chapter2.html#html">HTML, LaTeX</a></p></li>
 <li><p>GitHub-Pages</p></li>
 <li><p>Macros embedded in output</p></li>
 </ul>
 </li>
 </ul>
 </section>
+</section>
 <section id="xlsx">
 <h2>2.1 xlsx<a class="headerlink" href="#xlsx" title="Permalink to this heading">#</a></h2>
-<p>You’re right; I overlooked incorporating the global macro <code class="docutils literal notranslate"><span class="pre">$path</span></code> into the instructions, which is crucial for ensuring the scripts are correctly tailored to the directory structure you’ve established for this project. Let’s correct this oversight and integrate the <code class="docutils literal notranslate"><span class="pre">$path</span></code> macro properly into the instructions, ensuring the commands align precisely with your environment setup.</p>
-<section id="revised-instructions-with-global-macro-integration">
-<h3>Revised Instructions with Global Macro Integration<a class="headerlink" href="#revised-instructions-with-global-macro-integration" title="Permalink to this heading">#</a></h3>
+<section id="global-macro-integration">
+<h3>Global Macro Integration<a class="headerlink" href="#global-macro-integration" title="Permalink to this heading">#</a></h3>
 <section id="preparation">
 <h4>Preparation<a class="headerlink" href="#preparation" title="Permalink to this heading">#</a></h4>
 <ol class="arabic simple">
 <li><p><strong>Setting the Working Directory</strong>: Utilize the global macro <code class="docutils literal notranslate"><span class="pre">$path</span></code> to navigate to the specified directory. This step is essential to set the workspace for the project activities.</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="nv">$path</span>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">cd</span> <span class="vg">$path</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
 <li><p><strong>Simulation of Dataset</strong>: Run the Stata do-file located at a specific URL to simulate the dataset necessary for our analysis. Here, the global macro <code class="docutils literal notranslate"><span class="pre">$path</span></code> ensures that any file operations are performed relative to the designated workspace.</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qui<span class="w"> </span><span class="k">do</span><span class="w"> </span>https://raw.githubusercontent.com/jhustata/hw1/main/simulation.do
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui do</span> https:<span class="o">//</span>raw<span class="m">.</span>githubusercontent<span class="m">.</span>com<span class="o">/</span>jhustata<span class="o">/</span>hw1<span class="o">/</span>main<span class="o">/</span>simulation<span class="m">.</span>do
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
 <li><p><strong>Installation of Third-party .ado Program</strong>: Import the .ado program from a provided URL to enhance Stata with additional functionality required for this analysis.</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qui<span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="s2">&quot;https://raw.githubusercontent.com/jhustata/basic/main/table1_fena.ado&quot;</span>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui do</span> <span class="s">&quot;https://raw.githubusercontent.com/jhustata/basic/main/table1_fena.ado&quot;</span>
 </pre></div>
 </div>
 </section>
@@ -568,14 +569,14 @@ Today we’ll build on these ideas:</p></li>
 <ol class="arabic simple">
 <li><p><strong>Directory Creation for Week 3</strong>: Establish a new directory within the working environment to segregate the outputs related to this week’s analysis. This action utilizes the <code class="docutils literal notranslate"><span class="pre">$path</span></code> macro to ensure correct directory placement.</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span><span class="nv">$path</span>/wk3
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">mkdir</span> <span class="vg">$path</span><span class="o">/</span>wk3
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
 <li><p><strong>Preparation of Excel File for Table 1</strong>: Configure an Excel file in the newly created directory for the output of Table 1, detailing the demographic characteristics of the study participants.</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>putexcel<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="nv">$path</span>/wk3/Table1
-putexcel<span class="w"> </span><span class="nv">A1</span><span class="o">=</span><span class="s2">&quot;Table 1. Demographic Characteristics of the Participants in the Main Safety Population&quot;</span>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>putexcel<span class="k"> set</span> <span class="vg">$path</span><span class="o">/</span>wk3<span class="o">/</span>Table1
+putexcel A1=<span class="s">&quot;Table 1. Demographic Characteristics of the Participants in the Main Safety Population&quot;</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
@@ -587,10 +588,8 @@ putexcel<span class="w"> </span><span class="nv">A1</span><span class="o">=</spa
 </section>
 <section id="composition-of-table-1">
 <h4>Composition of Table 1<a class="headerlink" href="#composition-of-table-1" title="Permalink to this heading">#</a></h4>
-<p>Understood, let’s adopt a more formal and precise tone for your Jupyter Book notes. Here’s a structured and detailed approach tailored to your requirements:</p>
 </section>
 </section>
-<hr class="docutils" />
 <section id="instructions-for-data-analysis-and-report-generation">
 <h3>Instructions for Data Analysis and Report Generation<a class="headerlink" href="#instructions-for-data-analysis-and-report-generation" title="Permalink to this heading">#</a></h3>
 <section id="id1">
@@ -646,8 +645,8 @@ putexcel A1=<span class="s">&quot;Table 1. Demographic Characteristics of the Pa
 </ul>
 </li>
 </ol>
-<div class="highlight-stasta notranslate"><div class="highlight"><pre><span></span>putexcel A2=(&quot;Characteristics&quot;)
-putexcel A3=(&quot;Female - no. (%)&quot;)
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>putexcel A2=(<span class="s">&quot;Characteristics&quot;</span>)
+putexcel A3=(<span class="s">&quot;Female - no. (%)&quot;</span>)
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
@@ -1394,10 +1393,12 @@ cls
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results-output">Results/Output</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#display-files">Display/Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video">2.0 Video</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-html-latex">Case-study: HTML &amp; LaTeX</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xlsx">2.1 xlsx</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revised-instructions-with-global-macro-integration">Revised Instructions with Global Macro Integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-macro-integration">Global Macro Integration</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation">Preparation</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis-and-report-generation">Data Analysis and Report Generation</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#composition-of-table-1">Composition of Table 1</a></li>
