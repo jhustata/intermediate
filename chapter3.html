@@ -61,6 +61,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapter3';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -444,7 +446,7 @@ document.write(`
 <img alt="_images/68b0bc74161d7710f53566e5ee9be406db910130ddbc8f918781f1977ed8e80e.png" src="_images/68b0bc74161d7710f53566e5ee9be406db910130ddbc8f918781f1977ed8e80e.png" />
 </div>
 </div>
-<p>In this section, we explore a hands-on example to illustrate the intersection of program syntax and user input, emphasizing the power of Stata’s <code class="docutils literal notranslate"><span class="pre">_request()</span></code> function for creating customized data tables.</p>
+<p>In this section, we explore a hands-on example to illustrate the intersection of program syntax and user input, emphasizing the power of Stata’s <code class="docutils literal notranslate"><span class="pre">_request()</span></code> function for creating customized, user-friendly, programs.</p>
 <section id="program-syntax">
 <h2>3.1 Program syntax<a class="headerlink" href="#program-syntax" title="Permalink to this heading">#</a></h2>
 <p>Firstly, ensure that the Stata environment is primed to accept the new program. This involves clearing any existing programs from your workspace to avoid conflicts:</p>
@@ -457,7 +459,7 @@ document.write(`
 <h2>3.2 Engaging the User with <code class="docutils literal notranslate"><span class="pre">_request()</span></code><a class="headerlink" href="#engaging-the-user-with-request" title="Permalink to this heading">#</a></h2>
 <p>Immediately, we solicit user input for their working directory— a novel approach to data scripting:</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>cls
-<span class="k">noi di</span> <span class="s">&quot;What is your working directory? (No double-quotes necessary)&quot;</span> _request(path)
+<span class="k">di</span> <span class="s">&quot;What is your working directory? (No double-quotes necessary)&quot;</span> _request(path)
 </pre></div>
 </div>
 <p>This step is critical. It makes the script flexible and user-centric, allowing for a seamless integration of local data sources.</p>
@@ -488,8 +490,8 @@ putexcel A1=<span class="s">&quot;Table 1. Demographic Characteristics of the Pa
 <span class="k">local</span> bnt_1:<span class="k"> di</span> <span class="nf">r</span>(N)
 </pre></div>
 </div>
-<p>This snippet is pivotal—it demonstrates the script’s capacity to dynamically interact with the dataset based on the conditions provided by the user.</p>
-<p><strong>Question</strong>: Is it possible to ask the user to specific the variable of interest, say, <code class="docutils literal notranslate"><span class="pre">bnt</span></code>? Or whatever variables are available in the user-selected dataset?</p>
+<p>This snippet is pivotal—it demonstrates the script’s capacity to dynamically interact with the dataset based on the conditions provided by the user (e.g. user-selected datasets and  variables).</p>
+<p><strong>Question</strong>: Is it possible to ask the user to specify the variable of interest, say, <code class="docutils literal notranslate"><span class="pre">bnt</span></code>? How about the dataset of interest, say, <code class="docutils literal notranslate"><span class="pre">transplants.dta</span></code>?</p>
 </section>
 <section id="finalizing-the-table">
 <h3>Finalizing the Table<a class="headerlink" href="#finalizing-the-table" title="Permalink to this heading">#</a></h3>
@@ -521,7 +523,7 @@ putexcel B2=(<span class="s">&quot;BNT162&quot;</span>) B3=(<span class="s">&quo
 <h2>3.4 Lab<a class="headerlink" href="#lab" title="Permalink to this heading">#</a></h2>
 <section id="basic-markdown-for-documentation">
 <h3>3.4.1 Basic Markdown for Documentation<a class="headerlink" href="#basic-markdown-for-documentation" title="Permalink to this heading">#</a></h3>
-<p><strong>Objective:</strong> Familiarize yourself with Markdown syntax to create well-documented sections in your Markdown files.</p>
+<p><strong>Objective:</strong> Familiarize yourself with <a class="reference external" href="https://ashki23.github.io/markdown-latex.html">Markdown syntax</a> to create well-documented sections in your Markdown files.</p>
 <ol class="arabic">
 <li><p><strong>Task:</strong> Add a new section in your hw3 repo titled “Introduction to Markdown.”</p>
 <ul>
@@ -614,6 +616,27 @@ Learn more about Markdown [<span class="nt">here</span>](<span class="na">https:
 </section>
 <section id="homework">
 <h2>3.5 Homework<a class="headerlink" href="#homework" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Simulate a dataset with 30 observations: <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">obs</span> <span class="pre">30</span></code></p></li>
+<li><p>Generate a variable <code class="docutils literal notranslate"><span class="pre">age</span></code> with <strong>mean</strong> 57 years and <strong>standard deviation</strong> 15: <code class="docutils literal notranslate"><span class="pre">gen</span> <span class="pre">age=(rt(_N)*15)+57</span></code></p></li>
+<li><p>Plot a histograph of <code class="docutils literal notranslate"><span class="pre">age</span></code> and overlay a normal distribution: <code class="docutils literal notranslate"><span class="pre">hist</span> <span class="pre">age,</span> <span class="pre">normal</span></code></p></li>
+<li><p>Design a simple website to demonstrate this graph</p>
+<ul class="simple">
+<li><p>Footnotes should explain that these are simulated results</p></li>
+<li><p>Include “Greeks” in your footnotes; for example: “Distribution of <span class="math notranslate nohighlight">\(\text{Age, years} \sim \mathcal{N}(\mu=57,\,\sigma^{2}=225)\)</span>”</p></li>
+</ul>
+</li>
+</ol>
+<div class="highlight-latex notranslate"><div class="highlight"><pre><span></span>       <span class="s">$</span><span class="nv">\text</span><span class="nb">{Age, years} </span><span class="nv">\sim</span><span class="nb"> </span><span class="nv">\mathcal</span><span class="nb">{N}</span><span class="o">(</span><span class="nv">\mu</span><span class="o">=</span><span class="m">57</span><span class="nb">,</span><span class="nv">\,\sigma</span><span class="nb">^{</span><span class="m">2</span><span class="nb">}</span><span class="o">=</span><span class="m">225</span><span class="o">)</span><span class="s">$</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">dyndoc</span></code> command to convert an appropriately formatted <code class="docutils literal notranslate"><span class="pre">.md</span></code>, <code class="docutils literal notranslate"><span class="pre">.txt</span></code> or <code class="docutils literal notranslate"><span class="pre">.do</span></code> file into <code class="docutils literal notranslate"><span class="pre">.html</span></code> and upload <strong>all the output</strong> to GitHub</p>
+<ul class="simple">
+<li><p>Activate a <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> build as demonstrated in <span class="xref myst">this</span> video</p></li>
+</ul>
+</li>
+</ol>
 </section>
 </section>
 
