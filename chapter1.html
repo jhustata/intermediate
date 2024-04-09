@@ -538,15 +538,15 @@ document.write(`
 <span class="kn">import</span> <span class="nn">io</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 
-<span class="c1"># Ignore specific matplotlib warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s1">&#39;Glyph 13 missing from current font.&#39;</span><span class="p">)</span>
-
-<span class="c1"># Optional: Set a font that supports more characters/glyphs</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;DejaVu Sans&#39;</span>
-
-<span class="c1"># Load the CSV file</span>
+<span class="c1"># Load the CSV file to examine its structure</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/jhustata/intermediate/main/entry_poll.csv&#39;</span>
 <span class="n">data_path</span> <span class="o">=</span> <span class="s1">&#39;~/documents/github/statatwo/entry_poll.csv&#39;</span>
 <span class="n">survey_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_path</span><span class="p">)</span>
+
+
+
+<span class="c1"># Ignore specific matplotlib warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Glyph 13 missing from current font.&quot;</span><span class="p">)</span>
 
 <span class="c1"># Data processing for visualization</span>
 
@@ -555,6 +555,7 @@ document.write(`
 <span class="n">q1_counts</span> <span class="o">=</span> <span class="n">q1_data</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 
 <span class="c1"># Question 2: Operating system usage, handling multiple selections</span>
+<span class="c1"># Splitting the responses on &#39;;&#39; and flattening the list</span>
 <span class="n">q2_data_split</span> <span class="o">=</span> <span class="n">survey_data</span><span class="p">[</span><span class="s1">&#39;What operating system will you use locally or remotely?&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span>
 <span class="n">q2_counts</span> <span class="o">=</span> <span class="n">q2_data_split</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 
@@ -568,6 +569,7 @@ document.write(`
     <span class="s1">&#39;Expert User.&#39;</span><span class="p">:</span> <span class="mi">5</span>
 <span class="p">}</span>
 
+<span class="c1"># Extract the first part of each response to map to the numeric values</span>
 <span class="n">q3_data_mapped</span> <span class="o">=</span> <span class="n">survey_data</span><span class="p">[</span><span class="s1">&#39;Do you have any experience using Stata, SAS, R, Python, or any other statistical software?&#39;</span><span class="p">]</span>\
                     <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span>
 <span class="n">q3_data_numeric</span> <span class="o">=</span> <span class="n">q3_data_mapped</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">experience_mapping</span><span class="p">)</span>
@@ -596,22 +598,26 @@ document.write(`
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 
-<span class="c1"># Save the plot to a BytesIO object and display it inline</span>
+<span class="c1"># Instead of plt.show(), save the plot to a BytesIO object and display it inline</span>
 <span class="n">buf</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 <span class="n">buf</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">buf</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()))</span>
 
+<span class="c1"># It&#39;s important to close the plt object to free up memory</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+
+<span class="c1"># However, be cautious with this approach, as it can hide important issues that you might want to be aware of</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/sx/fd6zgj191mx45hspzbgwzlnr0000gn/T/ipykernel_84455/1729969108.py:63: UserWarning: Glyph 13 (
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/sx/fd6zgj191mx45hspzbgwzlnr0000gn/T/ipykernel_89005/2512979337.py:65: UserWarning: Glyph 13 (
 ) missing from current font.
   plt.tight_layout()
-/var/folders/sx/fd6zgj191mx45hspzbgwzlnr0000gn/T/ipykernel_84455/1729969108.py:67: UserWarning: Glyph 13 (
+/var/folders/sx/fd6zgj191mx45hspzbgwzlnr0000gn/T/ipykernel_89005/2512979337.py:69: UserWarning: Glyph 13 (
 ) missing from current font.
   plt.savefig(buf, format=&#39;png&#39;, bbox_inches=&#39;tight&#39;)
 </pre></div>
