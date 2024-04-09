@@ -379,7 +379,7 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">3.5 Homework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-instructions">3.5 Homework Instructions</a></li>
 </ul>
             </nav>
         </div>
@@ -622,29 +622,59 @@ Learn more about Markdown [<span class="nt">here</span>](<span class="na">https:
 </section>
 </section>
 </section>
-<section id="homework">
-<h2>3.5 Homework<a class="headerlink" href="#homework" title="Permalink to this heading">#</a></h2>
+<section id="homework-instructions">
+<h2>3.5 Homework Instructions<a class="headerlink" href="#homework-instructions" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Simulate a dataset with 30 observations: <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">obs</span> <span class="pre">30</span></code></p></li>
-<li><p>Generate a variable <code class="docutils literal notranslate"><span class="pre">age</span></code> with <strong>mean</strong> 57 years and <strong>standard deviation</strong> 15: <code class="docutils literal notranslate"><span class="pre">gen</span> <span class="pre">age=(rt(_N)*15)+57</span></code></p></li>
-<li><p>Plot a histograph of <code class="docutils literal notranslate"><span class="pre">age</span></code> and overlay a normal distribution: <code class="docutils literal notranslate"><span class="pre">hist</span> <span class="pre">age,</span> <span class="pre">normal</span></code></p></li>
-<li><p>Design a simple website to demonstrate this graph</p>
+<li><p><strong>Data Simulation</strong>:</p>
 <ul class="simple">
-<li><p>Footnotes should explain that these are simulated results</p></li>
-<li><p>Include “Greeks” in your footnotes; for example: “Distribution of <span class="math notranslate nohighlight">\(\text{Age, years} \sim \mathcal{N}(\mu=57,\,\sigma^{2}=225)\)</span>”</p></li>
+<li><p>Initialize your dataset with 30 observations using the command: <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">obs</span> <span class="pre">30</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Variable Generation</strong>:</p>
+<ul class="simple">
+<li><p>Create an <code class="docutils literal notranslate"><span class="pre">age</span></code> variable with a mean of 57 years and a standard deviation of 15. Use the command (to simulate a normal distribution): <code class="docutils literal notranslate"><span class="pre">gen</span> <span class="pre">age</span> <span class="pre">=</span> <span class="pre">(rnorm()</span> <span class="pre">*</span> <span class="pre">15)</span> <span class="pre">+</span> <span class="pre">57</span></code>.</p></li>
+<li><p><strong>Note</strong>: Alternatively, use <code class="docutils literal notranslate"><span class="pre">gen</span> <span class="pre">age_t=(rt(_N)*15)+57</span></code> to simulate a t-distribution. Type: <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">rt</span></code> into the command window to read more. Or use other resources to appreciate why <code class="docutils literal notranslate"><span class="pre">_N</span> <span class="pre">(degrees</span> <span class="pre">of</span> <span class="pre">freedom)</span></code> might affect a t-distribution. It’s beyond the scope of this class to decide which of these is appropriate.</p></li>
+</ul>
+</li>
+<li><p><strong>Graphical Representation</strong>:</p>
+<ul class="simple">
+<li><p>Plot a histogram of the <code class="docutils literal notranslate"><span class="pre">age</span></code> variables from both <code class="docutils literal notranslate"><span class="pre">rnormal()</span> <span class="pre">and</span> <span class="pre">rt()</span></code>, and overlay it with a theoretical normal distribution curve. The command to achieve this is: <code class="docutils literal notranslate"><span class="pre">hist</span> <span class="pre">age,</span> <span class="pre">normal</span></code>.</p></li>
+<li><p>This visualization will help in understanding the distribution of <code class="docutils literal notranslate"><span class="pre">age</span></code> among the observations.</p></li>
 </ul>
 </li>
 </ol>
-<div class="highlight-latex notranslate"><div class="highlight"><pre><span></span>       <span class="s">$</span><span class="nv">\text</span><span class="nb">{Age, years} </span><span class="nv">\sim</span><span class="nb"> </span><span class="nv">\mathcal</span><span class="nb">{N}</span><span class="o">(</span><span class="nv">\mu</span><span class="o">=</span><span class="m">57</span><span class="nb">,</span><span class="nv">\,\sigma</span><span class="nb">^{</span><span class="m">2</span><span class="nb">}</span><span class="o">=</span><span class="m">225</span><span class="o">)</span><span class="s">$</span>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">hist</span> age, <span class="cs">///</span>
+   fcolor(orange%<span class="m">40</span>) <span class="cs">/// simulated t-distribution </span>
+   addplot(hist age_t, fcolor(midblue%<span class="m">50</span>)) <span class="cs">/// simulated normal</span>
+   normal <span class="cs">/// theoretical normal</span>
+   legend(on <span class="cs">///</span>
+<span class="k">      lab</span>(<span class="m">1</span> <span class="s">&quot;Sampled from Normal&quot;</span>) <span class="cs">///</span>
+<span class="k">	  lab</span>(<span class="m">2</span> <span class="s">&quot;Theoretical Normal&quot;</span>) <span class="cs">///</span>
+<span class="k">	  lab</span>(<span class="m">3</span> <span class="s">&quot;Sampled from t-distribution&quot;</span>) <span class="cs">///</span>
+	  )
 </pre></div>
 </div>
-<ol class="arabic simple" start="5">
-<li><p>Use the <code class="docutils literal notranslate"><span class="pre">dyndoc</span></code> command to convert an appropriately formatted <code class="docutils literal notranslate"><span class="pre">.md</span></code>, <code class="docutils literal notranslate"><span class="pre">.txt</span></code> or <code class="docutils literal notranslate"><span class="pre">.do</span></code> file into <code class="docutils literal notranslate"><span class="pre">.html</span></code> and upload <strong>all the output</strong> to GitHub</p>
+<ol class="arabic simple" start="4">
+<li><p><strong>Website Design</strong>:</p>
 <ul class="simple">
-<li><p>Activate a <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> build as demonstrated in <span class="xref myst">this</span> video</p></li>
+<li><p>Develop a simple website to showcase the graph. Ensure to refer to the guide <a class="reference external" href="https://jhustata.github.io/intermediate/chapter2.html#case-study">here</a> for a comprehensive approach.</p></li>
+<li><p>In your footnotes, clarify that the results are based on simulated data.</p></li>
+<li><p>Incorporate Greek symbols in your explanations, akin to: “Distribution of <span class="math notranslate nohighlight">\(\text{Age, years} \sim \mathcal{N}(\mu=57,\,\sigma^{2}=225)\)</span>”, to provide a mathematical representation of the age distribution.</p></li>
 </ul>
 </li>
-<li><p>Hand in your formatted <code class="docutils literal notranslate"><span class="pre">.do</span></code> file that was used to generate the .HTML file. Copy &amp; Paste the gh-page generated URL into the Stata II (Intermediate) HW3 topic in the <a class="reference external" href="https://github.com/jhufena/discussions/discussions">GitHub Discussion Community</a></p></li>
+<li><p><strong>Documentation and Sharing</strong>:</p>
+<ul class="simple">
+<li><p>Utilize the <code class="docutils literal notranslate"><span class="pre">dyndoc</span></code> command in Stata to convert a document (<code class="docutils literal notranslate"><span class="pre">.md</span></code>, <code class="docutils literal notranslate"><span class="pre">.txt</span></code>, or <code class="docutils literal notranslate"><span class="pre">.do</span></code> file) into <code class="docutils literal notranslate"><span class="pre">.html</span></code> format.</p></li>
+<li><p>Upload the resulting <code class="docutils literal notranslate"><span class="pre">.html</span></code> file along with any associated output to GitHub. Make sure to set up a GitHub Pages site to display your work, as shown in <a class="reference external" href="https://jhustata.github.io/intermediate/chapter2.html#case-study">this guide</a>.</p></li>
+</ul>
+</li>
+<li><p><strong>Submission</strong>:</p>
+<ul class="simple">
+<li><p>Submit your <code class="docutils literal notranslate"><span class="pre">.do</span></code> file, which was used to generate the <code class="docutils literal notranslate"><span class="pre">.html</span></code> document, by copying and pasting the GitHub Pages URL into the relevant topic within the Stata II (Intermediate) HW3 discussion on <a class="reference external" href="https://github.com/jhufena/discussions/discussions">GitHub Discussions</a>.</p></li>
+<li><p>Announce your successful submission in the forum so that both your peers and instructors can view your work.</p></li>
+<li><p>In case of any trouble, please ask your peers and teaching team in GitHub Discussions</p></li>
+</ul>
+</li>
 </ol>
 </section>
 </section>
@@ -734,7 +764,7 @@ Learn more about Markdown [<span class="nt">here</span>](<span class="na">https:
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">3.5 Homework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-instructions">3.5 Homework Instructions</a></li>
 </ul>
   </nav></div>
 
