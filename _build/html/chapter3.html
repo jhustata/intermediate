@@ -372,9 +372,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pompt-based-programming">3.3 Pompt-based programming</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">3.4 Lab</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-markdown-for-documentation">3.4.1 Basic Markdown for Documentation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-latex-for-mathematical-notation">3.4.2 Integrating LaTeX for Mathematical Notation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-html-in-github">3.4.3 Basic HTML in GitHub</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linking-sections-and-external-resources">3.4.4 Linking Sections and External Resources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linking-sections-and-external-resources">3.4.2 Linking Sections and External Resources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-latex-for-mathematical-notation">3.4.3 Integrating LaTeX for Mathematical Notation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#chat">Chat</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">3.5 Homework</a></li>
@@ -523,11 +525,11 @@ putexcel B2=(<span class="s">&quot;BNT162&quot;</span>) B3=(<span class="s">&quo
 <h2>3.4 Lab<a class="headerlink" href="#lab" title="Permalink to this heading">#</a></h2>
 <section id="basic-markdown-for-documentation">
 <h3>3.4.1 Basic Markdown for Documentation<a class="headerlink" href="#basic-markdown-for-documentation" title="Permalink to this heading">#</a></h3>
-<p><strong>Objective:</strong> Familiarize yourself with <a class="reference external" href="https://ashki23.github.io/markdown-latex.html">Markdown syntax</a> to create well-documented sections in your Markdown files.</p>
+<p><strong>Objective:</strong> Familiarize yourself with <a class="reference external" href="https://ashki23.github.io/markdown-latex.html">Markdown syntax</a> to create well-documented sections in your Markdown files. Navigate to <code class="docutils literal notranslate"><span class="pre">GitHub</span> <span class="pre">&gt;</span> <span class="pre">Username</span> <span class="pre">&gt;</span> <span class="pre">hw1</span></code></p>
 <ol class="arabic">
 <li><p><strong>Task:</strong> Add a new section in your hw3 repo titled “Introduction to Markdown.”</p>
 <ul>
-<li><p><strong>Action:</strong> Create a new Markdown file (<code class="docutils literal notranslate"><span class="pre">hw3.md</span></code>) and write a brief introduction to Markdown.</p></li>
+<li><p><strong>Action:</strong> Create a new Markdown file (<code class="docutils literal notranslate"><span class="pre">index.md</span></code>) and write a brief introduction to Markdown.</p></li>
 <li><p><strong>Code:</strong> Use the following Markdown elements: headers, lists, emphasis (bold and italic), and links.</p></li>
 <li><p><strong>Example:</strong></p>
 <div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># Introduction to Markdown</span>
@@ -545,73 +547,79 @@ Learn more about Markdown [<span class="nt">here</span>](<span class="na">https:
 </li>
 </ol>
 </section>
-<section id="integrating-latex-for-mathematical-notation">
-<h3>3.4.2 Integrating LaTeX for Mathematical Notation<a class="headerlink" href="#integrating-latex-for-mathematical-notation" title="Permalink to this heading">#</a></h3>
-<p><strong>Objective:</strong> Learn to incorporate LaTeX within Markdown files for displaying mathematical equations and symbols.</p>
-<ol class="arabic">
-<li><p><strong>Task:</strong> Add a subsection in your “Introduction to Markdown” titled “Using LaTeX in Markdown.”</p>
-<ul>
-<li><p><strong>Action:</strong> Demonstrate how to embed LaTeX for inline equations and standalone equations.</p></li>
-<li><p><strong>Code:</strong></p>
-<ul>
-<li><p><strong>Inline Equation:</strong> Wrap your LaTeX code with single dollar signs <code class="docutils literal notranslate"><span class="pre">$...$</span></code>.</p>
-<ul class="simple">
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">Here's</span> <span class="pre">an</span> <span class="pre">inline</span> <span class="pre">equation:</span> <span class="pre">$E=mc^2$</span></code>.</p></li>
-</ul>
-</li>
-<li><p><strong>Standalone Equation:</strong> Use double dollar signs <code class="docutils literal notranslate"><span class="pre">$$...$$</span></code> for equations that should appear on their own line.</p>
-<ul>
-<li><p>Example:</p>
-<div class="highlight-latex notranslate"><div class="highlight"><pre><span></span><span class="sb">$$</span><span class="nv">\int</span><span class="nb">_a^b f</span><span class="o">(</span><span class="nb">x</span><span class="o">)</span><span class="nv">\,</span><span class="nb">dx </span><span class="o">=</span><span class="nb"> F</span><span class="o">(</span><span class="nb">b</span><span class="o">)</span><span class="nb"> </span><span class="o">-</span><span class="nb"> F</span><span class="o">(</span><span class="nb">a</span><span class="o">)</span><span class="s">$$</span>
-</pre></div>
-</div>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-</section>
-<section id="basic-html-in-github">
-<h3>3.4.3 Basic HTML in GitHub<a class="headerlink" href="#basic-html-in-github" title="Permalink to this heading">#</a></h3>
-<p><strong>Objective:</strong> Introduce the use of HTML tags for content that Markdown doesn’t cover, like detailed styling or specific element attributes.</p>
-<ol class="arabic">
-<li><p><strong>Task:</strong> Create a new subsection titled “HTML in Markdown” in your book.</p>
-<ul>
-<li><p><strong>Action:</strong> Show examples of how to use HTML for underline, colored text, and inserting images with custom attributes (e.g., alignment).</p></li>
-<li><p><strong>Code:</strong> Include snippets demonstrating basic HTML usage.</p>
-<ul>
-<li><p><strong>Example:</strong></p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This is a paragraph with <span class="p">&lt;</span><span class="nt">u</span><span class="p">&gt;</span>underlined<span class="p">&lt;/</span><span class="nt">u</span><span class="p">&gt;</span> text, <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>bold<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> text, and <span class="p">&lt;</span><span class="nt">span</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;color:blue;&quot;</span><span class="p">&gt;</span>colored<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> text.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://brand.jhu.edu/assets/uploads/sites/5/2014/06/university_logo_small_vertical_blue.png&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Descriptive Image Text&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width:50%&quot;</span><span class="p">&gt;</span>
-</pre></div>
-</div>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-</section>
 <section id="linking-sections-and-external-resources">
-<h3>3.4.4 Linking Sections and External Resources<a class="headerlink" href="#linking-sections-and-external-resources" title="Permalink to this heading">#</a></h3>
+<h3>3.4.2 Linking Sections and External Resources<a class="headerlink" href="#linking-sections-and-external-resources" title="Permalink to this heading">#</a></h3>
 <p><strong>Objective:</strong> Design navigable documents with internal and external links.</p>
 <ol class="arabic simple">
-<li><p><strong>Task:</strong> In your <code class="docutils literal notranslate"><span class="pre">hw3</span></code> GitHub repo, add internal links to other sections and external links to resources (e.g. your <code class="docutils literal notranslate"><span class="pre">hw1.do</span></code> <strong>raw</strong> URL).</p>
+<li><p><strong>Task:</strong> While still in your <code class="docutils literal notranslate"><span class="pre">hw1</span></code> GitHub repo, add internal links to other sections and external links to resources (e.g. your <code class="docutils literal notranslate"><span class="pre">hw1.do</span></code> <strong>raw</strong> URL).</p>
 <ul class="simple">
 <li><p><strong>Action:</strong> Use Markdown to link to another section within your book and to an external website.</p></li>
 <li><p><strong>Code:</strong></p>
 <ul>
-<li><p><strong>Internal Link Example:</strong> <code class="docutils literal notranslate"><span class="pre">[Go</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">Introduction](./README.md)</span></code></p></li>
-<li><p><strong>External Link Example:</strong> <code class="docutils literal notranslate"><span class="pre">[Visit</span> <span class="pre">Markdown</span> <span class="pre">Guide](https://www.markdownguide.org)</span></code></p></li>
+<li><p><strong>Internal Link Example:</strong> <code class="docutils literal notranslate"><span class="pre">[Local</span> <span class="pre">file](./hw1.do)</span></code></p></li>
+<li><p><strong>External Link Example:</strong> <code class="docutils literal notranslate"><span class="pre">[Raw</span> <span class="pre">file](https://raw.githubusercontent.com/username/hw1/main/hw1.do)</span></code></p></li>
 </ul>
 </li>
 </ul>
 </li>
 </ol>
 <p>After completing these exercises, you should have a foundational understanding of how Markdown, LaTeX, and HTML can be used together to create rich, well-documented, and interactive content. You’re encouraged to experiment with these tools, exploring beyond the basics to discover how they might enhance your academic, collaborative, and research projects.</p>
+</section>
+<section id="integrating-latex-for-mathematical-notation">
+<h3>3.4.3 Integrating LaTeX for Mathematical Notation<a class="headerlink" href="#integrating-latex-for-mathematical-notation" title="Permalink to this heading">#</a></h3>
+<p><strong>Objective:</strong> Learn to incorporate LaTeX within Markdown files for displaying mathematical equations and symbols.</p>
+<ol class="arabic simple">
+<li><p><strong>Task:</strong> While still in your <code class="docutils literal notranslate"><span class="pre">hw1</span></code> GitHub repo, ask ChatGPT or any other GPT to give you .HTML code that integrates <code class="docutils literal notranslate"><span class="pre">LaTeX</span></code> for Mathematical Notation</p>
+<ul class="simple">
+<li><p><strong>Action:</strong> Specifically this in double-quotes: “Here’s an inline equation: <span class="math notranslate nohighlight">\(E=mc^2\)</span>”.</p></li>
+<li><p><strong>Code:</strong></p></li>
+</ul>
+</li>
+</ol>
+<p>After completing these exercises, you should have a foundational understanding of how Markdown, LaTeX, and HTML can be used together to create rich, well-documented, and interactive content. You’re encouraged to experiment with these tools, exploring beyond the basics to discover how they might enhance your academic, collaborative, and research projects.</p>
+<section id="chat">
+<h4>Chat<a class="headerlink" href="#chat" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Yours Truly: get me .HTML code that will create a webpage displaying this latex: “Here’s an inline equation: <span class="math notranslate nohighlight">\(E=mc^2\)</span>”</p></li>
+<li><p>GPT-4: Creating a webpage to display LaTeX equations, such as (E=mc^2), requires a method to interpret and render the LaTeX syntax. One popular library for this is MathJax, which can interpret LaTeX and display it correctly in web browsers. Here’s how you can create an HTML page with your inline equation using MathJax:</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>LaTeX Equation Display<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="cm">&lt;!-- Load MathJax --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://polyfill.io/v3/polyfill.min.js?features=es6&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="nb">window</span><span class="p">.</span><span class="nx">MathJax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">tex</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">inlineMath</span><span class="o">:</span><span class="w"> </span><span class="p">[[</span><span class="s1">&#39;$&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;$&#39;</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;\\(&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;\\)&#39;</span><span class="p">]]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nx">svg</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">fontCache</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;global&#39;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;MathJax-script&quot;</span> <span class="na">async</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>LaTeX Equation in HTML<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Here&#39;s an inline equation: $E=mc^2$<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>This HTML code does the following:</p>
+<ul class="simple">
+<li><p>Loads MathJax from a CDN, ensuring that it can interpret the LaTeX syntax.</p></li>
+<li><p>Configures MathJax to recognize dollar signs (<code class="docutils literal notranslate"><span class="pre">$</span></code>) as delimiters for inline LaTeX. This is the traditional LaTeX syntax for inline equations.</p></li>
+<li><p>Displays a paragraph <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code> with your equation <code class="docutils literal notranslate"><span class="pre">E=mc^2</span></code> rendered by MathJax.</p></li>
+</ul>
+<p>Just copy this code into <strike>an HTML file</strike> and open it with any modern web browser. You’ll see your equation rendered beautifully inline with the text. This method is efficient and straightforward, making it a great choice for displaying LaTeX on the web.</p>
+<p>Delete the line <code class="docutils literal notranslate"><span class="pre">&lt;!DOCTYPE</span> <span class="pre">html&gt;</span></code> since we’re actually copying it into a <code class="docutils literal notranslate"><span class="pre">.md</span></code>file, which GitHub will build into <code class="docutils literal notranslate"><span class="pre">.html</span></code></p>
+<p>Look to the right margins for <code class="docutils literal notranslate"><span class="pre">Deployments</span> <span class="pre">&gt;</span> <span class="pre">gh-pages</span></code> and click on gh-pages <a href="https://yourusername.github.io/yourproject/" style="color: green;">green</a> once you get the green light.</p>
+</section>
 </section>
 </section>
 <section id="homework">
@@ -636,6 +644,7 @@ Learn more about Markdown [<span class="nt">here</span>](<span class="na">https:
 <li><p>Activate a <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> build as demonstrated in <span class="xref myst">this</span> video</p></li>
 </ul>
 </li>
+<li><p>Hand in your formatted <code class="docutils literal notranslate"><span class="pre">.do</span></code> file that was used to generate the .HTML file. Copy &amp; Paste the gh-page generated URL into the Stata II (Intermediate) HW3 topic in the <a class="reference external" href="https://github.com/jhufena/discussions/discussions">GitHub Discussion Community</a></p></li>
 </ol>
 </section>
 </section>
@@ -718,9 +727,11 @@ Learn more about Markdown [<span class="nt">here</span>](<span class="na">https:
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pompt-based-programming">3.3 Pompt-based programming</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">3.4 Lab</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-markdown-for-documentation">3.4.1 Basic Markdown for Documentation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-latex-for-mathematical-notation">3.4.2 Integrating LaTeX for Mathematical Notation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-html-in-github">3.4.3 Basic HTML in GitHub</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linking-sections-and-external-resources">3.4.4 Linking Sections and External Resources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linking-sections-and-external-resources">3.4.2 Linking Sections and External Resources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-latex-for-mathematical-notation">3.4.3 Integrating LaTeX for Mathematical Notation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#chat">Chat</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">3.5 Homework</a></li>
