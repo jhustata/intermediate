@@ -379,7 +379,12 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-instructions">3.5 Homework Instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-instructions">3.5 Homework Instructions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-instructions">Detailed Instructions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-notes">Additional Notes</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -625,58 +630,44 @@ Learn more about Markdown [<span class="nt">here</span>](<span class="na">https:
 </section>
 <section id="homework-instructions">
 <h2>3.5 Homework Instructions<a class="headerlink" href="#homework-instructions" title="Permalink to this heading">#</a></h2>
+ <iframe width="560" height="315" src="https://www.youtube.com/embed/4Pq6B0IrX_g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<section id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h3>
+<p>This assignment involves the development of a basic website and understanding the process of documentation and sharing through GitHub Pages. Please refer to the provided video tutorial to guide you through the website creation process.</p>
+</section>
+<section id="detailed-instructions">
+<h3>Detailed Instructions<a class="headerlink" href="#detailed-instructions" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p><strong>Data Simulation</strong>:</p>
-<ul class="simple">
-<li><p>Initialize your dataset with 30 observations using the command: <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">obs</span> <span class="pre">30</span></code>.</p></li>
-</ul>
-</li>
-<li><p><strong>Variable Generation</strong>:</p>
-<ul class="simple">
-<li><p>Create an <code class="docutils literal notranslate"><span class="pre">age</span></code> variable with a mean of 57 years and a standard deviation of 15. Use the command (to simulate a normal distribution): <code class="docutils literal notranslate"><span class="pre">gen</span> <span class="pre">age</span> <span class="pre">=</span> <span class="pre">(rnormal()</span> <span class="pre">*</span> <span class="pre">15)</span> <span class="pre">+</span> <span class="pre">57</span></code>.</p></li>
-<li><p><strong>Note</strong>: Alternatively, use <code class="docutils literal notranslate"><span class="pre">gen</span> <span class="pre">age_t=(rt(_N)*15)+57</span></code> to simulate a t-distribution. Type: <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">rt</span></code> into the command window to read more. Or use other resources to appreciate why <code class="docutils literal notranslate"><span class="pre">_N</span> <span class="pre">(degrees</span> <span class="pre">of</span> <span class="pre">freedom)</span></code> might affect a t-distribution. It’s beyond the scope of this class to decide which of these is appropriate.</p></li>
-</ul>
-</li>
-<li><p><strong>Graphical Representation</strong>:</p>
-<ul class="simple">
-<li><p>Plot a histogram of the <code class="docutils literal notranslate"><span class="pre">age</span></code> variables from both <code class="docutils literal notranslate"><span class="pre">rnormal()</span> <span class="pre">and</span> <span class="pre">rt()</span></code>, and overlay it with a theoretical normal distribution curve. The command to achieve this is: <code class="docutils literal notranslate"><span class="pre">hist</span> <span class="pre">age,</span> <span class="pre">normal</span></code>.</p></li>
-<li><p>This visualization will help in understanding the distribution of <code class="docutils literal notranslate"><span class="pre">age</span></code> among the observations.</p></li>
-</ul>
-</li>
-</ol>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">hist</span> age, <span class="cs">///</span>
-   fcolor(orange%<span class="m">40</span>) <span class="cs">/// simulated normal </span>
-   addplot(hist age_t, fcolor(midblue%<span class="m">50</span>)) <span class="cs">/// simulated t-distribution </span>
-   normal <span class="cs">/// theoretical normal</span>
-   legend(on <span class="cs">///</span>
-<span class="k">      lab</span>(<span class="m">1</span> <span class="s">&quot;Sampled from Normal&quot;</span>) <span class="cs">///</span>
-<span class="k">	  lab</span>(<span class="m">2</span> <span class="s">&quot;Theoretical Normal&quot;</span>) <span class="cs">///</span>
-<span class="k">	  lab</span>(<span class="m">3</span> <span class="s">&quot;Sampled from t-distribution&quot;</span>) <span class="cs">///</span>
-	  )
-</pre></div>
-</div>
-<ol class="arabic simple" start="4">
 <li><p><strong>Website Design</strong>:</p>
 <ul class="simple">
-<li><p>Develop a simple website to showcase the graph. Ensure to refer to the guide <a class="reference external" href="https://jhustata.github.io/intermediate/chapter2.html#case-study">here</a> for a comprehensive approach.</p></li>
-<li><p>In your footnotes, clarify that the results are based on simulated data.</p></li>
-<li><p>Incorporate Greek symbols in your explanations, akin to: “Distribution of <span class="math notranslate nohighlight">\(\text{Age, years} \sim \mathcal{N}(\mu=57,\,\sigma^{2}=225)\)</span>”, to provide a mathematical representation of the age distribution.</p></li>
+<li><p>Task: Develop a basic website that displays the message “Hello, world!”.</p></li>
+<li><p>Guidance: Follow the step-by-step instructions provided in the video tutorial linked below to create your website.</p></li>
+<li><p>Video Tutorial: <a class="reference external" href="https://www.youtube.com/embed/TgTNq6Y1J_U">YouTube Video Link</a></p></li>
 </ul>
 </li>
 <li><p><strong>Documentation and Sharing</strong>:</p>
 <ul class="simple">
-<li><p>Utilize the <code class="docutils literal notranslate"><span class="pre">dyndoc</span></code> command in Stata to convert a document (<code class="docutils literal notranslate"><span class="pre">.md</span></code>, <code class="docutils literal notranslate"><span class="pre">.txt</span></code>, or <code class="docutils literal notranslate"><span class="pre">.do</span></code> file) into <code class="docutils literal notranslate"><span class="pre">.html</span></code> format.</p></li>
-<li><p>Upload the resulting <code class="docutils literal notranslate"><span class="pre">.html</span></code> file along with any associated output to GitHub. Make sure to set up a GitHub Pages site to display your work, as shown in <a class="reference external" href="https://jhustata.github.io/intermediate/chapter2.html#case-study">this guide</a>.</p></li>
+<li><p>Syntax Introduction: Familiarize yourself with the <code class="docutils literal notranslate"><span class="pre">dyndoc</span> <span class="pre">index.do</span></code> command, which will be used to generate the <code class="docutils literal notranslate"><span class="pre">.html</span></code> document necessary for your website.</p></li>
+<li><p>Deployment: Upload the generated <code class="docutils literal notranslate"><span class="pre">index.html</span></code> file, along with any other files used in the creation process, to GitHub Pages. This will allow you to share your work publicly.</p></li>
 </ul>
 </li>
 <li><p><strong>Submission</strong>:</p>
 <ul class="simple">
-<li><p>Submit your <code class="docutils literal notranslate"><span class="pre">.do</span></code> file, which was used to generate the <code class="docutils literal notranslate"><span class="pre">.html</span></code> document, by copying and pasting the GitHub Pages URL into the relevant topic within the Stata II (Intermediate) HW3 discussion on <a class="reference external" href="https://github.com/jhufena/discussions/discussions">GitHub Discussions</a>.</p></li>
-<li><p>Announce your successful publication in the forum by sharing the URL, so that both your peers and instructors can view your work and toast to you!</p></li>
-<li><p>In case of any trouble, please ask your peers and teaching team in GitHub Discussions</p></li>
+<li><p>Files to Submit: Please submit your <code class="docutils literal notranslate"><span class="pre">index.do</span></code> file, utilized in generating the <code class="docutils literal notranslate"><span class="pre">.html</span></code> document. Retain the original file name <code class="docutils literal notranslate"><span class="pre">index.do</span></code> for submission.</p></li>
+<li><p>Announcement: Share the GitHub Pages URL of your website by posting it in the designated topic within the Stata II (Intermediate) HW3 discussion on <a class="reference external" href="https://github.com/jhufena/discussions/discussions">GitHub Discussions</a>. This step is crucial for announcing your entry into the world of web publication within the context of this course.</p></li>
+<li><p>Support: Should you encounter any difficulties, engage with your peers and the teaching team through GitHub Discussions for assistance.</p></li>
 </ul>
 </li>
 </ol>
+</section>
+<section id="additional-notes">
+<h3>Additional Notes<a class="headerlink" href="#additional-notes" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Ensure that all steps are followed diligently to achieve the best outcome.</p></li>
+<li><p>Collaboration and discussion with peers are encouraged to enhance the learning experience.</p></li>
+</ul>
+<p>This assignment provides an opportunity to apply practical skills in website development and documentation. Good luck!</p>
+</section>
 </section>
 </section>
 
@@ -765,7 +756,12 @@ Learn more about Markdown [<span class="nt">here</span>](<span class="na">https:
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-instructions">3.5 Homework Instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-instructions">3.5 Homework Instructions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-instructions">Detailed Instructions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-notes">Additional Notes</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
