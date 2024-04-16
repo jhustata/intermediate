@@ -369,6 +369,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">4.6 Lab</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dyndoc">dyndoc</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown">markdown</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#latex">LaTeX</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#html">HTML</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-instructions">4.7 Homework Instructions</a></li>
@@ -443,7 +445,7 @@ document.write(`
 </div>
 <section id="datafiles">
 <h2>4.1 Datafiles<a class="headerlink" href="#datafiles" title="Permalink to this heading">#</a></h2>
-<p>The National Health Center for Statistics (NCHS) at the Centers for Disease Control (CDC) maintains an exemplary file management system. This system enables both U.S. and international researchers to access high-quality clinical and public health data crucial for their analyses.</p>
+<p>The National Health Center for Statistics (NCHS) at the Centers for Disease Control (CDC) maintains an <a class="reference external" href="https://wwwn.cdc.gov/nchs/nhanes/ContinuousNhanes/Default.aspx?BeginYear=1999">exemplary</a> <a class="reference external" href="https://ftp.cdc.gov/pub/">file management system</a>. This system enables both U.S. and international researchers to access high-quality clinical and public health data crucial for their analyses.</p>
 <p>If you’re aiming to embody the principles of <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">science</span></code>, the NCHS represents a model starting point.</p>
 <p>While the primary aim of this intermediate class is not to instruct you in website design, it is designed to equip you with the skills necessary to self-publish. This capability extends to various contexts—whether for individual researchers, labs, research groups, collaborators, or private enterprises.</p>
 <p>You will learn the basics of Markdown, LaTeX, and HTML, providing a robust foundation for your publishing endeavors. The purpose of your labs and homework assignments is to demonstrate how these skills facilitate scientific progress.</p>
@@ -466,7 +468,7 @@ document.write(`
 <li><p>Create a new <code class="docutils literal notranslate"><span class="pre">.md</span></code> file.</p></li>
 <li><p>Use the Markdown table syntax to neatly display your data.</p></li>
 </ol>
-<p>Here’s a sample Markdown table showcasing how to format your data:</p>
+<p>Here’s a sample Markdown table showcasing NCHS documentation:</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Code or Value</p></th>
@@ -492,6 +494,7 @@ document.write(`
 </tbody>
 </table>
 <p>Remember, mastering the use of codebooks and Markdown will not only enhance your data management skills but also improve collaboration with your peers.</p>
+<p><strong>Challege</strong>: can you reproduce this table in your <a class="reference external" href="http://README.md">README.md</a> file on the <code class="docutils literal notranslate"><span class="pre">hw4</span></code> repo you create for next weeks assignment?</p>
 </section>
 <section id="leveraging-dyndoc-for-enhanced-collaboration-and-documentation">
 <h2>4.3 Leveraging <code class="docutils literal notranslate"><span class="pre">dyndoc</span></code> for Enhanced Collaboration and Documentation<a class="headerlink" href="#leveraging-dyndoc-for-enhanced-collaboration-and-documentation" title="Permalink to this heading">#</a></h2>
@@ -534,11 +537,34 @@ document.write(`
 <h3>markdown<a class="headerlink" href="#markdown" title="Permalink to this heading">#</a></h3>
 <p>Title<br />
 Authors<br />
-<strong>Background</strong>: Playing around with <strong>Markdown</strong><br />
+<strong>Background</strong>: Playing around with <em>Markdown</em>
 <strong>Methods</strong>: Using <code class="docutils literal notranslate"><span class="pre">.do</span></code> file as text editor, converting to <code class="docutils literal notranslate"><span class="pre">.html</span></code> with <code class="docutils literal notranslate"><span class="pre">dyndoc</span></code><br />
 <strong>Results</strong>: By uploading <code class="docutils literal notranslate"><span class="pre">index.html</span></code> to my <code class="docutils literal notranslate"><span class="pre">hw4</span></code> repo, I’ll have yet again something to share with the world<br />
 <strong>Concusions</strong>: I’ll be back!</p>
 <p>To insert an image in your output in a mardown environment, use the syntax: <code class="docutils literal notranslate"><span class="pre">![](filename.png)</span></code>. First try this in the <a class="reference external" href="http://README.md">README.md</a> file of your <code class="docutils literal notranslate"><span class="pre">hw4</span></code> repo. But for your <code class="docutils literal notranslate"><span class="pre">.do</span></code> file, with <code class="docutils literal notranslate"><span class="pre">dyndoc</span></code>, the sytax is <code class="docutils literal notranslate"><span class="pre">&lt;&lt;dd_graph&gt;&gt;</span></code></p>
+</section>
+<section id="latex">
+<h3>LaTeX<a class="headerlink" href="#latex" title="Permalink to this heading">#</a></h3>
+<p>Navigate to your <code class="docutils literal notranslate"><span class="pre">HW4</span> <span class="pre">Instructions</span> <span class="pre">&gt;</span> <span class="pre">4.</span> <span class="pre">Website</span> <span class="pre">Design</span> <span class="pre">&gt;</span> <span class="pre">Incorporating</span> <span class="pre">Greek</span> <span class="pre">Symbols</span></code>:</p>
+<ul class="simple">
+<li><p>Right-click on the “Greeks”</p></li>
+<li><p>Show Math As…</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TeX</span></code> Commands</p></li>
+<li><p>Copy to Clipboard</p></li>
+<li><p>Paste into your repos <a class="reference external" href="http://README.md">README.md</a> file</p></li>
+<li><p>Apply a <code class="docutils literal notranslate"><span class="pre">$</span></code> sign at the beginning and end of this <code class="docutils literal notranslate"><span class="pre">LaTeX</span></code> snippet</p></li>
+<li><p>Preview your README to ensure it works</p></li>
+<li><p>Now rety with two <code class="docutils literal notranslate"><span class="pre">$$</span></code> signs before and after to note the difference</p></li>
+<li><p>You can commit changes if you are satisfied with the look</p></li>
+</ul>
+</section>
+<section id="html">
+<h3>HTML<a class="headerlink" href="#html" title="Permalink to this heading">#</a></h3>
+<p>Now <u>underline</u> this text. The syntax for that is:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>Now <span class="p">&lt;</span><span class="nt">u</span><span class="p">&gt;</span>underline<span class="p">&lt;/</span><span class="nt">u</span><span class="p">&gt;</span> this text
+</pre></div>
+</div>
+<p>Remember, there are a lot of online resources on markdown, LaTeX, and HTML. We already picked <a class="reference external" href="https://jhustata.github.io/intermediate/chapter3.html#lab">this one</a> for you for starters.</p>
 </section>
 </section>
 <section id="homework-instructions">
@@ -671,6 +697,8 @@ Authors<br />
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">4.6 Lab</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dyndoc">dyndoc</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown">markdown</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#latex">LaTeX</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#html">HTML</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework-instructions">4.7 Homework Instructions</a></li>
