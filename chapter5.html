@@ -411,11 +411,11 @@ document.write(`
 <span class="k">            noi di</span> <span class="s">&quot;</span><span class="nv">`line&#39;</span><span class="s">&quot;</span>
         }
 <span class="k">        file close</span> myfile
-<span class="k">		qui do</span> <span class="s">&quot;</span><span class="vg">$table1_fena</span><span class="s">&quot;</span> <span class="c1">//installs remote program; but is this the optimal location of this line of code?</span>
-<span class="k">		noi di</span> <span class="s">&quot;Use the above syntax to create a Table 1 for your simulated dataset&quot;</span> _request()
-<span class="k">		noi di</span> <span class="s">&quot;Type ds to review the variables available to you in this dataset&quot;</span> _request()
-<span class="k">		noi di</span> <span class="s">&quot;When finished, type the commands pwd and ls to see your outputfiles&quot;</span> _request()
-<span class="k">		noi di</span> <span class="s">&quot;Remember: your syntax should always be preceeded with a command (e.g., table1_fena)&quot;</span> _request()
+<span class="k">		noi di</span> <span class="s">&quot;Use the above syntax to create a Table 1 for your simulated dataset&quot;</span> _request(syntax)
+<span class="k">		noi di</span> <span class="s">&quot;Type ds to review the variables available to you in this dataset&quot;</span> _request(syntax)
+<span class="k">		noi di</span> <span class="s">&quot;When finished, type the commands pwd and ls to see your outputfiles&quot;</span> _request(syntax)
+<span class="k">		noi di</span> <span class="s">&quot;Remember: your syntax should always be preceeded with a command (e.g., table1_fena)&quot;</span> _request(syntax)
+<span class="k">		qui do</span> <span class="s">&quot;</span><span class="vg">$table1_fena</span><span class="s">&quot;</span>  
 	}
 	<span class="c1">//log close </span>
 }
