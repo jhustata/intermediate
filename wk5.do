@@ -31,11 +31,11 @@ qui {
             noi di "`line'"
         }
         file close myfile
-		do "$table1_fena" //installs remote program; but is this the optimal location of this line of code?
-		noi di `"Use the above syntax to create a Table 1 for your simulated dataset"' _request()
-		noi di `"Type "ds" to review the variables available to you in this dataset"' _request()
-		noi di `"When finished, type the commands "pwd" and "ls" to see your outputfiles"' _request()
-		noi di `"Remember: your syntax should always be preceeded with a command (e.g., "table1_fena")"' _request()
+		qui do "$table1_fena" //installs remote program; but is this the optimal location of this line of code?
+		noi di "Use the above syntax to create a Table 1 for your simulated dataset" _request()
+		noi di "Type ds to review the variables available to you in this dataset" _request()
+		noi di "When finished, type the commands pwd and ls to see your outputfiles" _request()
+		noi di "Remember: your syntax should always be preceeded with a command (e.g., table1_fena)" _request()
 	}
 	//log close 
 }
