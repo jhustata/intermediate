@@ -10,7 +10,7 @@ qui {
 		//capture log close 
 		//log using wk5.log, replace 
 		local output "/users/d/desktop" 
-		global url "https://raw.githubusercontent.com/yaiura1/hw1/main/hw1.do"
+		global url "https://raw.githubusercontent.com/yaiura1/hw1/main/hw1.do" //you all have your own URLs, this is one of your peers just for demo purposes
 		global table1_fena "https://raw.githubusercontent.com/jhustata/basic/main/table1_fena.ado"
 		capture confirm file "`output'"
 		if _rc == 0 {
@@ -31,11 +31,11 @@ qui {
             noi di "`line'"
         }
         file close myfile
-		do "$table1_fena" //install remote program
-		noi di "Use the above syntax to create a Table 1 for your simulated dataset" _request(syntax)
-		noi di "When finished, type the commands `pwd` and `ls` to see your outputfiles" _request(syntax)
-		noi di "Remember: your syntax should always be preceeded with a command (`table1_fena etc...` in this case)" _request(syntax)
-		noi di "Type `ds` to see the variables you might be interested in describing in Table 1'"
+		do "$table1_fena" //installs remote program; but is this the optimal location of this line of code?
+		noi di `"Use the above syntax to create a Table 1 for your simulated dataset"' _request()
+		noi di `"Type "ds" to review the variables available to you in this dataset"' _request()
+		noi di `"When finished, type the commands "pwd" and "ls" to see your outputfiles"' _request()
+		noi di `"Remember: your syntax should always be preceeded with a command (e.g., "table1_fena")"' _request()
 	}
 	//log close 
 }
