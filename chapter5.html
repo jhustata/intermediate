@@ -411,19 +411,20 @@ document.write(`
 <span class="k">            noi di</span> <span class="s">&quot;</span><span class="nv">`line&#39;</span><span class="s">&quot;</span>
         }
 <span class="k">        file close</span> myfile
-<span class="k">		do</span> <span class="s">&quot;</span><span class="vg">$table1_fena</span><span class="s">&quot;</span> <span class="c1">//install remote program</span>
-<span class="k">		noi di</span> <span class="s">&quot;Use the above syntax to create a Table 1 for your simulated dataset&quot;</span> _request(syntax)
-<span class="k">		noi di</span> <span class="s">&quot;When finished, type the commands </span><span class="nv">`pwd` and `ls` to see your outputfiles&quot; _request(syntax)</span>
-<span class="nv">		noi di &quot;Remember: your syntax should always be preceeded with a command (`table1_fena etc...` in this case)&quot; _request(syntax)</span>
+<span class="k">		do</span> <span class="s">&quot;</span><span class="vg">$table1_fena</span><span class="s">&quot;</span> <span class="c1">//installs remote program</span>
+<span class="k">		noi di</span> <span class="s">&quot;Use the above syntax to create a Table 1 for your simulated dataset&quot;</span> _request()
+<span class="k">		noi di</span> <span class="s">&quot;Type </span><span class="nv">`ds` to review the variables available to you in this dataset&quot; _request()</span>
+<span class="nv">		noi di &quot;When finished, type the commands `pwd` and `ls` to see your outputfiles&quot; _request()</span>
+<span class="nv">		noi di &quot;Remember: your syntax should always be preceeded with a command (e.g., `table1_fena`)&quot; _request()</span>
 <span class="nv">	}</span>
 <span class="nv">	//log close </span>
 <span class="nv">}</span>
 </pre></div>
 </div>
+</Details>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">do</span> <span class="s">&quot;https://github.com/jhustata/intermediate/raw/main/wk5.do&quot;</span>
 </pre></div>
 </div>
-</Details>
 <section id="overview-of-first-half-of-term">
 <h2>5.1 Overview of first-half of term<a class="headerlink" href="#overview-of-first-half-of-term" title="Permalink to this heading">#</a></h2>
 <p><strong>1. Setting Up and Logging:</strong></p>
