@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>6. GitHub Repo for Collaboration &#8212; Stata Programming</title>
+    <title>6 GitHub Repository for Collaboration &#8212; Stata Programming</title>
   
   
   
@@ -162,7 +162,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="chapter3.html">3. Program syntax, _request(), and prompt-based programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter4.html">4. Intermediate file management: from a remote location</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter5.html">5. Review of Weeks 1 - 4</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. GitHub Repo for Collaboration</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6 GitHub Repository for Collaboration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter7.html">7. Survival analysis: non-parametric, semi-parametric, parametric</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter8.html">8. Multilevel, hierarchical Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickrefs.html">Quick References</a></li>
@@ -349,7 +349,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>6. GitHub Repo for Collaboration</h1>
+    <h1>6 GitHub Repository for Collaboration</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -359,34 +359,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">6.1 Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#survey">Survey</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mortality">Mortality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-steps-and-resources">Detailed Steps and Resources:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-acquisition-and-preparation">6.1 Data Acquisition and Preparation:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-development">6.2 Code Development:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parameters-for-week-7s-analysis">6.3 Key Parameters for Week 7s Analysis:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inferences">6.4 Inferences</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#upcoming-updates-and-critiques">6.5 Upcoming Updates and Critiques:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation-and-reproducibility">6.6 Documentation and Reproducibility:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">6.7 Lab</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-github-project">Setting Up Your GitHub Project</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">6.2 Code</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edit">Edit</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge">Merge</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">6.3 Parameters</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#survival">Survival</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Parameters</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferences">6.4 Inferences</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ci-p-values">95%CI, p-values</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updates">6.5 Updates</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plans">Plans</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transparency">6.6 Transparency</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducibility">Reproducibility</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">6.8 Homework</a></li>
 </ul>
 </li>
 </ul>
@@ -455,52 +440,91 @@ document.write(`
 <img alt="_images/bd7156ffdc732b3095dad1da740b099ae999597c4cb8154a81a988a589e43517.png" src="_images/bd7156ffdc732b3095dad1da740b099ae999597c4cb8154a81a988a589e43517.png" />
 </div>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="github-repo-for-collaboration">
-<h1>6. GitHub Repo for Collaboration<a class="headerlink" href="#github-repo-for-collaboration" title="Permalink to this heading">#</a></h1>
-<p>Let’s apply the tools we’ve acquired over the last five weeks to build a repository (<code class="docutils literal notranslate"><span class="pre">username/project</span></code>) that you’ll use for the next three weeks. Don’t try to be perfect while you work on this: just set up the project with a sort of roadmap, that perhaps others can help fulfil – if you’re too busy :)</p>
-<p>Your tasks are as follows:</p>
+<section class="tex2jax_ignore mathjax_ignore" id="github-repository-for-collaboration">
+<h1>6 GitHub Repository for Collaboration<a class="headerlink" href="#github-repository-for-collaboration" title="Permalink to this heading">#</a></h1>
+<p>This week, we’ll apply the skills we’ve developed over the past five weeks to create a GitHub repository, which will serve as the basis for our projects in the coming weeks. The aim is not to achieve perfection initially, but to establish a foundation that can be built upon, potentially with the help of peers.</p>
+<section id="objectives">
+<h2>Objectives:<a class="headerlink" href="#objectives" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Create a public GitHub repo called <code class="docutils literal notranslate"><span class="pre">project</span></code>. You’ll work individually, but are strongly encouraged to ask peers via <a class="reference external" href="https://github.com/jhufena/discussions/discussions">GitHub Discussions</a> for help when stuck</p></li>
-<li><p>Use publically available data to assess whether “self-reported health” is an important marker of health</p></li>
-<li><p>Document your repo using <a class="reference external" href="https://github.com/meta-llama/llama3">README.md</a> and any other necessary files that allow a visitor or collaborator to your website or repo to fully access the data you used, your analytic code, the key parameters you generated, the inferences you made, and your plans for updating all the above over time. In a one word, be <strong>transparent</strong> and embrace the ethos of <a class="reference external" href="https://publichealth.jhu.edu/the-r3-center-for-innovation-in-science-education">Open Science</a>:</p>
+<li><p><strong>Create a Public GitHub Repository</strong>:</p>
 <ul class="simple">
-<li><p>Rigor</p></li>
-<li><p>Reproducibility</p></li>
-<li><p>Responsibility</p></li>
+<li><p>Set up a repository named <code class="docutils literal notranslate"><span class="pre">project</span></code> on GitHub. You will be working individually, but you are encouraged to use <a class="reference external" href="https://github.com/jhufena/discussions/discussions">GitHub Discussions</a> to seek help from your peers when needed.</p></li>
+</ul>
+</li>
+<li><p><strong>Utilize Publicly Available Data</strong>:</p>
+<ul class="simple">
+<li><p>The focus will be on using public data to explore the significance of “self-reported health” as a health indicator.</p></li>
+</ul>
+</li>
+<li><p><strong>Documentation and Transparency</strong>:</p>
+<ul class="simple">
+<li><p>Document your project comprehensively using a <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file and other necessary documentation to make your analysis accessible and understandable. Embrace the principles of <a class="reference external" href="https://publichealth.jhu.edu/the-r3-center-for-innovation-in-science-education">Open Science</a> which are Rigor, Reproducibility, and Responsibility.</p></li>
 </ul>
 </li>
 </ol>
-<p>Not to worry, we’ll use class and lab to go through as many of the practical steps as possible. Afterall, <a class="reference external" href="https://jhufena.github.io/home/intro.html">we’re all in this together</a>! I’ll create supplementary videos if anything remains unclear.</p>
-<section id="data">
-<h2>6.1 Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
-<section id="survey">
-<h3>Survey<a class="headerlink" href="#survey" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="detailed-steps-and-resources">
+<h2>Detailed Steps and Resources:<a class="headerlink" href="#detailed-steps-and-resources" title="Permalink to this heading">#</a></h2>
+<section id="data-acquisition-and-preparation">
+<h3>6.1 Data Acquisition and Preparation:<a class="headerlink" href="#data-acquisition-and-preparation" title="Permalink to this heading">#</a></h3>
+<ul>
+<li><p><strong>Survey Data</strong>:</p>
+<ul>
+<li><p>Import the survey data from the 1999-2000 National Health and Nutrition Examination Survey (NHANES):</p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>import sasxport5 <span class="s">&quot;https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/DEMO.XPT&quot;</span>,<span class="k"> clear</span>
 </pre></div>
 </div>
-</section>
-<section id="mortality">
-<h3>Mortality<a class="headerlink" href="#mortality" title="Permalink to this heading">#</a></h3>
-<p>Think of your survey data above as “baseline” data. We’ll merge those data with “followup” data to ascertain mortality a 20-year period.</p>
-<p>You can find the linkage data if you follow <a class="reference external" href="https://jhustata.github.io/project/">this</a> website:</p>
-<ul class="simple">
-<li><p>Healthy Statistics</p></li>
-<li><p>NCHS</p></li>
-<li><p>Datalinkage</p></li>
-<li><p>Linked mortality</p></li>
+</li>
 </ul>
+</li>
+<li><p><strong>Mortality Follow-up Data</strong>:</p>
+<ul class="simple">
+<li><p>Obtain follow-up mortality data to analyze over a 20-year period from the National Center for Health Statistics (NCHS). Detailed linkage instructions are available on the <a class="reference external" href="https://ftp.cdc.gov/pub/">Linked Mortality</a> page:</p>
+<ul>
+<li><p>Health Statistics</p>
+<ul>
+<li><p>NCHS</p>
+<ul>
+<li><p>Datalinkage</p>
+<ul>
+<li><p>Linked Mortality</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">NHANES_1999_2000_MORT_2019_PUBLIC.dat</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Stata_ReadInProgramAllSurveys.do</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span> <span class="c1">//data</span>
+<span class="k"> global</span> mort_1999_2000 https:<span class="o">//</span>ftp<span class="m">.</span>cdc<span class="m">.</span>gov<span class="o">/</span>pub<span class="o">/</span>HEALTH_STATISTICS<span class="o">/</span>NCHS<span class="o">/</span>datalinkage<span class="o">/</span>linked_mortality<span class="o">/</span>NHANES_1999_2000_MORT_2019_PUBLIC<span class="m">.</span>dat
+
+ <span class="c1">//code</span>
+<span class="k">cat</span> https:<span class="o">//</span>ftp<span class="m">.</span>cdc<span class="m">.</span>gov<span class="o">/</span>pub<span class="o">/</span>HEALTH_STATISTICS<span class="o">/</span>NCHS<span class="o">/</span>datalinkage<span class="o">/</span>linked_mortality<span class="o">/</span>Stata_ReadInProgramAllSurveys<span class="m">.</span>do
+</pre></div>
+</div>
 </section>
-</section>
-<section id="code">
-<h2>6.2 Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
-<section id="edit">
-<h3>Edit<a class="headerlink" href="#edit" title="Permalink to this heading">#</a></h3>
-<p>Download the <code class="docutils literal notranslate"><span class="pre">.do</span></code> file provided. Edit it for your use and upload it to the <code class="docutils literal notranslate"><span class="pre">project</span></code> repo. Rename it <code class="docutils literal notranslate"><span class="pre">followup.do</span></code>. Make a meaningful commit statement such as “DEMO.XPT linkage .do file”</p>
-</section>
-<section id="merge">
-<h3>Merge<a class="headerlink" href="#merge" title="Permalink to this heading">#</a></h3>
-<p>Write code to merge <code class="docutils literal notranslate"><span class="pre">DEMO.XPT</span></code> with the mortality linkage data from <code class="docutils literal notranslate"><span class="pre">.do</span></code></p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">global</span> repo <span class="s">&quot;https://github.com/jhustata/intermediate/raw/main/&quot;</span>
+<section id="code-development">
+<h3>6.2 Code Development:<a class="headerlink" href="#code-development" title="Permalink to this heading">#</a></h3>
+<ul>
+<li><p><strong>Edit and Rename Provided Script</strong>:</p>
+<ul class="simple">
+<li><p>Download, modify, and upload the provided Stata <code class="docutils literal notranslate"><span class="pre">.do</span></code> file for linking the DEMO.XPT data to mortality follow-up data. Rename this file to <code class="docutils literal notranslate"><span class="pre">followup.do</span></code> and commit it with the description: “Updated DEMO.XPT linkage .do file”. In otherwords, download, modify, and upload <code class="docutils literal notranslate"><span class="pre">Stata_ReadInProgramAllSurveys.do</span></code>. You may watch the week 6 video for the key items to edit. For instance, you may edit it so that it reads in the data directly from the website.</p></li>
+</ul>
+</li>
+<li><p><strong>Data Merging</strong>:</p>
+<ul>
+<li><p>Execute the following Stata code to merge the survey data with the mortality data, ensuring alignment on the unique sequence numbers:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//use your own username/project repo instead of the class repo below</span>
+<span class="k">global</span> repo <span class="s">&quot;https://github.com/jhustata/intermediate/raw/main/&quot;</span>
 <span class="k">do</span> <span class="vg">${repo}</span>followup<span class="m">.</span>do
 <span class="k">save</span> followup,<span class="k"> replace</span> 
 import sasxport5 <span class="s">&quot;https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/DEMO.XPT&quot;</span>,<span class="k"> clear</span>
@@ -508,16 +532,66 @@ import sasxport5 <span class="s">&quot;https://wwwn.cdc.gov/Nchs/Nhanes/1999-200
 <span class="k">lookfor</span> follow
 </pre></div>
 </div>
-</section>
-</section>
-<section id="parameters">
-<h2>6.3 Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">#</a></h2>
-<section id="survival">
-<h3>Survival<a class="headerlink" href="#survival" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>This will be the key item for <a class="reference external" href="https://jhustata.github.io/intermediate/chapter7.html">week 7</a></p></li>
-<li><p>Self-reported health is described <a class="reference external" href="https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/HUQ.htm#HUQ010">here</a></p></li>
+</li>
 </ul>
+</li>
+</ul>
+</section>
+<section id="key-parameters-for-week-7s-analysis">
+<h3>6.3 Key Parameters for Week 7s Analysis:<a class="headerlink" href="#key-parameters-for-week-7s-analysis" title="Permalink to this heading">#</a></h3>
+<ul>
+<li><p><strong>Self-Reported Health Assessment</strong>:</p>
+<ul>
+<li><p>Import the specific health questionnaire data and prepare it for analysis in Week 7:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>import sasxport5 <span class="s">&quot;https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/HUQ.XPT&quot;</span>,<span class="k"> clear</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+<Details>
+   <Summary> 🔑 </Summary>
+<p>Here’s a first iteration of a script that answers they project main goal. Save it as <a class="reference external" href="http://project.do">project.do</a> and upload it to you repo. Keep updating it over the next two weeks, with a meaningful commit statement each time for version control.</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">global</span> repo <span class="s">&quot;https://github.com/jhustata/intermediate/raw/main/&quot;</span>
+<span class="k">do</span> <span class="vg">${repo}</span>followup<span class="m">.</span>do
+<span class="k">save</span> followup,<span class="k"> replace</span> 
+import sasxport5 <span class="s">&quot;https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/DEMO.XPT&quot;</span>,<span class="k"> clear</span>
+<span class="k">merge</span> <span class="m">1</span>:<span class="m">1</span> seqn using followup
+<span class="k">lookfor</span> follow
+<span class="k">lookfor</span> mortstat permth_int eligstat 
+<span class="k">keep if</span> eligstat<span class="o">==</span><span class="m">1</span>
+<span class="k">capture g</span> years=permth_int<span class="o">/</span><span class="m">12</span>
+<span class="k">codebook</span> mortstat
+<span class="k">stset</span> years, fail(mortstat)
+<span class="k">sts graph</span>, fail
+<span class="k">save</span> demo_mortality,<span class="k"> replace</span> 
+import sasxport5 <span class="s">&quot;https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/HUQ.XPT&quot;</span>,<span class="k"> clear</span> 
+<span class="k">merge</span> <span class="m">1</span>:<span class="m">1</span> seqn using demo_mortality, nogen
+<span class="k">sts graph</span>,<span class="k"> by</span>(huq010) fail
+<span class="k">stcox</span> i<span class="m">.</span>huq010
+</pre></div>
+</div>
+</Details>
+</section>
+<section id="inferences">
+<h3>6.4 Inferences<a class="headerlink" href="#inferences" title="Permalink to this heading">#</a></h3>
+<p>Please review <a class="reference external" href="https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/HUQ.htm">documentation</a> for the file <code class="docutils literal notranslate"><span class="pre">HUQ.XPT</span></code>, which includes the variable <code class="docutils literal notranslate"><span class="pre">huq010</span></code></p>
+<p><strong>Employ 95%CI and p-values</strong></p>
+<p>The following snippet will lay the foundation for your statistical, clinical, and public health inferences:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">merge</span> <span class="m">1</span>:<span class="m">1</span> seqn using demo_mortality, nogen
+<span class="k">sts graph</span>,<span class="k"> by</span>(huq010) fail
+<span class="k">stcox</span> i<span class="m">.</span>huq010
+</pre></div>
+</div>
+<p><strong>Write a brief abstract-style conclusion</strong>
+But learn a little more about the simple questionnaire item of interest to this project:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>import sasxport5 <span class="s">&quot;https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/HUQ.XPT&quot;</span>,<span class="k"> clear</span> 
+huq010 
+<span class="k">desc</span> huq010
+<span class="k">codebook</span> huq010
+</pre></div>
+</div>
 <blockquote>
 <div><p>I have some general questions about your health. Would you say your health in general is:</p>
 <ul class="simple">
@@ -528,50 +602,75 @@ import sasxport5 <span class="s">&quot;https://wwwn.cdc.gov/Nchs/Nhanes/1999-200
 <li><p>Poor?</p></li>
 </ul>
 </div></blockquote>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>import sasxport5 <span class="s">&quot;https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/HUQ.XPT&quot;</span>,<span class="k"> clear</span> 
-</pre></div>
-</div>
+<p>You task is to provide rigorous and reproducible evidence that responsibly answers this very simple, but overlooked “screener” in both clinical and public health settings.</p>
 </section>
-<section id="id1">
-<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<section id="upcoming-updates-and-critiques">
+<h3>6.5 Upcoming Updates and Critiques:<a class="headerlink" href="#upcoming-updates-and-critiques" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Critique a Recent Article</strong>:</p>
+<ul>
+<li><p>Engage with recent literature, such as <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S2666535222000532">this study</a>, to cursorily consider your approach to this simple question vs. the approach these authors took. What is the key difference?</p></li>
+</ul>
+</li>
+<li><p><strong>Plan for Generalizing the Analytic Script</strong>:</p>
+<ul>
+<li><p>Adapt your script to handle similar data from any period between 1999 and 2019.</p></li>
+</ul>
+</li>
+</ul>
 </section>
+<section id="documentation-and-reproducibility">
+<h3>6.6 Documentation and Reproducibility:<a class="headerlink" href="#documentation-and-reproducibility" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Enhance Documentation</strong>:</p>
+<ul>
+<li><p>Refer to exemplary documentation practices from major repositories like <a class="reference external" href="https://github.com/apple/swift">Apple</a>, <a class="reference external" href="https://github.com/google/googletest">Google</a>, and <a class="reference external" href="https://github.com/meta-llama/llama3">Meta</a>.</p></li>
+</ul>
+</li>
+<li><p><strong>Commit to Transparency</strong>:</p>
+<ul>
+<li><p>Make your code and data handling processes as clear and simple as possible to facilitate easy understanding and replication by others.</p></li>
+</ul>
+</li>
+</ul>
 </section>
-<section id="inferences">
-<h2>6.4 Inferences<a class="headerlink" href="#inferences" title="Permalink to this heading">#</a></h2>
-<section id="ci-p-values">
-<h3>95%CI, p-values<a class="headerlink" href="#ci-p-values" title="Permalink to this heading">#</a></h3>
-</section>
-<section id="conclusions">
-<h3>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this heading">#</a></h3>
-</section>
-</section>
-<section id="updates">
-<h2>6.5 Updates<a class="headerlink" href="#updates" title="Permalink to this heading">#</a></h2>
-<p>Critique <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S2666535222000532">this</a>. But don’t dwell on it.</p>
-<section id="plans">
-<h3>Plans<a class="headerlink" href="#plans" title="Permalink to this heading">#</a></h3>
-<p>Generalize your analytic script to be able to answer this question across any time window between 1999-2019</p>
-</section>
-<section id="methods">
-<h3>Methods<a class="headerlink" href="#methods" title="Permalink to this heading">#</a></h3>
-</section>
-</section>
-<section id="transparency">
-<h2>6.6 Transparency<a class="headerlink" href="#transparency" title="Permalink to this heading">#</a></h2>
-<section id="documentation">
-<h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading">#</a></h3>
-<p>Exemplars abound:</p>
+<section id="lab">
+<h3>6.7 Lab<a class="headerlink" href="#lab" title="Permalink to this heading">#</a></h3>
+<section id="setting-up-your-github-project">
+<h4>Setting Up Your GitHub Project<a class="headerlink" href="#setting-up-your-github-project" title="Permalink to this heading">#</a></h4>
+<p><strong>Objective</strong>: Set up a GitHub repository for collaborative health data analysis.</p>
+<p><strong>Tasks</strong>:</p>
 <ol class="arabic simple">
-<li><p><a class="reference external" href="https://github.com/apple/swift">Apple</a></p></li>
-<li><p><a class="reference external" href="https://github.com/google/googletest">Google</a></p></li>
-<li><p><a class="reference external" href="https://github.com/meta-llama/llama3">Meta</a></p></li>
-<li><p><a class="reference external" href="https://github.com/jhustata/project">Stata II</a></p></li>
-<li><p>Classmates</p></li>
+<li><p><strong>Create a GitHub Repository</strong>: Follow the provided instructions to create a public GitHub repository named <code class="docutils literal notranslate"><span class="pre">project</span></code>. Make sure the repository settings allow for discussions and issues to encourage collaboration.</p></li>
+<li><p><strong>Initial Commit</strong>:</p>
+<ul class="simple">
+<li><p>Add a <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file explaining the project’s purpose, how to contribute, and a brief description of the data sources used (DEMO.XPT and mortality linkage data).</p></li>
+<li><p>Commit these changes with a meaningful message, such as “Initial commit with <a class="reference external" href="http://README.md">README.md</a>”.</p></li>
+</ul>
+</li>
 </ol>
+<p><strong>Instructions</strong>:</p>
+<ul class="simple">
+<li><p>Use the GitHub interface to create and configure the repository.</p></li>
+<li><p>Write the <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file using Markdown formatting to make it clear and engaging.</p></li>
+<li><p>Include links to the data sources and any relevant documentation or tutorials that might help collaborators.</p></li>
+<li><p>Copy &amp; paste the content of the <code class="docutils literal notranslate"><span class="pre">README.md</span></code> into a new file called <code class="docutils literal notranslate"><span class="pre">index.md</span></code>.</p>
+<ul>
+<li><p>Click on settings once done</p></li>
+<li><p>Activate <code class="docutils literal notranslate"><span class="pre">pages</span></code> as you did in previous homeworks</p></li>
+<li><p>This will create a URL for your project, accessible even to those who don’t have GitHub accounts</p></li>
+<li><p>Improve the aesthetic and usability of this website each week</p></li>
+</ul>
+</li>
+</ul>
 </section>
-<section id="reproducibility">
-<h3>Reproducibility<a class="headerlink" href="#reproducibility" title="Permalink to this heading">#</a></h3>
-<p>The hallmark of reproducibility is simplicity. Make a visitor or collaborator feel grateful for “all the work” you put in, since they need only tweek a little code here and there to meet your visions for the next update!</p>
+</section>
+<section id="homework">
+<h3>6.8 Homework<a class="headerlink" href="#homework" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Submit the URL of your GitHub Page. Ensure it is set to public so it can be accessed and reviewed.</p></li>
+<li><p>Next week you’ll include results from your analysis and some beautiful graphics (see section <strong>6.3</strong> above for your foundational code)</p></li>
+</ul>
 </section>
 </section>
 </section>
@@ -643,34 +742,19 @@ import sasxport5 <span class="s">&quot;https://wwwn.cdc.gov/Nchs/Nhanes/1999-200
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">6.1 Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#survey">Survey</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mortality">Mortality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-steps-and-resources">Detailed Steps and Resources:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-acquisition-and-preparation">6.1 Data Acquisition and Preparation:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-development">6.2 Code Development:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parameters-for-week-7s-analysis">6.3 Key Parameters for Week 7s Analysis:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inferences">6.4 Inferences</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#upcoming-updates-and-critiques">6.5 Upcoming Updates and Critiques:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation-and-reproducibility">6.6 Documentation and Reproducibility:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">6.7 Lab</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-github-project">Setting Up Your GitHub Project</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">6.2 Code</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edit">Edit</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge">Merge</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">6.3 Parameters</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#survival">Survival</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Parameters</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferences">6.4 Inferences</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ci-p-values">95%CI, p-values</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updates">6.5 Updates</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plans">Plans</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transparency">6.6 Transparency</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducibility">Reproducibility</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">6.8 Homework</a></li>
 </ul>
 </li>
 </ul>
