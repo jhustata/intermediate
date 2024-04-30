@@ -359,9 +359,36 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-of-repo">6.1 Structure of Repo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">6.2 Lab</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">6.3 Homework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">6.1 Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#survey">Survey</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mortality">Mortality</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">6.2 Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edit">Edit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge">Merge</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">6.3 Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#survival">Survival</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferences">6.4 Inferences</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ci-p-values">95%CI, p-values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updates">6.5 Updates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plans">Plans</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transparency">6.6 Transparency</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducibility">Reproducibility</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -373,148 +400,163 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="github-repo-for-collaboration">
-<h1>6. GitHub Repo for Collaboration<a class="headerlink" href="#github-repo-for-collaboration" title="Permalink to this heading">#</a></h1>
-<p>For a GitHub repository aimed at <a class="reference external" href="https://github.com/meta-llama/llama3">collaboration</a>, here are some general headings you might consider including in your README or documentation to enhance organization and accessibility:</p>
-<section id="structure-of-repo">
-<h2>6.1 Structure of Repo<a class="headerlink" href="#structure-of-repo" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p><strong>Introduction</strong></p>
-<ul class="simple">
-<li><p>Overview of the project</p></li>
-<li><p>Goals and objectives</p></li>
-<li><p>Importance and potential impact of the project</p></li>
-</ul>
-</li>
-<li><p><strong>Getting Started</strong></p>
-<ul class="simple">
-<li><p>Prerequisites for contributing</p></li>
-<li><p>How to set up the environment</p></li>
-<li><p>Step-by-step guide for the initial setup</p></li>
-</ul>
-</li>
-<li><p><strong>Contribution Guidelines</strong></p>
-<ul class="simple">
-<li><p>How to contribute to the project</p></li>
-<li><p>Code of conduct for contributors</p></li>
-<li><p>Style guide and coding conventions</p></li>
-</ul>
-</li>
-<li><p><strong>Feature Roadmap</strong></p>
-<ul class="simple">
-<li><p>Current features and their status</p></li>
-<li><p>Planned features for future releases</p></li>
-<li><p>Wishlist or ideas under consideration</p></li>
-</ul>
-</li>
-<li><p><strong>Issue Tracking and Reporting</strong></p>
-<ul class="simple">
-<li><p>How to report bugs or request features</p></li>
-<li><p>Guidelines for submitting issues</p></li>
-<li><p>Link to the issue tracker</p></li>
-</ul>
-</li>
-<li><p><strong>Community and Communication</strong></p>
-<ul class="simple">
-<li><p>Channels for contributors to discuss the project (e.g., Discord, Slack)</p></li>
-<li><p>Regular meeting times or sync-ups, if applicable</p></li>
-<li><p>Contact information for the core team</p></li>
-</ul>
-</li>
-<li><p><strong>Documentation</strong></p>
-<ul class="simple">
-<li><p>Links to detailed documentation</p></li>
-<li><p>Setup tutorials and usage examples</p></li>
-<li><p>API documentation, if applicable</p></li>
-</ul>
-</li>
-<li><p><strong>Testing and Development</strong></p>
-<ul class="simple">
-<li><p>Testing strategies and frameworks used</p></li>
-<li><p>How to write and run tests</p></li>
-<li><p>Information about the CI/CD pipeline</p></li>
-</ul>
-</li>
-<li><p><strong>License</strong></p>
-<ul class="simple">
-<li><p>Type of license under which the project is released</p></li>
-<li><p>Implications for contributors and users</p></li>
-</ul>
-</li>
-<li><p><strong>Acknowledgments</strong></p>
-<ul class="simple">
-<li><p>Credits to major contributors</p></li>
-<li><p>Institutional support and funding acknowledgments</p></li>
-<li><p>Third-party libraries or tools used</p></li>
-</ul>
-</li>
-</ol>
-<p>These headings can help structure your GitHub repository in a way that is welcoming and informative, facilitating easier collaboration and encouraging more contributors to get involved.</p>
-</section>
-<section id="lab">
-<h2>6.2 Lab<a class="headerlink" href="#lab" title="Permalink to this heading">#</a></h2>
-<p>The GitHub repository <a class="reference external" href="https://github.com/meta-llama/llama3">meta-llama/llama3</a> offers a robust framework for developers to engage with Meta Llama 3, a sophisticated large language model designed for wide-ranging applications from individual projects to enterprise solutions. The repo is structured to assist users in downloading model weights, setting up their environment, and starting with model inference using pre-trained and instruction-tuned versions of the Llama 3 model, ranging from 8B to 70B parameters.</p>
-<p>Key features of this repository include:</p>
-<ul class="simple">
-<li><p><strong>Comprehensive Documentation</strong>: The repo contains a README file that guides users through the setup process, usage, and provides general information about the capabilities and structure of the models.</p></li>
-<li><p><strong>Community and Support</strong>: It emphasizes community engagement and support, offering clear paths for contributors through its CONTRIBUTING and CODE_OF_CONDUCT files, ensuring a welcoming and respectful collaboration environment.</p></li>
-<li><p><strong>Access and Download Instructions</strong>: For access to the model weights, the repo directs users to the Meta Llama website, where they must agree to a license and then follow steps to download the necessary files, which include a download script and model/tokenizer specifications for running local inference【9†source】.</p></li>
-<li><p><strong>Inference and Utilization</strong>: Detailed guidance for running inference scripts such as <code class="docutils literal notranslate"><span class="pre">example_chat_completion.py</span></code> and <code class="docutils literal notranslate"><span class="pre">example_text_completion.py</span></code> is provided, allowing users to effectively utilize the models for generating text or engaging in dialogue simulations【10†source】.</p></li>
-</ul>
-<p>This repository serves as a gateway for developers looking to explore and innovate with one of the most advanced language models available, providing both the tools and the community support necessary to foster creative and responsible AI development. For more detailed guidance on getting started with the Meta Llama 3, users can refer to the official documentation on the Meta Llama website【10†source】.</p>
-<p>Your task for this lab is very simple:</p>
-<ol class="arabic simple">
-<li><p>See how the <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file is used</p></li>
-<li><p>Try to edit this file</p></li>
-<li><p>Fork this repo</p></li>
-<li><p>Now retry your <code class="docutils literal notranslate"><span class="pre">#2</span></code> attempt</p></li>
-<li><p>Is the <code class="docutils literal notranslate"><span class="pre">markdown</span></code> syntax familiar?</p></li>
-</ol>
-</section>
-<section id="homework">
-<h2>6.3 Homework<a class="headerlink" href="#homework" title="Permalink to this heading">#</a></h2>
-<p>Create a <code class="docutils literal notranslate"><span class="pre">hw6</span></code> repo and create a <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file that allows a potential collaborator to easily navigate the resources of the repo:</p>
-<ol class="arabic simple">
-<li><p>Reproduce what you did in <code class="docutils literal notranslate"><span class="pre">hw5</span></code> in this repo</p></li>
-<li><p>Use the <code class="docutils literal notranslate"><span class="pre">README.md</span></code> as annotation or additional notes to explain what is going on</p></li>
-<li><p>Please upload any other program files to this repo for easy access</p></li>
-<li><p>Include the URL of your repo as a clickable link called <a class="reference external" href="https://github.com/meta-llama/llama3">HW6</a></p></li>
-<li><p>Download this <code class="docutils literal notranslate"><span class="pre">.md</span></code> file from GitHub, then submit it to <code class="docutils literal notranslate"><span class="pre">CoursePlus</span> <span class="pre">&gt;</span> <span class="pre">DropBox</span></code></p></li>
-</ol>
-<Details>
-   <Summary></Summary>
-<p>Let’s revisit the first graph we produce in week one, but with a twist:</p>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">// Load the life expectancy dataset</span>
-<span class="k">webuse</span> lifeexp,<span class="k"> clear</span>
+  <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="c1">// Encode the &#39;country&#39; variable into a numeric variable with a new name &#39;Country&#39;</span>
-<span class="k">encode</span> country,<span class="k"> gen</span>(Country)
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;Data&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2500</span><span class="p">,</span> <span class="mi">700</span><span class="p">))</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;Code&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">4200</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;Inferences&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;Parameters&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2500</span><span class="p">,</span> <span class="o">-</span><span class="mi">700</span><span class="p">))</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;Updates&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1500</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;Transparency&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">4000</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 
-<span class="c1">// Summarize the &#39;lexp&#39; variable (life expectancy), capturing the mean</span>
-<span class="k">sum</span> lexp, detail
-<span class="k">local</span> meanlife = <span class="nf">r</span>(mean)
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="s2">&quot;Data&quot;</span><span class="p">,</span> <span class="s2">&quot;Inferences&quot;</span><span class="p">)])</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="s2">&quot;Code&quot;</span><span class="p">,</span> <span class="s2">&quot;Inferences&quot;</span><span class="p">)])</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="s2">&quot;Parameters&quot;</span><span class="p">,</span> <span class="s2">&quot;Inferences&quot;</span><span class="p">)])</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="s2">&quot;Inferences&quot;</span><span class="p">,</span> <span class="s2">&quot;Updates&quot;</span><span class="p">)])</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="s2">&quot;Updates&quot;</span><span class="p">,</span> <span class="s2">&quot;Transparency&quot;</span><span class="p">)])</span>
 
-<span class="c1">// Create a scatter plot of life expectancy by the encoded &#39;Country&#39; variable, with customizations</span>
-<span class="k">twoway</span> (scatter lexp Country, mlabel(country)) <span class="cs">///</span>
-       (line lexp Country,<span class="k"> sort</span>) <span class="cs">///</span>
-       , legend(off) ytitle(<span class="s">&quot;Life Expectancy&quot;</span>) xtitle(<span class="s">&quot;Countries&quot;</span>) <span class="cs">///</span>
-       yline(<span class="nv">`meanlife&#39;</span>) text(<span class="nv">`meanlife&#39;</span> <span class="nv">`= _N/2&#39;</span> <span class="s">&quot;Mean: </span><span class="nv">`meanlife&#39;</span><span class="s">&quot;</span>, place(east) color(black))
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;pos&#39;</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Inferences&quot;</span><span class="p">:</span> <span class="s2">&quot;Inferences&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Data&quot;</span><span class="p">:</span> <span class="s2">&quot;Data&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Code&quot;</span><span class="p">:</span> <span class="s2">&quot;Code&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Parameters&quot;</span><span class="p">:</span> <span class="s2">&quot;Parameters&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Updates&quot;</span><span class="p">:</span> <span class="s2">&quot;Updates&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Transparency&quot;</span><span class="p">:</span> <span class="s2">&quot;Transparency&quot;</span><span class="p">}</span>  <span class="c1"># Added label for &quot;NDI&quot; node in the labels dictionary</span>
 
-<span class="c1">// Export the graph as a PNG file, replacing any existing file with the same name</span>
-<span class="k">graph</span> export lexp_bycountry<span class="m">.</span>png,<span class="k"> replace</span>
+<span class="c1"># Update color for the &quot;Scenarios&quot; node</span>
+<span class="n">node_colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="s2">&quot;lavender&quot;</span><span class="p">,</span> <span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="s2">&quot;lightblue&quot;</span><span class="p">]</span>
+<span class="c1"># node_colors = [&quot;lightblue&quot;,&quot;lavender&quot;, &quot;lavender&quot;, &quot;lightgreen&quot;, &quot;lightpink&quot;, &quot;lightpink&quot;]</span>
+<span class="c1"># Suppress the deprecation warning</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">node_colors</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span> <span class="c1"># , font_weight=&#39;bold&#39;</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">5000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>This script includes:</p>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/bd7156ffdc732b3095dad1da740b099ae999597c4cb8154a81a988a589e43517.png" src="_images/bd7156ffdc732b3095dad1da740b099ae999597c4cb8154a81a988a589e43517.png" />
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="github-repo-for-collaboration">
+<h1>6. GitHub Repo for Collaboration<a class="headerlink" href="#github-repo-for-collaboration" title="Permalink to this heading">#</a></h1>
+<p>Let’s apply the tools we’ve acquired over the last five weeks to build a repository (<code class="docutils literal notranslate"><span class="pre">username/project</span></code>) that you’ll use for the next three weeks. Don’t try to be perfect while you work on this: just set up the project with a sort of roadmap, that perhaps others can help fulfil – if you’re too busy :)</p>
+<p>Your tasks are as follows:</p>
+<ol class="arabic simple">
+<li><p>Create a public GitHub repo called <code class="docutils literal notranslate"><span class="pre">project</span></code>. You’ll work individually, but are strongly encouraged to ask peers via <a class="reference external" href="https://github.com/jhufena/discussions/discussions">GitHub Discussions</a> for help when stuck</p></li>
+<li><p>Use publically available data to assess whether “self-reported health” is an important marker of health</p></li>
+<li><p>Document your repo using <a class="reference external" href="https://github.com/meta-llama/llama3">README.md</a> and any other necessary files that allow a visitor or collaborator to your website or repo to fully access the data you used, your analytic code, the key parameters you generated, the inferences you made, and your plans for updating all the above over time. In a one word, be <strong>transparent</strong> and embrace the ethos of <a class="reference external" href="https://publichealth.jhu.edu/the-r3-center-for-innovation-in-science-education">Open Science</a>:</p>
 <ul class="simple">
-<li><p>A summarization of <code class="docutils literal notranslate"><span class="pre">lexp</span></code> to calculate the mean life expectancy, which is then stored in a local macro for use in annotations.</p></li>
-<li><p>A scatter plot of life expectancy by country, with an additional line indicating the mean life expectancy across the dataset.</p></li>
-<li><p>Text annotation on the graph to display the mean life expectancy, positioned dynamically.</p></li>
-<li><p>An export command to save the graph as a PNG file.</p></li>
+<li><p>Rigor</p></li>
+<li><p>Reproducibility</p></li>
+<li><p>Responsibility</p></li>
 </ul>
-<p>This version refines the plotting to make the representation of data clearer and more informative, including dynamic placement for the mean life expectancy annotation. Feel free to adjust the specifics of the plotting commands (<code class="docutils literal notranslate"><span class="pre">mlabel</span></code>, <code class="docutils literal notranslate"><span class="pre">text</span></code>, <code class="docutils literal notranslate"><span class="pre">place</span></code>, etc.) to better suit your preferences and the characteristics of your dataset.</p>
-<p><img alt="" src="_images/lexp_bycountry_review.png" /></p>
-<p>How may we edit our code to make this graph more meaningful?</p>
-</Details></section>
+</li>
+</ol>
+<p>Not to worry, we’ll use class and lab to go through as many of the practical steps as possible. Afterall, we’re all in this together! I’ll create supplementary videos if anything remains unclear.</p>
+<section id="data">
+<h2>6.1 Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<section id="survey">
+<h3>Survey<a class="headerlink" href="#survey" title="Permalink to this heading">#</a></h3>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>import sasxport5 <span class="s">&quot;https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/DEMO.XPT&quot;</span>,<span class="k"> clear</span>
+</pre></div>
+</div>
+</section>
+<section id="mortality">
+<h3>Mortality<a class="headerlink" href="#mortality" title="Permalink to this heading">#</a></h3>
+<p>Think of your survey data above as “baseline” data. We’ll merge those data with “followup” data to ascertain mortality a 20-year period.</p>
+<p>You can find the linkage data if you follow <a class="reference external" href="https://jhustata.github.io/project/">this</a> website:</p>
+<ul class="simple">
+<li><p>Healthy Statistics</p></li>
+<li><p>NCHS</p></li>
+<li><p>Datalinkage</p></li>
+<li><p>Linked mortality</p></li>
+</ul>
+</section>
+</section>
+<section id="code">
+<h2>6.2 Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
+<section id="edit">
+<h3>Edit<a class="headerlink" href="#edit" title="Permalink to this heading">#</a></h3>
+<p>Download the <code class="docutils literal notranslate"><span class="pre">.do</span></code> file provided. Edit it for your use and upload it to the <code class="docutils literal notranslate"><span class="pre">project</span></code> repo. Rename it <code class="docutils literal notranslate"><span class="pre">followup.do</span></code>. Make a meaningful commit statement such as “DEMO.XPT linkage .do file”</p>
+</section>
+<section id="merge">
+<h3>Merge<a class="headerlink" href="#merge" title="Permalink to this heading">#</a></h3>
+<p>Write code to merge <code class="docutils literal notranslate"><span class="pre">DEMO.XPT</span></code> with the mortality linkage data from <code class="docutils literal notranslate"><span class="pre">.do</span></code></p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">global</span> repo <span class="s">&quot;https://github.com/jhustata/intermediate/raw/main/&quot;</span>
+<span class="k">do</span> <span class="vg">${repo}</span>followup<span class="m">.</span>do
+<span class="k">save</span> followup,<span class="k"> replace</span> 
+import sasxport5 <span class="s">&quot;https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/DEMO.XPT&quot;</span>,<span class="k"> clear</span>
+<span class="k">merge</span> seqn <span class="m">1</span>:<span class="m">1</span> using followup
+</pre></div>
+</div>
+</section>
+</section>
+<section id="parameters">
+<h2>6.3 Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">#</a></h2>
+<section id="survival">
+<h3>Survival<a class="headerlink" href="#survival" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>This will be the key item for <a class="reference external" href="https://jhustata.github.io/intermediate/chapter7.html">week 7</a></p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="inferences">
+<h2>6.4 Inferences<a class="headerlink" href="#inferences" title="Permalink to this heading">#</a></h2>
+<section id="ci-p-values">
+<h3>95%CI, p-values<a class="headerlink" href="#ci-p-values" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="conclusions">
+<h3>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="updates">
+<h2>6.5 Updates<a class="headerlink" href="#updates" title="Permalink to this heading">#</a></h2>
+<section id="plans">
+<h3>Plans<a class="headerlink" href="#plans" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="methods">
+<h3>Methods<a class="headerlink" href="#methods" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="transparency">
+<h2>6.6 Transparency<a class="headerlink" href="#transparency" title="Permalink to this heading">#</a></h2>
+<section id="documentation">
+<h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading">#</a></h3>
+<p>Exemplars abound:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://github.com/apple/swift">Apple</a></p></li>
+<li><p><a class="reference external" href="https://github.com/google/googletest">Google</a></p></li>
+<li><p><a class="reference external" href="https://github.com/meta-llama/llama3">Meta</a></p></li>
+<li><p><a class="reference external" href="https://github.com/jhustata/project">Stata II</a></p></li>
+<li><p>Classmates</p></li>
+</ol>
+</section>
+<section id="reproducibility">
+<h3>Reproducibility<a class="headerlink" href="#reproducibility" title="Permalink to this heading">#</a></h3>
+<p>The hallmark of reproducibility is simplicity. Make a visitor or collaborator feel grateful for “all the work” you put in, since they need only tweek a little code here and there to meet your visions for the next update!</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -584,9 +626,36 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-of-repo">6.1 Structure of Repo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">6.2 Lab</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">6.3 Homework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">6.1 Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#survey">Survey</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mortality">Mortality</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">6.2 Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edit">Edit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge">Merge</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">6.3 Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#survival">Survival</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferences">6.4 Inferences</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ci-p-values">95%CI, p-values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updates">6.5 Updates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plans">Plans</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transparency">6.6 Transparency</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducibility">Reproducibility</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
