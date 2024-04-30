@@ -470,7 +470,7 @@ document.write(`
 </ul>
 </li>
 </ol>
-<p>Not to worry, we’ll use class and lab to go through as many of the practical steps as possible. Afterall, we’re all in this together! I’ll create supplementary videos if anything remains unclear.</p>
+<p>Not to worry, we’ll use class and lab to go through as many of the practical steps as possible. Afterall, <a class="reference external" href="https://jhufena.github.io/home/intro.html">we’re all in this together</a>! I’ll create supplementary videos if anything remains unclear.</p>
 <section id="data">
 <h2>6.1 Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
 <section id="survey">
@@ -504,7 +504,8 @@ document.write(`
 <span class="k">do</span> <span class="vg">${repo}</span>followup<span class="m">.</span>do
 <span class="k">save</span> followup,<span class="k"> replace</span> 
 import sasxport5 <span class="s">&quot;https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/DEMO.XPT&quot;</span>,<span class="k"> clear</span>
-<span class="k">merge</span> seqn <span class="m">1</span>:<span class="m">1</span> using followup
+<span class="k">merge</span> <span class="m">1</span>:<span class="m">1</span> seqn using followup
+<span class="k">lookfor</span> follow
 </pre></div>
 </div>
 </section>
@@ -515,7 +516,21 @@ import sasxport5 <span class="s">&quot;https://wwwn.cdc.gov/Nchs/Nhanes/1999-200
 <h3>Survival<a class="headerlink" href="#survival" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>This will be the key item for <a class="reference external" href="https://jhustata.github.io/intermediate/chapter7.html">week 7</a></p></li>
+<li><p>Self-reported health is described <a class="reference external" href="https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/HUQ.htm#HUQ010">here</a></p></li>
 </ul>
+<blockquote>
+<div><p>I have some general questions about your health. Would you say your health in general is:</p>
+<ul class="simple">
+<li><p>Excellent</p></li>
+<li><p>Very good</p></li>
+<li><p>Good</p></li>
+<li><p>Fair</p></li>
+<li><p>Poor?</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>import sasxport5 <span class="s">&quot;https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/HUQ.XPT&quot;</span>,<span class="k"> clear</span> 
+</pre></div>
+</div>
 </section>
 <section id="id1">
 <h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
