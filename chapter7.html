@@ -61,8 +61,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapter7';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -363,6 +361,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">7.1 Parameters</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-parametric">Non-parametric</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-parametric">Semi-parametric</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferences">7.2 Inferences</a></li>
@@ -397,103 +396,103 @@ document.write(`
 <h3>Non-parametric<a class="headerlink" href="#non-parametric" title="Permalink to this heading">#</a></h3>
 <Details>
    <Summary>Click to view the Stata code</Summary>
-```stata
-cls 
-//1. data
-global repo "https://github.com/jhustata/project/raw/main/"
-global nhanes "https://wwwn.cdc.gov/Nchs/Nhanes/"
-<p>//2. code
-do <span class="math notranslate nohighlight">\({repo}followup.do
-save followup, replace 
-import sasxport5 &quot;\)</span>{nhanes}1999-2000/DEMO.XPT”, clear
-merge 1:1 seqn using followup, nogen
-save survey_followup, replace</p>
-<p>//3. parameters
-import sasxport5 “<span class="math notranslate nohighlight">\({nhanes}1999-2000/HUQ.XPT&quot;, clear
-tab huq010 
-merge 1:1 seqn using survey_followup, nogen keep(matched)
-rm followup.dta
-rm survey_followup.dta
-g years=permth_int/12
-stset years, fail(mortstat)
-replace huq010=. if huq010==9
-label define huq 1 &quot;Excellent&quot; 2 &quot;Very Good&quot; 3 &quot;Good&quot; 4 &quot;Fair&quot; 5 &quot;Poor&quot;
-label values huq010 huq 
-levelsof huq010, local(numlevels)
-local i=1
-foreach l of numlist `numlevels' {
-    local vallab: value label huq010 
-	local catlab: lab `vallab' `l'
-	global legend`i' = &quot;`catlab'&quot;
-	local i= `i' + 1
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>cls 
+<span class="c1">//1. data</span>
+<span class="k">global</span> repo <span class="s">&quot;https://github.com/jhustata/project/raw/main/&quot;</span>
+<span class="k">global</span> nhanes <span class="s">&quot;https://wwwn.cdc.gov/Nchs/Nhanes/&quot;</span>
+
+<span class="c1">//2. code</span>
+<span class="k">do</span> <span class="vg">${repo}</span>followup<span class="m">.</span>do
+<span class="k">save</span> followup,<span class="k"> replace</span> 
+import sasxport5 <span class="s">&quot;</span><span class="vg">${nhanes}</span><span class="s">1999-2000/DEMO.XPT&quot;</span>,<span class="k"> clear</span>
+<span class="k">merge</span> <span class="m">1</span>:<span class="m">1</span> seqn using followup, nogen
+<span class="k">save</span> survey_followup,<span class="k"> replace</span> 
+
+<span class="c1">//3. parameters</span>
+import sasxport5 <span class="s">&quot;</span><span class="vg">${nhanes}</span><span class="s">1999-2000/HUQ.XPT&quot;</span>,<span class="k"> clear</span>
+<span class="k">tab</span> huq010 
+<span class="k">merge</span> <span class="m">1</span>:<span class="m">1</span> seqn using survey_followup, nogen<span class="k"> keep</span>(matched)
+<span class="k">rm</span> followup<span class="m">.</span>dta
+<span class="k">rm</span> survey_followup<span class="m">.</span>dta
+<span class="k">g</span> years=permth_int<span class="o">/</span><span class="m">12</span>
+<span class="k">stset</span> years, fail(mortstat)
+<span class="k">replace</span> huq010=.<span class="k"> if</span> huq010<span class="o">==</span><span class="m">9</span>
+<span class="k">label</span> define huq <span class="m">1</span> <span class="s">&quot;Excellent&quot;</span> <span class="m">2</span> <span class="s">&quot;Very Good&quot;</span> <span class="m">3</span> <span class="s">&quot;Good&quot;</span> <span class="m">4</span> <span class="s">&quot;Fair&quot;</span> <span class="m">5</span> <span class="s">&quot;Poor&quot;</span>
+<span class="k">label</span> values huq010 huq 
+<span class="k">levelsof</span> huq010,<span class="k"> local</span>(numlevels)
+<span class="k">local</span> i=<span class="m">1</span>
+<span class="k">foreach l</span> of<span class="k"> numlist</span> <span class="nv">`numlevels&#39;</span> {
+<span class="k">    local</span> vallab: value<span class="k"> label</span> huq010 
+<span class="k">	local</span> catlab:<span class="k"> lab</span> <span class="nv">`vallab&#39;</span> <span class="nv">`l&#39;</span>
+<span class="k">	global</span> legend<span class="nv">`i&#39;</span> = <span class="s">&quot;</span><span class="nv">`catlab&#39;</span><span class="s">&quot;</span>
+<span class="k">	local</span> i= <span class="nv">`i&#39;</span> <span class="o">+</span> <span class="m">1</span>
 }
-sts graph, ///
-    by(huq010) ///
-	fail ///
-	per(100) ///
-	ylab(0(20)80 , ///
-	    format(%2.0f) ///
-	) ///
-	xlab(0(5)20) ///
-	tmax(20) ///
-	ti(&quot;Self-Reported Health and Mortality&quot;) ///
-	legend( ///
-	    order(5 4 3 2 1) ///
-		lab(1 &quot;\)</span>legend1”) ///
-lab(2 “<span class="math notranslate nohighlight">\(legend2&quot;) ///
-		lab(3 &quot;\)</span>legend3”) ///
-lab(4 “<span class="math notranslate nohighlight">\(legend4&quot;) ///
-		lab(5 &quot;\)</span>legend5”) ///
-ring(0) pos(11) ///
-)
-graph export nonpara.png, replace</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-&lt;/Details&gt;
-
-![](nonpara.png)
-
-#### Semi-parametric 
-
-&lt;Details&gt;
-   &lt;Summary&gt;Click to view the Stata code&lt;/Summary&gt;
-```stata
-/* -- earlier code --*/
-stcox i.huq010, basesurv(s0)
-matrix define mat = r(table)
-matrix list mat 
-matrix mat = mat&#39;
-svmat mat
-preserve 
-keep mat*
-drop if missing(mat1)
-rename (mat1 mat2 mat3 mat4 mat5 mat6 mat7 mat8 mat9)(b se z p ll ul df crit eform)
-g x=_n
-replace b=log(b)
-replace ll=log(ll)
-replace ul=log(ul)
-twoway (scatter b x) || ///
-       (rcap ll ul x, ///
-	       yline(0, lcol(lime)) ///
-		   ylab( ///
-		       -2.08 &quot;0.125&quot; ///
-			   -1.39 &quot;0.25&quot; ///
-			   -.69 &quot;0.5&quot; ///
-			     0 &quot;1&quot;  ///
-			   .69 &quot;2&quot; ///
-			   1.39 &quot;4&quot; ///
-			   2.08 &quot;8&quot; ///
-			   2.78 &quot;16&quot;) ///
-		   legend(off)  ///
-		xlab( ///
-           1 &quot;$legend1&quot; ///
-		   2 &quot;$legend2&quot; ///
-		   3 &quot;$legend3&quot; ///
-		   4 &quot;$legend4&quot; ///
-		   5 &quot;$legend5&quot;) ///
-	   xti(&quot;Self-Reported Health&quot;) ///
+<span class="k">sts graph</span>, <span class="cs">///</span>
+<span class="k">    by</span>(huq010) <span class="cs">///</span>
+	fail <span class="cs">///</span>
+	per(<span class="m">100</span>) <span class="cs">///</span>
+	ylab(<span class="m">0</span>(<span class="m">20</span>)<span class="m">80</span> , <span class="cs">///</span>
+<span class="k">	    format</span>(<span class="nx">%2.0f</span>) <span class="cs">///</span>
+	) <span class="cs">///</span>
+	xlab(<span class="m">0</span>(<span class="m">5</span>)<span class="m">20</span>) <span class="cs">///</span>
+	tmax(<span class="m">20</span>) <span class="cs">///</span>
+	ti(<span class="s">&quot;Self-Reported Health and Mortality&quot;</span>) <span class="cs">///</span>
+	legend( <span class="cs">///</span>
+<span class="k">	    order</span>(<span class="m">5</span> <span class="m">4</span> <span class="m">3</span> <span class="m">2</span> <span class="m">1</span>) <span class="cs">///</span>
+<span class="k">		lab</span>(<span class="m">1</span> <span class="s">&quot;</span><span class="vg">$legend1</span><span class="s">&quot;</span>) <span class="cs">///</span>
+<span class="k">		lab</span>(<span class="m">2</span> <span class="s">&quot;</span><span class="vg">$legend2</span><span class="s">&quot;</span>) <span class="cs">///</span>
+<span class="k">		lab</span>(<span class="m">3</span> <span class="s">&quot;</span><span class="vg">$legend3</span><span class="s">&quot;</span>) <span class="cs">///</span>
+<span class="k">		lab</span>(<span class="m">4</span> <span class="s">&quot;</span><span class="vg">$legend4</span><span class="s">&quot;</span>) <span class="cs">///</span>
+<span class="k">		lab</span>(<span class="m">5</span> <span class="s">&quot;</span><span class="vg">$legend5</span><span class="s">&quot;</span>) <span class="cs">///</span>
+		ring(<span class="m">0</span>) pos(<span class="m">11</span>) <span class="cs">///</span>
+	)
+<span class="k">graph</span> export nonpara<span class="m">.</span>png,<span class="k"> replace</span> 
+</pre></div>
+</div>
+</Details>
+<p><img alt="" src="_images/nonpara.png" /></p>
+</section>
+<section id="semi-parametric">
+<h3>Semi-parametric<a class="headerlink" href="#semi-parametric" title="Permalink to this heading">#</a></h3>
+<Details>
+   <Summary>Click to view the Stata code</Summary>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="cm">/* -- earlier code --*/</span>
+<span class="k">stcox</span> i<span class="m">.</span>huq010, basesurv(s0)
+<span class="k">matrix</span> define<span class="k"> mat</span> = <span class="nf">r</span>(table)
+<span class="k">matrix list mat</span> 
+<span class="k">matrix mat</span> =<span class="k"> mat</span>&#39;
+<span class="k">svmat mat</span>
+<span class="k">preserve</span> 
+<span class="k">keep mat</span><span class="o">*</span>
+<span class="k">drop if</span> <span class="nf">missing</span>(mat1)
+<span class="k">rename</span> (mat1 mat2 mat3 mat4 mat5 mat6 mat7 mat8 mat9)(b<span class="k"> se</span> z p ll ul df crit eform)
+<span class="k">g</span> x=_n
+<span class="k">replace</span> b=<span class="nf">log</span>(b)
+<span class="k">replace</span> ll=<span class="nf">log</span>(ll)
+<span class="k">replace</span> ul=<span class="nf">log</span>(ul)
+<span class="k">twoway</span> (scatter b x) || <span class="cs">///</span>
+       (rcap ll ul x, <span class="cs">///</span>
+	       yline(<span class="m">0</span>, lcol(lime)) <span class="cs">///</span>
+		   ylab( <span class="cs">///</span>
+		       <span class="o">-</span><span class="m">2.08</span> <span class="s">&quot;0.125&quot;</span> <span class="cs">///</span>
+			   <span class="o">-</span><span class="m">1.39</span> <span class="s">&quot;0.25&quot;</span> <span class="cs">///</span>
+			   <span class="o">-</span>.<span class="m">69</span> <span class="s">&quot;0.5&quot;</span> <span class="cs">///</span>
+			     <span class="m">0</span> <span class="s">&quot;1&quot;</span>  <span class="cs">///</span>
+			   .<span class="m">69</span> <span class="s">&quot;2&quot;</span> <span class="cs">///</span>
+			   <span class="m">1.39</span> <span class="s">&quot;4&quot;</span> <span class="cs">///</span>
+			   <span class="m">2.08</span> <span class="s">&quot;8&quot;</span> <span class="cs">///</span>
+			   <span class="m">2.78</span> <span class="s">&quot;16&quot;</span>) <span class="cs">///</span>
+		   legend(off)  <span class="cs">///</span>
+		xlab( <span class="cs">///</span>
+           <span class="m">1</span> <span class="s">&quot;</span><span class="vg">$legend1</span><span class="s">&quot;</span> <span class="cs">///</span>
+		   <span class="m">2</span> <span class="s">&quot;</span><span class="vg">$legend2</span><span class="s">&quot;</span> <span class="cs">///</span>
+		   <span class="m">3</span> <span class="s">&quot;</span><span class="vg">$legend3</span><span class="s">&quot;</span> <span class="cs">///</span>
+		   <span class="m">4</span> <span class="s">&quot;</span><span class="vg">$legend4</span><span class="s">&quot;</span> <span class="cs">///</span>
+		   <span class="m">5</span> <span class="s">&quot;</span><span class="vg">$legend5</span><span class="s">&quot;</span>) <span class="cs">///</span>
+	   xti(<span class="s">&quot;Self-Reported Health&quot;</span>) <span class="cs">///</span>
 	   	   ) 
-graph export semipara_unadj.png, replace 
-restore 
+<span class="k">graph</span> export semipara_unadj<span class="m">.</span>png,<span class="k"> replace</span> 
+<span class="k">restore</span> 
 </pre></div>
 </div>
 </Details>
@@ -681,6 +680,7 @@ selfassess <span class="vg">$varlist</span>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">7.1 Parameters</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-parametric">Non-parametric</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-parametric">Semi-parametric</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferences">7.2 Inferences</a></li>
