@@ -61,6 +61,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapter7';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -364,7 +366,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-parametric">Semi-parametric</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferences">7.2 Inferences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferences">7.2 Inferences</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#h-a-text-self-reported-health-sim-age"><span class="math notranslate nohighlight">\(H_a: \text{Self-reported health} \sim Age\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjust-for-age-and-other-demographics">Adjust for age and other demographics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updates">7.3 Updates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transparency">7.4 Transparency</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-parameters">7.5 Extracting Parameters</a><ul class="nav section-nav flex-column">
@@ -427,6 +433,7 @@ import sasxport5 <span class="s">&quot;</span><span class="vg">${nhanes}</span><
 <span class="k">	global</span> legend<span class="nv">`i&#39;</span> = <span class="s">&quot;</span><span class="nv">`catlab&#39;</span><span class="s">&quot;</span>
 <span class="k">	local</span> i= <span class="nv">`i&#39;</span> <span class="o">+</span> <span class="m">1</span>
 }
+<span class="k">save</span> week7,<span class="k"> replace</span> 
 <span class="k">sts graph</span>, <span class="cs">///</span>
 <span class="k">    by</span>(huq010) <span class="cs">///</span>
 	fail <span class="cs">///</span>
@@ -492,6 +499,7 @@ import sasxport5 <span class="s">&quot;</span><span class="vg">${nhanes}</span><
 	   xti(<span class="s">&quot;Self-Reported Health&quot;</span>) <span class="cs">///</span>
 	   	   ) 
 <span class="k">graph</span> export semipara_unadj<span class="m">.</span>png,<span class="k"> replace</span> 
+<span class="k">graph save</span> semipara_unadj<span class="m">.</span>gph,<span class="k"> replace</span> 
 <span class="k">restore</span> 
 </pre></div>
 </div>
@@ -504,7 +512,7 @@ import sasxport5 <span class="s">&quot;</span><span class="vg">${nhanes}</span><
 <Details>
    <Summary>Click to view the Stata code</Summary>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">hist</span> ridageyr 
-export agedistribution<span class="m">.</span>png,<span class="k"> replace</span> 
+<span class="k">graph</span> export nonpara<span class="m">.</span>png,<span class="k"> replace</span> 
 <span class="k">replace</span> ridageyr=ridageyr<span class="o">/</span><span class="m">10</span>
 <span class="k">stcox</span> i<span class="m">.</span>huq010 ridageyr riagendr, basesurv(s0)
 <span class="k">return list</span>
@@ -543,9 +551,17 @@ export agedistribution<span class="m">.</span>png,<span class="k"> replace</span
 	   xti(<span class="s">&quot;Self-Reported Health&quot;</span>) <span class="cs">///</span>
 	   	   ) 
 <span class="k">graph</span> export semipara_adj<span class="m">.</span>png,<span class="k"> replace</span> 
+<span class="k">graph save</span> semipara_adj<span class="m">.</span>gph,<span class="k"> replace</span> 
 </pre></div>
 </div>
 </Details>
+<section id="h-a-text-self-reported-health-sim-age">
+<h3><span class="math notranslate nohighlight">\(H_a: \text{Self-reported health} \sim Age\)</span><a class="headerlink" href="#h-a-text-self-reported-health-sim-age" title="Permalink to this heading">#</a></h3>
+<p><img alt="" src="agedistribution.png" /></p>
+</section>
+</section>
+<section id="adjust-for-age-and-other-demographics">
+<h2>Adjust for age and other demographics<a class="headerlink" href="#adjust-for-age-and-other-demographics" title="Permalink to this heading">#</a></h2>
 <p><img alt="" src="_images/semipara_adj.png" /></p>
 </section>
 <section id="updates">
@@ -560,6 +576,12 @@ export agedistribution<span class="m">.</span>png,<span class="k"> replace</span
 <li><p>So how about increasing your “freedoms” by having a larger population size? Could you write a script that allows any “visitor” to your website or repo to test this hypothesis on a larger study population, taking into account additional survey years?</p></li>
 <li><p>This latter issue is the definitive update for <strong>week 8</strong> of the class</p></li>
 </ul>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">graph</span> combine semipara_unadj<span class="m">.</span>gph semipara_adj<span class="m">.</span>gph, <span class="cs">///</span>
+    ycommon ti(<span class="s">&quot;Hazard Ratio, 95%CI&quot;</span>) 
+<span class="k">graph</span> export unadj_adj<span class="m">.</span>png,<span class="k"> replace</span> 
+</pre></div>
+</div>
+<p><img alt="" src="unadj_adj.png" /></p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//these variable names don&#39;t exist in the dataset, this is a mere demo</span>
 <span class="k">di</span> <span class="s">&quot;What do you wish to adjust for in this analysis?&quot;</span> _request(<span class="vg">$varlist</span>)
 <span class="k">capture program drop</span> selfassess
@@ -588,11 +610,78 @@ selfassess <span class="vg">$varlist</span>
 <p>Virtually all scientific inferences from quantitive analyses can be made as long as you have the <code class="docutils literal notranslate"><span class="pre">beta</span></code> coefficients and the <code class="docutils literal notranslate"><span class="pre">variance-covariance</span></code> matrix following a multivariable regression.</p>
 <p>Because these parameters have zero discolure risk, you are encouraged to have them made available to the public in your public GitHub repo</p>
 <p>You’d do the public an extra favor if you laid out a generalizable program that allows anyone to add new parameters (i.e., variables and interactions amongst them) to the model with little extra effort</p>
+<p>Let’s restore the analytic dataset we’d created. If this dataset has disclosure risks, the we should extract “all” the relevant parameters for statistical inference, make them publically available, and display our findings</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>cls 
+<span class="k">use</span> week7,<span class="k"> clear</span>
+</pre></div>
+</div>
 <section id="e-b">
 <h3>e(b)<a class="headerlink" href="#e-b" title="Permalink to this heading">#</a></h3>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>cls 
+<span class="k">use</span> week7,<span class="k"> clear</span>
+<span class="k">replace</span> riagendr=riagendr<span class="m">-1</span>
+<span class="k">stcox</span> i<span class="m">.</span>huq010 ridageyr riagendr, basesurv(s0)
+<span class="k">keep</span> s0 _t _t0 _st _d 
+<span class="k">save</span> s0,<span class="k"> replace</span> 
+<span class="k">ereturn list</span> 
+<span class="k">matrix</span> beta =<span class="k"> e</span>(b)
+<span class="k">matrix</span> vcov =<span class="k"> e</span>(V)
+<span class="k">matrix</span> SV = ( <span class="cs">///</span>
+    <span class="m">0</span>, <span class="cs">///</span>
+	<span class="m">1</span>, <span class="cs">///</span>
+	<span class="m">0</span>, <span class="cs">///</span>
+	<span class="m">0</span>, <span class="cs">///</span>
+	<span class="m">0</span>, <span class="cs">///</span>
+	<span class="m">40</span>, <span class="cs">///</span>
+	<span class="m">1</span> <span class="cs">///</span>
+)
+<span class="k">matrix</span> SV_ref = ( <span class="cs">///</span>
+    <span class="m">0</span>, <span class="cs">///</span>
+	<span class="m">1</span>, <span class="cs">///</span>
+	<span class="m">0</span>, <span class="cs">///</span>
+	<span class="m">0</span>, <span class="cs">///</span>
+	<span class="m">0</span>, <span class="cs">///</span>
+	<span class="m">60</span>, <span class="cs">///</span>
+	<span class="m">1</span> <span class="cs">///</span>
+)
+<span class="c1">//absolute risk</span>
+<span class="k">matrix</span> risk_score = SV <span class="o">*</span> beta&#39;
+<span class="k">matrix list</span> risk_score
+<span class="k">di</span> <span class="nf">exp</span>(risk_score[<span class="m">1</span>,<span class="m">1</span>])
+<span class="k">matrix</span> var_prediction = SV <span class="o">*</span> vcov <span class="o">*</span> vcov&#39;
+<span class="k">matrix</span> se_prediction = <span class="nf">sqrt</span>(var_prediction[<span class="m">1</span>,<span class="m">1</span>])
+
+<span class="k">matrix</span> risk_score_ref = SV_ref <span class="o">*</span> beta&#39;
+<span class="k">matrix list</span> risk_score_ref
+<span class="k">di</span> <span class="nf">exp</span>(risk_score_ref[<span class="m">1</span>,<span class="m">1</span>])
+<span class="k">matrix</span> var_prediction_ref = SV_ref <span class="o">*</span> vcov <span class="o">*</span> vcov&#39;
+<span class="k">matrix</span> se_prediction_ref = <span class="nf">sqrt</span>(var_prediction_ref[<span class="m">1</span>,<span class="m">1</span>])
+
+<span class="k">local</span> hr = <span class="nf">exp</span>(risk_score_ref[<span class="m">1</span>,<span class="m">1</span>])<span class="o">/</span><span class="nf">exp</span>(risk_score[<span class="m">1</span>,<span class="m">1</span>])
+<span class="k">di</span> <span class="nv">`hr&#39;</span>
+
+<span class="c1">//di &quot;We conclude that `exp(risk_score[1,1])&#39;&quot;</span>
+
+<span class="c1">//</span>
+<span class="k">g</span> f0 = (<span class="m">1</span> <span class="o">-</span> s0) <span class="o">*</span> <span class="m">100</span> 
+<span class="k">g</span> f1_ = f0 <span class="o">*</span> <span class="nf">exp</span>(risk_score[<span class="m">1</span>,<span class="m">1</span>])
+<span class="k">line</span> f1 _t , <span class="cs">///  </span>
+<span class="k">    sort</span> connect(step step) <span class="cs">///</span>
+	legend(ring(<span class="m">0</span>)) <span class="cs">///</span>
+    ylab(<span class="m">0</span>(<span class="m">5</span>)<span class="m">20</span>) xlab(<span class="m">0</span>(<span class="m">5</span>)<span class="m">20</span>) <span class="cs">///</span>
+    yti(<span class="s">&quot;&quot;</span>) <span class="cs">///</span>
+    ti(<span class="s">&quot;Scenario, %&quot;</span>, pos(<span class="m">11</span>)) <span class="cs">///</span>
+    xti(<span class="s">&quot;Years&quot;</span>) <span class="cs">///</span>
+<span class="k">    note</span>(<span class="s">&quot;40yo male who self-describes as being in good health&quot;</span> <span class="cs">///</span>
+                  ,size(<span class="m">1.5</span>) <span class="cs">///</span>
+		)
+<span class="k">graph</span> export scenario<span class="m">.</span>png,<span class="k"> replace</span> 
+</pre></div>
+</div>
 </section>
 <section id="e-v">
 <h3>e(V)<a class="headerlink" href="#e-v" title="Permalink to this heading">#</a></h3>
+<p>Estimating the 95%CI interval for specific scenarios is beyond the scope of this class and will be left to Stata III (Advanced)</p>
 </section>
 </section>
 <section id="lab">
@@ -683,7 +772,11 @@ selfassess <span class="vg">$varlist</span>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-parametric">Semi-parametric</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferences">7.2 Inferences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferences">7.2 Inferences</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#h-a-text-self-reported-health-sim-age"><span class="math notranslate nohighlight">\(H_a: \text{Self-reported health} \sim Age\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjust-for-age-and-other-demographics">Adjust for age and other demographics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updates">7.3 Updates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transparency">7.4 Transparency</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-parameters">7.5 Extracting Parameters</a><ul class="nav section-nav flex-column">
