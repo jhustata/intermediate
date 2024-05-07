@@ -378,10 +378,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-v">e(V)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">7.6 Lab</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation-and-initial-analysis">Data Preparation and Initial Analysis</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">7.6 Lab</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">7.7 Homework</a></li>
 </ul>
             </nav>
@@ -689,17 +686,36 @@ selfassess <span class="vg">$varlist</span>
 </section>
 <section id="lab">
 <h2>7.6 Lab<a class="headerlink" href="#lab" title="Permalink to this heading">#</a></h2>
-<section id="data-preparation-and-initial-analysis">
-<h3>Data Preparation and Initial Analysis<a class="headerlink" href="#data-preparation-and-initial-analysis" title="Permalink to this heading">#</a></h3>
-<p><strong>Objective</strong>: Prepare the data from last weeks <strong>lab 6</strong>, analyse it using nonparametric (Kaplan-Meier), semiparametric (Cox Regression), and parametric (Weibull regression). Generate figures to showcase absolute risks (i.e., cumulative incidence) and relative risks (i.e., hazard ratios). You may adjust for <code class="docutils literal notranslate"><span class="pre">age</span></code>, <code class="docutils literal notranslate"><span class="pre">sex</span></code>, and <code class="docutils literal notranslate"><span class="pre">race</span></code>. But consider expanding the list of confounders so that you achieve unbiased inferences</p>
-<p>Provide documentation on your homepage and include necessary links to ease the work of visitor who is trying to navigate your website</p>
-</section>
+<p><strong>Objective</strong>: Prepare and analyze the data from last week’s lab (Lab 6) using nonparametric (Kaplan-Meier), semiparametric (Cox Regression), and parametric (Weibull regression) methods. Generate figures to illustrate absolute risks (cumulative incidence) and relative risks (hazard ratios). Consider adjusting for <code class="docutils literal notranslate"><span class="pre">age</span></code>, <code class="docutils literal notranslate"><span class="pre">sex</span></code>, <code class="docutils literal notranslate"><span class="pre">race</span></code>, and two additional confounders to achieve unbiased inferences. Merge your analytic dataset with additional datasets containing these variables, which you can find on the NHANES website. Consider how your experience with NHANES can inform improvements to your website.</p>
+<p>Examples of datasets you may merge with the master analytic dataset include:</p>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">// Questionnaire data: includes &quot;Doctor told you have diabetes&quot;</span>
+import sasxport5 <span class="s">&quot;</span><span class="vg">${nhanes}</span><span class="s">1999-2000//DIQ.XPT&quot;</span>,<span class="k"> clear</span>  
+
+<span class="c1">// Exam data: includes systolic and diastolic blood pressure</span>
+import sasxport5 <span class="s">&quot;</span><span class="vg">${nhanes}</span><span class="s">1999-2000/BPX.XPT&quot;</span>
+
+<span class="c1">// Lab data: includes serum creatinine </span>
+import sasxport5 <span class="s">&quot;</span><span class="vg">${nhanes}</span><span class="s">1999-2000/LAB16.XPT&quot;</span>,<span class="k"> clear</span>  
+</pre></div>
+</div>
+<p>Provide documentation on your homepage and include necessary links to help visitors navigate your website efficiently.</p>
 </section>
 <section id="homework">
 <h2>7.7 Homework<a class="headerlink" href="#homework" title="Permalink to this heading">#</a></h2>
-<p>Generate <code class="docutils literal notranslate"><span class="pre">.html</span></code> files of your Stata output using the <code class="docutils literal notranslate"><span class="pre">dyndoc</span></code> command and provide links to this Stata output on your website to showoff the richness of your output.</p>
-<p>Of course you can document your Stata code <strong>without</strong> the use of <code class="docutils literal notranslate"><span class="pre">dyndoc</span></code>, by simply building other <code class="docutils literal notranslate"><span class="pre">.md</span></code> files with annotation and notes intersperced with Stata code – just as this classbook has it.</p>
-<p>But for this Stata Programming II (Intermediate) class, you must produce a seperate website with output straight out of Stata. Please create a link to this <code class="docutils literal notranslate"><span class="pre">dyndoc</span></code> output on your homepage.</p>
+<p>Generate <code class="docutils literal notranslate"><span class="pre">.html</span></code> files of your Stata output using the <code class="docutils literal notranslate"><span class="pre">dyndoc</span></code> command and provide links to this Stata output on your website to showcase the richness of your output.</p>
+<p>You can also document your Stata code without using <code class="docutils literal notranslate"><span class="pre">dyndoc</span></code> by creating other <code class="docutils literal notranslate"><span class="pre">.md</span></code> files with annotations and notes interspersed with Stata code, similar to how this classbook is structured.</p>
+<p>For this Stata Programming II (Intermediate) class, however, you must create a separate website with output directly from Stata. Include a link to this <code class="docutils literal notranslate"><span class="pre">dyndoc</span></code> output on your homepage.</p>
+<p>To do this:</p>
+<ol class="arabic simple">
+<li><p>Upload output from running nonparametric and semiparametric estimates in Stata using the <code class="docutils literal notranslate"><span class="pre">dyndoc</span></code> command. Save the created file and additional output as <code class="docutils literal notranslate"><span class="pre">dyndoc.html</span></code>, then upload it to your project repo.</p></li>
+<li><p>Use markdown syntax within <code class="docutils literal notranslate"><span class="pre">index.md</span></code> to help visitors navigate to this output. You can use syntax like the example below:</p></li>
+</ol>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>click [<span class="nt">here</span>](<span class="na">dyndoc.html</span>) to view nonparametric and semiparametric risk estimates from Stata
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Keep your homepage (<code class="docutils literal notranslate"><span class="pre">index.md</span></code>) tidy and informative without being cluttered. Use hyperlinks like the one above to invite readers to explore specific aspects of your data, code, parameters, inferences, updates, or any other aspect of your project that enhances transparency and reproducibility.</p></li>
+</ol>
 </section>
 </section>
 
@@ -787,10 +803,7 @@ selfassess <span class="vg">$varlist</span>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-v">e(V)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">7.6 Lab</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation-and-initial-analysis">Data Preparation and Initial Analysis</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">7.6 Lab</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">7.7 Homework</a></li>
 </ul>
   </nav></div>
