@@ -359,8 +359,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-parametric">7.1 Non-parametric</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-parametric">7.2 Semi-parametric</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">7.1 Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-parametric">Non-parametric</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-parametric">Semi-parametric</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferences">7.2 Inferences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updates">7.3 Updates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transparency">7.4 Transparency</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-parameters">7.5 Extracting Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-b">e(b)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-v">e(V)</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">7.6 Lab</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation-and-initial-analysis">Data Preparation and Initial Analysis</a></li>
 </ul>
@@ -379,8 +390,10 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="survival-analysis-non-parametric-semi-parametric-parametric">
 <h1>7. Survival analysis: non-parametric, semi-parametric, parametric<a class="headerlink" href="#survival-analysis-non-parametric-semi-parametric-parametric" title="Permalink to this heading">#</a></h1>
+<section id="parameters">
+<h2>7.1 Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">#</a></h2>
 <section id="non-parametric">
-<h2>7.1 Non-parametric<a class="headerlink" href="#non-parametric" title="Permalink to this heading">#</a></h2>
+<h3>Non-parametric<a class="headerlink" href="#non-parametric" title="Permalink to this heading">#</a></h3>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>cls 
 <span class="c1">//1. data</span>
 <span class="k">global</span> repo <span class="s">&quot;https://github.com/jhustata/project/raw/main/&quot;</span>
@@ -431,11 +444,20 @@ import sasxport5 <span class="s">&quot;</span><span class="vg">${nhanes}</span><
 <span class="k">		lab</span>(<span class="m">5</span> <span class="s">&quot;</span><span class="vg">$legend5</span><span class="s">&quot;</span>) <span class="cs">///</span>
 		ring(<span class="m">0</span>) pos(<span class="m">11</span>) <span class="cs">///</span>
 	)
-<span class="k">stcox</span> i<span class="m">.</span>huq010
+<span class="k">graph</span> export nonpara<span class="m">.</span>png,<span class="k"> replace</span> 
+</pre></div>
+</div>
+<p><img alt="" src="_images/nonpara.png" /></p>
+</section>
+<section id="semi-parametric">
+<h3>Semi-parametric<a class="headerlink" href="#semi-parametric" title="Permalink to this heading">#</a></h3>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="cm">/* -- earlier code --*/</span>
+<span class="k">stcox</span> i<span class="m">.</span>huq010, basesurv(s0)
 <span class="k">matrix</span> define<span class="k"> mat</span> = <span class="nf">r</span>(table)
 <span class="k">matrix list mat</span> 
 <span class="k">matrix mat</span> =<span class="k"> mat</span>&#39;
 <span class="k">svmat mat</span>
+<span class="k">preserve</span> 
 <span class="k">keep mat</span><span class="o">*</span>
 <span class="k">drop if</span> <span class="nf">missing</span>(mat1)
 <span class="k">rename</span> (mat1 mat2 mat3 mat4 mat5 mat6 mat7 mat8 mat9)(b<span class="k"> se</span> z p ll ul df crit eform)
@@ -464,51 +486,101 @@ import sasxport5 <span class="s">&quot;</span><span class="vg">${nhanes}</span><
 		   <span class="m">5</span> <span class="s">&quot;</span><span class="vg">$legend5</span><span class="s">&quot;</span>) <span class="cs">///</span>
 	   xti(<span class="s">&quot;Self-Reported Health&quot;</span>) <span class="cs">///</span>
 	   	   ) 
- 
-
-<span class="c1">//4. inferences</span>
+<span class="k">graph</span> export semipara_unadj<span class="m">.</span>png,<span class="k"> replace</span> 
+<span class="k">restore</span> 
+</pre></div>
+</div>
+<p><img alt="" src="_images/semipara_unadj.png" /></p>
+</section>
+</section>
+<section id="inferences">
+<h2>7.2 Inferences<a class="headerlink" href="#inferences" title="Permalink to this heading">#</a></h2>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">hist</span> ridageyr 
+export agedistribution<span class="m">.</span>png,<span class="k"> replace</span> 
+<span class="k">replace</span> ridageyr=ridageyr<span class="o">/</span><span class="m">10</span>
+<span class="k">stcox</span> i<span class="m">.</span>huq010 ridageyr riagendr, basesurv(s0)
+<span class="k">return list</span>
+<span class="k">matrix</span> define mat_adj=<span class="nf">r</span>(table)
+<span class="k">matrix</span> define mat_adj=mat_adj&#39;
+<span class="k">matrix list</span> mat_adj
+<span class="k">svmat</span> mat_adj
+<span class="k">keep</span> mat_adj<span class="o">*</span>
+<span class="k">drop if</span> <span class="nf">missing</span>(mat_adj1)
+<span class="k">rename</span> (mat_adj1 mat_adj2 mat_adj3 mat_adj4 mat_adj5 mat_adj6 mat_adj7 mat_adj8 mat_adj9)(b<span class="k"> se</span> z p ll ul df crit eform)
+<span class="k">g</span> x=_n
+<span class="k">replace</span> b=<span class="nf">log</span>(b)
+<span class="k">replace</span> ll=<span class="nf">log</span>(ll)
+<span class="k">replace</span> ul=<span class="nf">log</span>(ul)
+<span class="k">twoway</span> (scatter b x) || <span class="cs">///</span>
+       (rcap ll ul x, <span class="cs">///</span>
+	       yline(<span class="m">0</span>, lcol(lime)) <span class="cs">///</span>
+		   ylab( <span class="cs">///</span>
+		       <span class="o">-</span><span class="m">2.08</span> <span class="s">&quot;0.125&quot;</span> <span class="cs">///</span>
+			   <span class="o">-</span><span class="m">1.39</span> <span class="s">&quot;0.25&quot;</span> <span class="cs">///</span>
+			   <span class="o">-</span>.<span class="m">69</span> <span class="s">&quot;0.5&quot;</span> <span class="cs">///</span>
+			     <span class="m">0</span> <span class="s">&quot;1&quot;</span>  <span class="cs">///</span>
+			   .<span class="m">69</span> <span class="s">&quot;2&quot;</span> <span class="cs">///</span>
+			   <span class="m">1.39</span> <span class="s">&quot;4&quot;</span> <span class="cs">///</span>
+			   <span class="m">2.08</span> <span class="s">&quot;8&quot;</span> <span class="cs">///</span>
+			   <span class="m">2.78</span> <span class="s">&quot;16&quot;</span>) <span class="cs">///</span>
+		   legend(off)  <span class="cs">///</span>
+		xlab( <span class="cs">///</span>
+           <span class="m">1</span> <span class="s">&quot;</span><span class="vg">$legend1</span><span class="s">&quot;</span> <span class="cs">///</span>
+		   <span class="m">2</span> <span class="s">&quot;</span><span class="vg">$legend2</span><span class="s">&quot;</span> <span class="cs">///</span>
+		   <span class="m">3</span> <span class="s">&quot;</span><span class="vg">$legend3</span><span class="s">&quot;</span> <span class="cs">///</span>
+		   <span class="m">4</span> <span class="s">&quot;</span><span class="vg">$legend4</span><span class="s">&quot;</span> <span class="cs">///</span>
+		   <span class="m">5</span> <span class="s">&quot;</span><span class="vg">$legend5</span><span class="s">&quot;</span> <span class="cs">///</span>
+		   <span class="m">6</span> <span class="s">&quot;Age/10&quot;</span> <span class="cs">///</span>
+		   <span class="m">7</span> <span class="s">&quot;Female&quot;</span>) <span class="cs">///</span>
+	   xti(<span class="s">&quot;Self-Reported Health&quot;</span>) <span class="cs">///</span>
+	   	   ) 
+<span class="k">graph</span> export semipara_adj<span class="m">.</span>png,<span class="k"> replace</span> 
 </pre></div>
 </div>
 </section>
-<section id="semi-parametric">
-<h2>7.2 Semi-parametric<a class="headerlink" href="#semi-parametric" title="Permalink to this heading">#</a></h2>
-<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="cm">/* -- earlier code --*/</span>
-<span class="k">stcox</span> i<span class="m">.</span>huq010
-<span class="k">matrix</span> define<span class="k"> mat</span> = <span class="nf">r</span>(table)
-<span class="k">matrix list mat</span> 
-<span class="k">matrix mat</span> =<span class="k"> mat</span>&#39;
-<span class="k">svmat mat</span>
-<span class="k">keep mat</span><span class="o">*</span>
-<span class="k">drop if</span> <span class="nf">missing</span>(mat1)
-<span class="k">rename</span> (mat1 mat2 mat3 mat4 mat5 mat6 mat7 mat8 mat9)(b<span class="k"> se</span> z p ll ul df crit eform)
-<span class="k">g</span> x=_n
-<span class="k">replace</span> b=<span class="nf">log</span>(b)
-<span class="k">replace</span> ll=<span class="nf">log</span>(ll)
-<span class="k">replace</span> ul=<span class="nf">log</span>(ul)
-<span class="k">twoway</span> (scatter b x) || <span class="cs">///</span>
-       (rcap ll ul x, <span class="cs">///</span>
-	       yline(<span class="m">0</span>, lcol(lime)) <span class="cs">///</span>
-		   ylab( <span class="cs">///</span>
-		       <span class="o">-</span><span class="m">2.08</span> <span class="s">&quot;0.125&quot;</span> <span class="cs">///</span>
-			   <span class="o">-</span><span class="m">1.39</span> <span class="s">&quot;0.25&quot;</span> <span class="cs">///</span>
-			   <span class="o">-</span>.<span class="m">69</span> <span class="s">&quot;0.5&quot;</span> <span class="cs">///</span>
-			     <span class="m">0</span> <span class="s">&quot;1&quot;</span>  <span class="cs">///</span>
-			   .<span class="m">69</span> <span class="s">&quot;2&quot;</span> <span class="cs">///</span>
-			   <span class="m">1.39</span> <span class="s">&quot;4&quot;</span> <span class="cs">///</span>
-			   <span class="m">2.08</span> <span class="s">&quot;8&quot;</span> <span class="cs">///</span>
-			   <span class="m">2.78</span> <span class="s">&quot;16&quot;</span>) <span class="cs">///</span>
-		   legend(off)  <span class="cs">///</span>
-		xlab( <span class="cs">///</span>
-           <span class="m">1</span> <span class="s">&quot;</span><span class="vg">$legend1</span><span class="s">&quot;</span> <span class="cs">///</span>
-		   <span class="m">2</span> <span class="s">&quot;</span><span class="vg">$legend2</span><span class="s">&quot;</span> <span class="cs">///</span>
-		   <span class="m">3</span> <span class="s">&quot;</span><span class="vg">$legend3</span><span class="s">&quot;</span> <span class="cs">///</span>
-		   <span class="m">4</span> <span class="s">&quot;</span><span class="vg">$legend4</span><span class="s">&quot;</span> <span class="cs">///</span>
-		   <span class="m">5</span> <span class="s">&quot;</span><span class="vg">$legend5</span><span class="s">&quot;</span>) <span class="cs">///</span>
-	   xti(<span class="s">&quot;Self-Reported Health&quot;</span>) <span class="cs">///</span>
-	   	   ) 
- 
+<section id="updates">
+<h2>7.3 Updates<a class="headerlink" href="#updates" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Comment on the coefficients of the parameters in the unadjusted analysis</p></li>
+<li><p>What is the impact on your inferences after adjusting for age, sex and race?</p></li>
+<li><p>Are you content with your inferences after adjusting for demographics?</p></li>
+<li><p>Might there be other potential confounders from questionnaire, exam, and labs?</p></li>
+<li><p>How might you prepare for the updated analysis taking additional variables into consideration?</p></li>
+</ul>
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//these variable names don&#39;t exist in the dataset, this is a mere demo</span>
+<span class="k">di</span> <span class="s">&quot;What do you wish to adjust for in this analysis?&quot;</span> _request(<span class="vg">$varlist</span>)
+<span class="k">capture program drop</span> selfassess
+<span class="k">program</span> define selfassess
+<span class="k">    syntax varlist</span> 
+<span class="k">    stcox</span> i<span class="m">.</span>huq010 <span class="nv">`varlist&#39;</span>
+<span class="k">end</span> 
+selfassess <span class="vg">$varlist</span>
 </pre></div>
 </div>
+<p>In the above example, you might ask your collaborators to list what they believe might be confounders in the assocation between self-assessed health status and mortality</p>
+</section>
+<section id="transparency">
+<h2>7.4 Transparency<a class="headerlink" href="#transparency" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The “most open” you can ever get in the “Open Science” enterprise is by using a public GitHub repo</p></li>
+<li><p>Of the topics we’ve discussed, including data, code, parameters, inferences, and updates, “data” is of particular concern if there might be “disclosure risks”</p></li>
+<li><p>In the Stata II (Intermediate) we’ll assume all data are de-identified and have zero disclosure risk. Perhaps because we’ve de-identified the data or because we are using simulated datasets</p></li>
+<li><p>But in Stata III (Advanced) we’ll learn how to use private repos for data storage. We’ll consider how to grant limited access by means of temporary “tokens”</p></li>
+<li><p>Regardless, the parameters of our models represent reduced dimensions of data and have no associated disclosure risks</p></li>
+<li><p>So we should consider “extracting” parameters from our data and from that point forth being 100% transparent in our workflow</p></li>
+</ul>
+</section>
+<section id="extracting-parameters">
+<h2>7.5 Extracting Parameters<a class="headerlink" href="#extracting-parameters" title="Permalink to this heading">#</a></h2>
+<p>Virtually all scientific inferences from quantitive analyses can be made as long as you have the <code class="docutils literal notranslate"><span class="pre">beta</span></code> coefficients and the <code class="docutils literal notranslate"><span class="pre">variance-covariance</span></code> matrix following a multivariable regression.</p>
+<p>Because these parameters have zero discolure risk, you are encouraged to have them made available to the public in your public GitHub repo</p>
+<p>You’d do the public an extra favor if you laid out a generalizable program that allows anyone to add new parameters (i.e., variables and interactions amongst them) to the model with little extra effort</p>
+<section id="e-b">
+<h3>e(b)<a class="headerlink" href="#e-b" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="e-v">
+<h3>e(V)<a class="headerlink" href="#e-v" title="Permalink to this heading">#</a></h3>
+</section>
 </section>
 <section id="lab">
 <h2>7.6 Lab<a class="headerlink" href="#lab" title="Permalink to this heading">#</a></h2>
@@ -590,8 +662,19 @@ import sasxport5 <span class="s">&quot;</span><span class="vg">${nhanes}</span><
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-parametric">7.1 Non-parametric</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-parametric">7.2 Semi-parametric</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">7.1 Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-parametric">Non-parametric</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-parametric">Semi-parametric</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferences">7.2 Inferences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updates">7.3 Updates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transparency">7.4 Transparency</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-parameters">7.5 Extracting Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-b">e(b)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-v">e(V)</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">7.6 Lab</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation-and-initial-analysis">Data Preparation and Initial Analysis</a></li>
 </ul>
