@@ -513,7 +513,8 @@ import sasxport5 <span class="s">&quot;</span><span class="vg">${nhanes}</span><
    <Summary>Click to view the Stata code</Summary>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">hist</span> ridageyr 
 <span class="k">graph</span> export nonpara<span class="m">.</span>png,<span class="k"> replace</span> 
-<span class="k">replace</span> ridageyr=ridageyr<span class="o">/</span><span class="m">10</span>
+<span class="c1">//replace ridageyr=ridageyr/10</span>
+<span class="k">capture drop</span> s0 
 <span class="k">stcox</span> i<span class="m">.</span>huq010 ridageyr riagendr, basesurv(s0)
 <span class="k">return list</span>
 <span class="k">matrix</span> define mat_adj=<span class="nf">r</span>(table)
@@ -527,8 +528,8 @@ import sasxport5 <span class="s">&quot;</span><span class="vg">${nhanes}</span><
 <span class="k">replace</span> b=<span class="nf">log</span>(b)
 <span class="k">replace</span> ll=<span class="nf">log</span>(ll)
 <span class="k">replace</span> ul=<span class="nf">log</span>(ul)
-<span class="k">twoway</span> (scatter b x) || <span class="cs">///</span>
-       (rcap ll ul x, <span class="cs">///</span>
+<span class="k">twoway</span> (scatter b x<span class="k"> if</span> <span class="nf">inrange</span>(x,<span class="m">1</span>,<span class="m">5</span>)) || <span class="cs">///</span>
+       (rcap ll ul x<span class="k"> if</span> <span class="nf">inrange</span>(x,<span class="m">1</span>,<span class="m">5</span>), <span class="cs">///</span>
 	       yline(<span class="m">0</span>, lcol(lime)) <span class="cs">///</span>
 		   ylab( <span class="cs">///</span>
 		       <span class="o">-</span><span class="m">2.08</span> <span class="s">&quot;0.125&quot;</span> <span class="cs">///</span>
@@ -545,9 +546,7 @@ import sasxport5 <span class="s">&quot;</span><span class="vg">${nhanes}</span><
 		   <span class="m">2</span> <span class="s">&quot;</span><span class="vg">$legend2</span><span class="s">&quot;</span> <span class="cs">///</span>
 		   <span class="m">3</span> <span class="s">&quot;</span><span class="vg">$legend3</span><span class="s">&quot;</span> <span class="cs">///</span>
 		   <span class="m">4</span> <span class="s">&quot;</span><span class="vg">$legend4</span><span class="s">&quot;</span> <span class="cs">///</span>
-		   <span class="m">5</span> <span class="s">&quot;</span><span class="vg">$legend5</span><span class="s">&quot;</span> <span class="cs">///</span>
-		   <span class="m">6</span> <span class="s">&quot;Age/10&quot;</span> <span class="cs">///</span>
-		   <span class="m">7</span> <span class="s">&quot;Female&quot;</span>) <span class="cs">///</span>
+		   <span class="m">5</span> <span class="s">&quot;</span><span class="vg">$legend5</span><span class="s">&quot;</span>) <span class="cs">///</span>
 	   xti(<span class="s">&quot;Self-Reported Health&quot;</span>) <span class="cs">///</span>
 	   	   ) 
 <span class="k">graph</span> export semipara_adj<span class="m">.</span>png,<span class="k"> replace</span> 
@@ -557,7 +556,7 @@ import sasxport5 <span class="s">&quot;</span><span class="vg">${nhanes}</span><
 </Details>
 <section id="h-a-text-self-reported-health-sim-age">
 <h3><span class="math notranslate nohighlight">\(H_a: \text{Self-reported health} \sim Age\)</span><a class="headerlink" href="#h-a-text-self-reported-health-sim-age" title="Permalink to this heading">#</a></h3>
-<p><img alt="" src="agedistribution.png" /></p>
+<p><img alt="" src="agedistribution." /></p>
 </section>
 </section>
 <section id="adjust-for-age-and-other-demographics">
@@ -617,6 +616,8 @@ selfassess <span class="vg">$varlist</span>
 </div>
 <section id="e-b">
 <h3>e(b)<a class="headerlink" href="#e-b" title="Permalink to this heading">#</a></h3>
+<Details>
+   <Summary>Click to view the Stata code</Summary>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span>cls 
 <span class="k">use</span> week7,<span class="k"> clear</span>
 <span class="k">replace</span> riagendr=riagendr<span class="m">-1</span>
@@ -678,6 +679,8 @@ selfassess <span class="vg">$varlist</span>
 <span class="k">graph</span> export scenario<span class="m">.</span>png,<span class="k"> replace</span> 
 </pre></div>
 </div>
+</Details>
+<p><img alt="" src="_images/scenario.png" /></p>
 </section>
 <section id="e-v">
 <h3>e(V)<a class="headerlink" href="#e-v" title="Permalink to this heading">#</a></h3>
