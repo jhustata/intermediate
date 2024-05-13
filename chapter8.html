@@ -61,6 +61,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapter8';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -361,7 +363,11 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finesse-project-website">8.1 Finesse project website</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduce-clutter">8.2 Reduce clutter</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-reprodicibility">8.3 Ensure reprodicibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-reprodicibility">8.3 Ensure reprodicibility</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nonparametric">Nonparametric</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semiparametric">Semiparametric</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -386,6 +392,319 @@ document.write(`
 <section id="ensure-reprodicibility">
 <h2>8.3 Ensure reprodicibility<a class="headerlink" href="#ensure-reprodicibility" title="Permalink to this heading">#</a></h2>
 <p>Reproducibility is the cornerstone of scientific research. Document your code and data sources meticulously, and provide clear instructions for running analyses. This allows others to replicate your findings.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//cls </span>
+<span class="k">qui</span> {
+<span class="k">	if</span> <span class="m">1</span> {
+<span class="c1">//1. data</span>
+<span class="k">global</span> repo <span class="s">&quot;https://github.com/jhustata/project/raw/main/&quot;</span>
+<span class="k">global</span> nhanes <span class="s">&quot;https://wwwn.cdc.gov/Nchs/Nhanes/&quot;</span>
+
+<span class="c1">//2. code</span>
+<span class="k">do</span> <span class="vg">${repo}</span>followup<span class="m">.</span>do
+<span class="k">save</span> followup,<span class="k"> replace</span> 
+import sasxport5 <span class="s">&quot;</span><span class="vg">${nhanes}</span><span class="s">1999-2000/DEMO.XPT&quot;</span>,<span class="k"> clear</span>
+<span class="k">merge</span> <span class="m">1</span>:<span class="m">1</span> seqn using followup, nogen
+<span class="k">save</span> survey_followup,<span class="k"> replace</span> 
+
+<span class="c1">//3. parameters</span>
+import sasxport5 <span class="s">&quot;</span><span class="vg">${nhanes}</span><span class="s">1999-2000/HUQ.XPT&quot;</span>,<span class="k"> clear</span>
+<span class="k">tab</span> huq010 
+<span class="k">merge</span> <span class="m">1</span>:<span class="m">1</span> seqn using survey_followup, nogen<span class="k"> keep</span>(matched)
+<span class="k">rm</span> followup<span class="m">.</span>dta
+<span class="k">rm</span> survey_followup<span class="m">.</span>dta
+<span class="k">g</span> years=permth_int<span class="o">/</span><span class="m">12</span>
+<span class="k">stset</span> years, fail(mortstat)
+<span class="k">replace</span> huq010=.<span class="k"> if</span> huq010<span class="o">==</span><span class="m">9</span>
+<span class="k">label</span> define huq <span class="m">1</span> <span class="s">&quot;Excellent&quot;</span> <span class="m">2</span> <span class="s">&quot;Very Good&quot;</span> <span class="m">3</span> <span class="s">&quot;Good&quot;</span> <span class="m">4</span> <span class="s">&quot;Fair&quot;</span> <span class="m">5</span> <span class="s">&quot;Poor&quot;</span>
+<span class="k">label</span> values huq010 huq 
+<span class="k">levelsof</span> huq010,<span class="k"> local</span>(numlevels)
+<span class="k">local</span> i=<span class="m">1</span>
+<span class="k">foreach l</span> of<span class="k"> numlist</span> <span class="nv">`numlevels&#39;</span> {
+<span class="k">    local</span> vallab: value<span class="k"> label</span> huq010 
+<span class="k">	local</span> catlab:<span class="k"> lab</span> <span class="nv">`vallab&#39;</span> <span class="nv">`l&#39;</span>
+<span class="k">	global</span> legend<span class="nv">`i&#39;</span> = <span class="s">&quot;</span><span class="nv">`catlab&#39;</span><span class="s">&quot;</span>
+<span class="k">	local</span> i= <span class="nv">`i&#39;</span> <span class="o">+</span> <span class="m">1</span>
+}
+<span class="k">save</span> week7,<span class="k"> replace</span> 
+#delimit;
+<span class="k">sts graph</span>,  
+<span class="k">    by</span>(huq010)  
+	fail  
+	per(<span class="m">100</span>) 
+	ylab(<span class="m">0</span>(<span class="m">20</span>)<span class="m">80</span> ,  
+<span class="k">	    format</span>(<span class="nx">%2.0f</span>)  
+	)  
+	xlab(<span class="m">0</span>(<span class="m">5</span>)<span class="m">20</span>)  
+	tmax(<span class="m">20</span>)  
+	ti(<span class="s">&quot;Self-Reported Health and Mortality&quot;</span>)  
+	legend(  
+<span class="k">	    order</span>(<span class="m">5</span> <span class="m">4</span> <span class="m">3</span> <span class="m">2</span> <span class="m">1</span>)  
+<span class="k">		lab</span>(<span class="m">1</span> <span class="s">&quot;</span><span class="vg">$legend1</span><span class="s">&quot;</span>)  
+<span class="k">		lab</span>(<span class="m">2</span> <span class="s">&quot;</span><span class="vg">$legend2</span><span class="s">&quot;</span>)  
+<span class="k">		lab</span>(<span class="m">3</span> <span class="s">&quot;</span><span class="vg">$legend3</span><span class="s">&quot;</span>) 
+<span class="k">		lab</span>(<span class="m">4</span> <span class="s">&quot;</span><span class="vg">$legend4</span><span class="s">&quot;</span>)  
+<span class="k">		lab</span>(<span class="m">5</span> <span class="s">&quot;</span><span class="vg">$legend5</span><span class="s">&quot;</span>)  
+		ring(<span class="m">0</span>) pos(<span class="m">11</span>) 
+	) ;
+#delimit cr
+<span class="k">graph</span> export <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>nonpara<span class="m">.</span>png,<span class="k"> replace</span> 
+<span class="k">save</span> <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>wk8,<span class="k"> replace</span> 
+    }
+}
+<span class="k">use</span> <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>wk8,<span class="k"> clear</span> 
+<span class="k">stcox</span> i<span class="m">.</span>huq010, basesurv(s0)
+<span class="k">sort</span> _t s0
+<span class="k">list</span> _t s0<span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">20</span>
+<span class="k">keep</span> _t s0
+<span class="k">save</span> <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>s0,<span class="k"> replace</span> 
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>. use ~/documents/github/wk8, clear 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>. stcox i.huq010, basesurv(s0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        Failure _d: mortstat
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Analysis time _t: years
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 0:  Log likelihood = -14053.711
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 1:  Log likelihood = -13842.257
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 2:  Log likelihood = -13815.469
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 3:  Log likelihood = -13815.219
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 4:  Log likelihood = -13815.219
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Refining estimates:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 0:  Log likelihood = -13815.219
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cox regression with Breslow method for ties
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No. of subjects =       5,436                           Number of obs =  5,436
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No. of failures =       1,671
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time at risk    = 91,679.7499
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                        LR chi2(4)    = 476.98
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log likelihood = -13815.219                             Prob &gt; chi2   = 0.0000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          _t | Haz. ratio   Std. err.      z    P&gt;|z|     [95% conf. interval]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------+----------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      huq010 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Very Good  |   1.347475   .1251746     3.21   0.001     1.123176    1.616567
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Good  |   1.880346   .1619641     7.33   0.000     1.588251    2.226159
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Fair  |   2.985347   .2634849    12.39   0.000     2.511125    3.549126
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Poor  |   7.475088   .7565146    19.88   0.000     6.130144    9.115111
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>. sort _t s0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>. list _t s0 in 1/20
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +-----------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |        _t          s0 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |-----------------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1. | .08333334    .9996459 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2. | .08333334    .9996459 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  3. | .08333334    .9996459 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  4. | .08333334    .9996459 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5. | .16666667   .99938005 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |-----------------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  6. | .16666667   .99938005 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  7. | .16666667   .99938005 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  8. |       .25   .99858103 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  9. |       .25   .99858103 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 10. |       .25   .99858103 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |-----------------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 11. |       .25   .99858103 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 12. |       .25   .99858103 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 13. |       .25   .99858103 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 14. |       .25   .99858103 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 15. |       .25   .99858103 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |-----------------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 16. |       .25   .99858103 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 17. | .33333334   .99804732 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 18. | .33333334   .99804732 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 19. | .33333334   .99804732 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 20. | .33333334   .99804732 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     +-----------------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>. keep _t s0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>. save ~/documents/github/s0, replace
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>file ~/documents/github/s0.dta saved
+</pre></div>
+</div>
+</div>
+</div>
+<section id="nonparametric">
+<h3>Nonparametric<a class="headerlink" href="#nonparametric" title="Permalink to this heading">#</a></h3>
+<p>This line of code <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">export</span> <span class="pre">~/documents/github/nonpara.png,</span> <span class="pre">replace</span></code> above yields a nonparametric product-limit-estimator, also known as the “Kaplan-Meier” curve</p>
+<p><img alt="" src="_images/nonpara.png" /></p>
+</section>
+<section id="semiparametric">
+<h3>Semiparametric<a class="headerlink" href="#semiparametric" title="Permalink to this heading">#</a></h3>
+<p>The above results from a Cox regression are semi-parametric. The <span class="math notranslate nohighlight">\(\beta_i\)</span> coefficients are the parametric moiety where as the <span class="math notranslate nohighlight">\(s0\)</span> kaplan-meier estimate for the basecase is the nonparametic; hence, semiparametric!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
+<span class="k">matrix</span> b =<span class="k"> e</span>(b)
+<span class="k">matrix list</span> b
+<span class="c1">//SV -&gt; scenario vector (i.e., user-input = scenario)</span>
+<span class="c1">//In the scenario below b0=1, b1=0, b2=0, b3=0, b4=0m b5=0</span>
+<span class="k">matrix</span> define SV = (<span class="m">1</span>, <span class="m">0</span>, <span class="m">0</span>, <span class="m">0</span>, <span class="m">0</span>) 
+<span class="c1">//yields the logHR</span>
+<span class="k">matrix</span> loghr = SV<span class="o">*</span>b&#39;
+<span class="k">use</span> <span class="s">&quot;</span><span class="vg">${repo}</span><span class="s">s0.dta&quot;</span>,<span class="k"> clear</span>
+<span class="k">g</span> f0 = (<span class="m">1</span> <span class="o">-</span> s0)<span class="o">*</span><span class="m">100</span>
+<span class="k">g</span> f1 = f0<span class="o">*</span><span class="nf">exp</span>(loghr[<span class="m">1</span>,<span class="m">1</span>])
+<span class="k">noi sum</span> f1<span class="k"> if</span> <span class="nf">inrange</span>(_t,<span class="m">0</span>,.<span class="m">0001</span>)
+<span class="k">noi sum</span> f1<span class="k"> if</span> <span class="nf">inrange</span>(_t,<span class="m">4.9999</span>,<span class="m">5.0001</span>)
+<span class="k">noi sum</span> f1<span class="k"> if</span> <span class="nf">inrange</span>(_t,<span class="m">9.9999</span>,<span class="m">10.0001</span>)
+<span class="k">noi sum</span> f1<span class="k"> if</span> <span class="nf">inrange</span>(_t,<span class="m">14.9999</span>,<span class="m">15.0001</span>)
+<span class="k">noi sum</span> f1<span class="k"> if</span> <span class="nf">inrange</span>(_t,<span class="m">19.9999</span>,<span class="m">20.0001</span>)
+<span class="c1">//Segev, JAMA, 2010</span>
+<span class="k">noi di</span> <span class="s">&quot;Donor mortality at 12-year follow-up:&quot;</span> <span class="nx">%3.1f</span> <span class="nf">r</span>(max) <span class="s">&quot;%&quot;</span> 
+#delimit;
+<span class="k">line</span> f1 _t<span class="k"> if</span> <span class="nf">inrange</span>(_t,<span class="m">1</span>,<span class="m">15</span>), 
+<span class="k">    sort</span> 
+	connect(step step) 
+	ylab(<span class="m">0</span>(<span class="m">10</span>)<span class="m">40</span>, 
+<span class="k">	    format</span>(<span class="nx">%2.0f</span>)
+	) 
+	xlab(<span class="m">0</span>(<span class="m">3</span>)<span class="m">15</span>)
+	yti(<span class="s">&quot;%&quot;</span>)
+	xti(<span class="s">&quot;Years&quot;</span>)
+	;
+#delimit cr
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>file https://github.com/jhustata/project/raw/main/s0.dta not found
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>r(601);
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>r(601);
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -398,16 +717,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "stata"
         },
         kernelOptions: {
-            name: "python3",
+            name: "stata",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'stata'</script>
 
                 </article>
               
@@ -458,7 +777,11 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finesse-project-website">8.1 Finesse project website</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduce-clutter">8.2 Reduce clutter</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-reprodicibility">8.3 Ensure reprodicibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensure-reprodicibility">8.3 Ensure reprodicibility</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nonparametric">Nonparametric</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semiparametric">Semiparametric</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
