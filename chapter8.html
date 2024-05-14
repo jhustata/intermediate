@@ -392,13 +392,13 @@ document.write(`
 <section id="ensure-reprodicibility">
 <h2>8.3 Ensure reprodicibility<a class="headerlink" href="#ensure-reprodicibility" title="Permalink to this heading">#</a></h2>
 <p>Reproducibility is the cornerstone of scientific research. Document your code and data sources meticulously, and provide clear instructions for running analyses. This allows others to replicate your findings.</p>
-<div class="cell tag_hide-input docutils container">
+<div class="cell tag_hide-input tag_hide-output docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
 <span class="expanded">Hide code cell source</span>
 </summary>
-<div class="cell_input docutils container">
+<div class="cell_input above-output-prompt docutils container">
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="c1">//cls </span>
 <span class="k">qui</span> {
 <span class="k">	if</span> <span class="m">1</span> {
@@ -408,17 +408,17 @@ document.write(`
 
 <span class="c1">//2. code</span>
 <span class="k">do</span> <span class="vg">${repo}</span>followup<span class="m">.</span>do
-<span class="k">save</span> followup,<span class="k"> replace</span> 
+<span class="k">save</span> <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>statatwo<span class="o">/</span>followup,<span class="k"> replace</span> 
 import sasxport5 <span class="s">&quot;</span><span class="vg">${nhanes}</span><span class="s">1999-2000/DEMO.XPT&quot;</span>,<span class="k"> clear</span>
 <span class="k">merge</span> <span class="m">1</span>:<span class="m">1</span> seqn using followup, nogen
-<span class="k">save</span> survey_followup,<span class="k"> replace</span> 
+<span class="k">save</span> <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>statatwo<span class="o">/</span>survey_followup,<span class="k"> replace</span> 
 
 <span class="c1">//3. parameters</span>
 import sasxport5 <span class="s">&quot;</span><span class="vg">${nhanes}</span><span class="s">1999-2000/HUQ.XPT&quot;</span>,<span class="k"> clear</span>
 <span class="k">tab</span> huq010 
-<span class="k">merge</span> <span class="m">1</span>:<span class="m">1</span> seqn using survey_followup, nogen<span class="k"> keep</span>(matched)
-<span class="k">rm</span> followup<span class="m">.</span>dta
-<span class="k">rm</span> survey_followup<span class="m">.</span>dta
+<span class="k">merge</span> <span class="m">1</span>:<span class="m">1</span> seqn using <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>statatwo<span class="o">/</span>survey_followup, nogen<span class="k"> keep</span>(matched)
+<span class="k">rm</span> <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>statatwo<span class="o">/</span>followup<span class="m">.</span>dta
+<span class="k">rm</span> <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>statatwo<span class="o">/</span>survey_followup<span class="m">.</span>dta
 <span class="k">g</span> years=permth_int<span class="o">/</span><span class="m">12</span>
 <span class="k">stset</span> years, fail(mortstat)
 <span class="k">replace</span> huq010=.<span class="k"> if</span> huq010<span class="o">==</span><span class="m">9</span>
@@ -432,7 +432,7 @@ import sasxport5 <span class="s">&quot;</span><span class="vg">${nhanes}</span><
 <span class="k">	global</span> legend<span class="nv">`i&#39;</span> = <span class="s">&quot;</span><span class="nv">`catlab&#39;</span><span class="s">&quot;</span>
 <span class="k">	local</span> i= <span class="nv">`i&#39;</span> <span class="o">+</span> <span class="m">1</span>
 }
-<span class="k">save</span> week7,<span class="k"> replace</span> 
+<span class="k">save</span> <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>statatwo<span class="o">/</span>week7,<span class="k"> replace</span> 
 #delimit;
 <span class="k">sts graph</span>,  
 <span class="k">    by</span>(huq010)  
@@ -454,22 +454,27 @@ import sasxport5 <span class="s">&quot;</span><span class="vg">${nhanes}</span><
 		ring(<span class="m">0</span>) pos(<span class="m">11</span>) 
 	) ;
 #delimit cr
-<span class="k">graph</span> export <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>nonpara<span class="m">.</span>png,<span class="k"> replace</span> 
-<span class="k">save</span> <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>wk8,<span class="k"> replace</span> 
+<span class="k">graph</span> export <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>statatwo<span class="o">/</span>nonpara<span class="m">.</span>png,<span class="k"> replace</span> 
+<span class="k">save</span> <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>statatwo<span class="o">/</span>wk8,<span class="k"> replace</span> 
     }
 }
-<span class="k">use</span> <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>wk8,<span class="k"> clear</span> 
+<span class="k">use</span> <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>statatwo<span class="o">/</span>wk8,<span class="k"> clear</span> 
 <span class="k">stcox</span> i<span class="m">.</span>huq010, basesurv(s0)
 <span class="k">sort</span> _t s0
 <span class="k">list</span> _t s0<span class="k"> in</span> <span class="m">1</span><span class="o">/</span><span class="m">20</span>
 <span class="k">keep</span> _t s0
-<span class="k">save</span> <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>s0,<span class="k"> replace</span> 
+<span class="k">save</span> <span class="o">~/</span>documents<span class="o">/</span>github<span class="o">/</span>statatwo<span class="o">/</span>s0,<span class="k"> replace</span> 
 </pre></div>
 </div>
 </div>
 </details>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>. use ~/documents/github/wk8, clear 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>. use ~/documents/github/statatwo/wk8, clear 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>. stcox i.huq010, basesurv(s0)
@@ -637,24 +642,498 @@ import sasxport5 <span class="s">&quot;</span><span class="vg">${nhanes}</span><
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>. keep _t s0
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>. save ~/documents/github/s0, replace
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>. save ~/documents/github/statatwo/s0, replace
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>file ~/documents/github/s0.dta saved
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>file ~/documents/github/statatwo/s0.dta saved
 </pre></div>
 </div>
 </div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">foreach n</span> of<span class="k"> numlist</span> <span class="m">1</span> <span class="m">1.34</span> <span class="m">1.88</span> <span class="m">2.98</span> <span class="m">7.47</span> {
+<span class="k">	di log</span>(<span class="nv">`n&#39;</span>)
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.29266961
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.63127178
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0919233
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.010895
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">list if</span> <span class="nf">inrange</span>(_t, <span class="m">0</span>, .<span class="m">000001</span>)
+<span class="k">list if</span> <span class="nf">inrange</span>(_t, <span class="m">4.999999</span>, <span class="m">5.000001</span>)
+<span class="k">list if</span> <span class="nf">inrange</span>(_t, <span class="m">9.999999</span>, <span class="m">10.000001</span>)
+<span class="k">list if</span> <span class="nf">inrange</span>(_t, <span class="m">14.999999</span>, <span class="m">15.000001</span>)
+<span class="k">list if</span> <span class="nf">inrange</span>(_t, <span class="m">19.999999</span>, <span class="m">20.000001</span>)
+</pre></div>
+</div>
+</div>
+</details>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      +----------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      | _t          s0 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      |----------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 394. |  5   .96281503 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 395. |  5   .96281503 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 396. |  5   .96281503 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 397. |  5   .96281503 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 398. |  5   .96281503 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      |----------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 399. |  5   .96281503 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 400. |  5   .96281503 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 401. |  5   .96281503 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 402. |  5   .96281503 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      +----------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      +----------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      | _t          s0 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      |----------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 863. | 10   .91558171 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 864. | 10   .91558171 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 865. | 10   .91558171 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 866. | 10   .91558171 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 867. | 10   .91558171 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      |----------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 868. | 10   .91558171 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 869. | 10   .91558171 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 870. | 10   .91558171 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      +----------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      +----------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      | _t          s0 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      |----------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1264. | 15   .87179276 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1265. | 15   .87179276 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1266. | 15   .87179276 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1267. | 15   .87179276 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1268. | 15   .87179276 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      |----------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1269. | 15   .87179276 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1270. | 15   .87179276 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1271. | 15   .87179276 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1272. | 15   .87179276 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      +----------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      +----------------+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      | _t          s0 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      |----------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3557. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3558. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3559. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3560. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3561. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      |----------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3562. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3563. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3564. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3565. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3566. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      |----------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3567. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3568. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3569. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3570. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3571. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      |----------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3572. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3573. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3574. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3575. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3576. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      |----------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3577. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3578. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3579. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3580. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3581. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      |----------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3582. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3583. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3584. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3585. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3586. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      |----------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3587. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3588. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3589. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3590. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3591. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      |----------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3592. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3593. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3594. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3595. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3596. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      |----------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3597. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3598. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3599. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3600. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3601. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      |----------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3602. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3603. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3604. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3605. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3606. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      |----------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3607. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3608. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3609. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3610. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3611. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      |----------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3612. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3613. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3614. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3615. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3616. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      |----------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3617. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3618. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3619. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3620. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3621. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      |----------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3622. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3623. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3624. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3625. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3626. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      |----------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3627. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3628. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3629. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3630. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3631. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      |----------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3632. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3633. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3634. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3635. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3636. | 20   .82403985 |
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      |----------------|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--more--
+</pre></div>
+</div>
+</div>
+</details>
 </div>
 <section id="nonparametric">
 <h3>Nonparametric<a class="headerlink" href="#nonparametric" title="Permalink to this heading">#</a></h3>
-<p>This line of code <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">export</span> <span class="pre">~/documents/github/nonpara.png,</span> <span class="pre">replace</span></code> above yields a nonparametric product-limit-estimator, also known as the “Kaplan-Meier” curve</p>
+<p>This line of code <code class="docutils literal notranslate"><span class="pre">graph</span> <span class="pre">export</span> <span class="pre">~/documents/github/statatwo/nonpara.png,</span> <span class="pre">replace</span></code> above yields the nonparametric product-limit-estimator, also known as the “Kaplan-Meier” curve <strong>seen below.</strong></p>
 <p><img alt="" src="_images/nonpara.png" /></p>
 </section>
 <section id="semiparametric">
 <h3>Semiparametric<a class="headerlink" href="#semiparametric" title="Permalink to this heading">#</a></h3>
-<p>The above results from a Cox regression are semi-parametric. The <span class="math notranslate nohighlight">\(\beta_i\)</span> coefficients are the parametric moiety where as the <span class="math notranslate nohighlight">\(s0\)</span> kaplan-meier estimate for the basecase is the nonparametic; hence, semiparametric!</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
+<p>The results from a Cox regression above, <code class="docutils literal notranslate"><span class="pre">.</span> <span class="pre">stcox</span> <span class="pre">i.huq010,</span> <span class="pre">basesurv(s0)</span></code>, are semi-parametric. The <span class="math notranslate nohighlight">\(\beta_i\)</span> coefficients for the <code class="docutils literal notranslate"><span class="pre">hug010</span></code> categories are the parametric moiety, where as the <span class="math notranslate nohighlight">\(s0\)</span> kaplan-meier estimate for the basecase is the nonparametic; hence, <strong>semi</strong>parametric!</p>
+<p><a class="reference external" href="https://jhustata.github.io/quickdeploy/">webApp</a></p>
 <div class="highlight-stata notranslate"><div class="highlight"><pre><span></span><span class="k">qui</span> {
 <span class="k">matrix</span> b =<span class="k"> e</span>(b)
 <span class="k">matrix list</span> b
@@ -687,22 +1166,6 @@ import sasxport5 <span class="s">&quot;</span><span class="vg">${nhanes}</span><
 #delimit cr
 }
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>file https://github.com/jhustata/project/raw/main/s0.dta not found
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>r(601);
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>r(601);
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
