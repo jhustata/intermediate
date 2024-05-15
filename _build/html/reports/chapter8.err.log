@@ -18,46 +18,80 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
+//cls 
 qui {
-matrix b = e(b)
-matrix list b
-//SV -> scenario vector (i.e., user-input = scenario)
-//In the scenario below b0=1, b1=0, b2=0, b3=0, b4=0m b5=0
-matrix define SV = (1, 0, 0, 0, 0) 
-//yields the logHR
-matrix loghr = SV*b'
-use "${repo}s0.dta", clear
-g f0 = (1 - s0)*100
-g f1 = f0*exp(loghr[1,1])
-noi sum f1 if inrange(_t,0,.0001)
-noi sum f1 if inrange(_t,4.9999,5.0001)
-noi sum f1 if inrange(_t,9.9999,10.0001)
-noi sum f1 if inrange(_t,14.9999,15.0001)
-noi sum f1 if inrange(_t,19.9999,20.0001)
-//Segev, JAMA, 2010
-noi di "Donor mortality at 12-year follow-up:" %3.1f r(max) "%" 
-#delimit;
-line f1 _t if inrange(_t,1,15), 
-    sort 
-	connect(step step) 
-	ylab(0(10)40, 
-	    format(%2.0f)
-	) 
-	xlab(0(3)15)
-	yti("%")
-	xti("Years")
-	;
-#delimit cr
+	if 1 {
+//1. data
+global repo "https://github.com/jhustata/project/raw/main/"
+global nhanes "https://wwwn.cdc.gov/Nchs/Nhanes/"
+
+//2. code
+do ${repo}followup.do
+save ~/documents/github/statatwo/followup, replace 
+import sasxport5 "${nhanes}1999-2000/DEMO.XPT", clear
+merge 1:1 seqn using followup, nogen
+save ~/documents/github/statatwo/survey_followup, replace 
+
+//3. parameters
+import sasxport5 "${nhanes}1999-2000/HUQ.XPT", clear
+tab huq010 
+merge 1:1 seqn using ~/documents/github/statatwo/survey_followup, nogen keep(matched)
+rm ~/documents/github/statatwo/followup.dta
+rm ~/documents/github/statatwo/survey_followup.dta
+g years=permth_int/12
+stset years, fail(mortstat)
+replace huq010=. if huq010==9
+label define huq 1 "Excellent" 2 "Very Good" 3 "Good" 4 "Fair" 5 "Poor"
+label values huq010 huq 
+levelsof huq010, local(numlevels)
+local i=1
+foreach l of numlist `numlevels' {
+    local vallab: value label huq010 
+	local catlab: lab `vallab' `l'
+	global legend`i' = "`catlab'"
+	local i= `i' + 1
 }
+save ~/documents/github/statatwo/week7, replace 
+#delimit;
+sts graph,  
+    by(huq010)  
+	fail  
+	per(100) 
+	ylab(0(20)80 ,  
+	    format(%2.0f)  
+	)  
+	xlab(0(5)20)  
+	tmax(20)  
+	ti("Self-Reported Health and Mortality")  
+	legend(  
+	    order(5 4 3 2 1)  
+		lab(1 "$legend1")  
+		lab(2 "$legend2")  
+		lab(3 "$legend3") 
+		lab(4 "$legend4")  
+		lab(5 "$legend5")  
+		ring(0) pos(11) 
+	) ;
+#delimit cr
+graph export ~/documents/github/statatwo/nonpara.png, replace 
+save ~/documents/github/statatwo/wk8, replace 
+    }
+}
+use ~/documents/github/statatwo/wk8, clear 
+stcox i.huq010, basesurv(s0)
+sort _t s0
+list _t s0 in 1/20
+keep _t s0
+save ~/documents/github/statatwo/s0, replace 
 ------------------
 
 ----- stdout -----
 
-file https://github.com/jhustata/project/raw/main/s0.dta not found
+file demo/NHANES_1999_2000_PUF.dta could not be opened
 ----- stderr -----
-r(601);
+r(603);
 ----- stderr -----
-r(601);
+r(603);
 ----- stdout -----
 
 ------------------
